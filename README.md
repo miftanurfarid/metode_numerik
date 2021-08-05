@@ -5,3 +5,4 @@
 - prob: soal
 - ref: referensi utama dan pendamping
 - slide: slide presentasi
+- sol: jawaban soal
