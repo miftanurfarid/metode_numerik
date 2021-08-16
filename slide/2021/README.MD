@@ -5,3 +5,5 @@
 1. Pengantar Metode Numerik
 
 1. Deret Taylor dan Analisis Galat
+
+1. Solusi Persamaan Non-linier
