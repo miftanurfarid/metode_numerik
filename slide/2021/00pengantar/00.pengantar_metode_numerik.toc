@@ -1,2 +1,0 @@
-\beamer@sectionintoc {1}{Kontrak Perkuliahan}{2}{0}{1}
-\beamer@sectionintoc {2}{Pengantar Metode Numerik}{3}{0}{2}
