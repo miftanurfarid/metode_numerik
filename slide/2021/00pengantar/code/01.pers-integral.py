@@ -16,7 +16,7 @@ y = lambda x: 4 - x**2
 fx = y(x)
 
 plt.plot(x,fx)
-plt.grid(axis = 'x')
+plt.grid(axis = 'both')
 plt.legend(['$f(x) = 4 - x^2$'])
 plt.xlabel('x')
-plt.savefig('img002.svg', format='svg', dpi=1200)
+plt.savefig('img003.svg', format='svg', dpi=1200)

@@ -20,17 +20,6 @@
 % *** END of Titlepage >>>
 % ----------------------------------------------------------------------------
 
-% ----------------------------------------------------------------------------
-\section{Kontrak Perkuliahan}
-
-\begin{frame}
-\frametitle{Kontrak Perkuliahan}
-	\begin{enumerate}
-		\item Bahan kajian, bobot evaluasi, dll $\rightarrow$ Baca RPS.
-	\end{enumerate}
-\end{frame}
-
-% ----------------------------------------------------------------------------
 \section{Pengantar Metode Numerik}
 
 \begin{frame}
@@ -46,8 +35,7 @@
 \frametitle{Contoh persoalan matematika}
 	\begin{enumerate}
 		\item Tentukan akar-akar persamaan polinom:
-		\[ 23.4x^7 - 1.25x^6 + 120x^4 + 15x^3 - 120x^2- x + 100 = 0
-		 \]
+		\[ 23.4x^7 - 1.25x^6 + 120x^4 + 15x^3 - 120x^2- x + 100 = 0 \]
 		 \item Tentukan nilai $ x $ yang memenuhi persamaan:
 		 \[ \sqrt{27.8e^{5x} - \frac{1}{x}} = \cos^{-1}\frac{(120x^2 + \sqrt{2x})}{17x-65}\]
 		 \item Hitung nilai integral-tentu berikut:
@@ -112,7 +100,6 @@
 			\begin{figure}
 				\centering
 				\includegraphics[width=0.8\linewidth]{img/img001}
-				\label{fig:img001}
 			\end{figure}
 				
 	\end{enumerate}
@@ -175,9 +162,113 @@
 		
 		Nilai integral = luas daerah di bawah kurva
 		
-	\end{enumerate}
+		\begin{center}
+			\includegraphics[width=0.6\linewidth]{img/img003}
+		\end{center}
 	
+		Luas trapesium = (jumlah sisi sejajar $\times$ tinggi) / 2
+	\end{enumerate}
 \end{frame}
+
+\begin{frame}
+	\begin{align*}
+		\text{Nilai integral} \approx&~ \text{Total luas trapesium} \\
+		\int_{-1}^{1} (4-x^2) dx  \approx&~  A + B + C + D \\
+		\approx&~ \{([ f(-1) + f(-0.5) ] \times 0.5) / 2 \} \\
+		&+ \{([ f(-0.5) + f(0) ] \times 0.5) / 2 \} \\
+		&+ \{([ f(0) + f(0.5) ] \times 0.5) / 2 \} \\
+		&+ \{([ f(0.5) + f(1) ] \times 0.5) / 2 \} \\
+		\approx&~ 0.5/2 \{ f(-1) + 2f(-0.5) + 2f(0) + 2f(0.5) + f(1) \} \\
+		\approx&~ 0.5/2 \{ 3 + 7.5 + 8 + 7.5 + 3 \} \\
+		\approx&~ 7.25
+	\end{align*}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Perbedaan analitik dan numerik}
+	\begin{itemize}
+		\item Perbedaan solusi antara metode analitik dengan metode numerik:
+		\begin{itemize}
+			\item Solusi dengan metode analitik: eksak (tepat tanpa ada kesalahan)
+			\item Solusi dengan metode numerik: hampiran atau aproksimasi (tidak tepat sama dengan solusi eksak, selalu ada kesalahan
+		\end{itemize}
+		\item Kesalahan dalam solusi numerik disebut galat (error)
+		\item Galat dapat diperkecil dengan mengubah parameter di dalam metode numerik (misalnya $\varepsilon$, lebar trapesium, dsb)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Kelebihan metode numerik}
+	\begin{itemize}
+		\item Metode numerik dapat menyelesaikan persoalan matematika yang tidak dapat diselesaikan dengan metode analitik.
+		\item Apakah metode analitik mampu mencari akar persamaan di bawah ini?
+		 \[ \sqrt{27.8e^{5x} - \frac{1}{x}} = \cos^{-1}\frac{(120x^2 + \sqrt{2x})}{17x-65}\]
+		 \item Apakah metode analitik mampu mencari nilai integral berikut ini?
+	 	\[ \int_{1.2}^{2.5} \left( \sqrt{\left(45.3e^{7x}+\frac{100}{x}\right)^4} + \frac{4}{(x^2 + 1)} \right) dx \]
+	 	\item \textbf{Metode numerik mampu menyelesaikan persoalan di atas! }
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Metode numerik membutuhkan banyak operasi aritmetika yang berulang.
+		\item Oleh karena itu, komputer berguna untuk membantu perhitungan. Komputer menjadi kebutuhan yang penting dalam metode numerik.
+		\item Metode numerik pada dasarnya adalah suatu algoritma sehingga dapat diprogram.
+		\item Bahasa pemrograman yang akan digunakan dalam perkuliahan ini adalah \textbf{Python} dengan IDE (\textit{integrated development environtments}) \textbf{Spyder} atau \textbf{Google Colab} (jika selalu memiliki akses internet)
+		\begin{itemize}
+			\item Spyder: \href{https://github.com/spyder-ide/spyder/releases/latest/download/Spyder_64bit_full.exe}{\beamergotobutton{Link}}
+			\item Google colab: \href{https://colab.research.google.com/}{\beamergotobutton{Link}}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Tahapan penyelesaian persoalan secara numerik:
+		\begin{enumerate}
+			\item Pemodelan
+			\item Penyederhanaan model
+			\item Formulasi numerik: menentukan metode nuemrik yang dipakai dan membuat algoritma penyelesaian
+			\item Pemrograman: coding
+			\item Pengujian: tes dengan data uji
+			\item Evaluasi: menganalisis hasil numerik
+		\end{enumerate}
+		\item Tahap 1 dan 2 adalah pekerjaan ahli yang sesuai dengan bidangnya.
+		\item Tahap 3 dan 4 adalah tugas \textit{electrical engineering};
+		\item Tahap 5 dan 6 melibatkan \textit{electrical engineering} dan ahli yang sesuai dengan bidangnya
+		
+	\end{itemize}
+\end{frame}
+
+% ----------------------------------------------------------------------------
+\section{Kontrak Perkuliahan}
+
+\begin{frame}
+	\frametitle{Bahan kajian}
+	Apa yang dipelajari di dalam metode numerik?
+	\begin{enumerate}
+		\item Solusi persamaan non-linear
+		\item Solusi sistem persamaan linear
+		\item Interpolasi polinom
+		\item Turunan numerik
+		\item Integrasi numerik
+		\item Solusi persamaan diferensial biasa dengan nilai awal
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Penilaian kuliah}
+	\begin{enumerate}
+		\item Kehadiran 10 \%
+		\item Tugas 10 \%
+		\item Kuis 20 \%
+		\item UTS 30 \%
+		\item UAS 30 \%
+	\end{enumerate}
+\end{frame}
+
+% ----------------------------------------------------------------------------
+
 % ----------------------------------------------------------------------------
 
 \end{document}
