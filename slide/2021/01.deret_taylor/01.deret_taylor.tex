@@ -51,21 +51,38 @@
 		\item Misalkan $ x - x_0 = h $, maka:
 		\begin{align*}
 			f(x) =& f(x_0) + \frac{h}{1!}f'(x_0) + \frac{h^2}{2!}f''(x_0) + \frac{h^3}{1!}f'''(x_0) \\
-			&+ \cdots + \frac{h^m}{m!}f^m(x_0) + \cdots
+			&+ \dots + \frac{h^m}{m!}f^m(x_0) + \dots
 		\end{align*}
+		\item \textbf{Contoh 1}: Hampiri fungsi $ f(x) = \sin(x) $ ke dalam deret Taylor di sekitar $ x_0 = 1 $.
+		\item \textbf{Penyelesaian:}
+			\begin{align*}
+				f(x) = \sin(x),~ &f'(x) = \cos(x),~f''(x) = -\sin(x) \\
+				&f'''(x) = -\cos(x), f^{(4)}(x) = -\cos(x)
+			\end{align*}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Contoh 1}
-	Hampiri fungsi $ f(x) = \sin(x) $ ke dalam deret Taylor di sekitar $ x_0 = 1 $. \\
-	Penyelesaian: \\
-	
 	\begin{align*}
-		f(x) = \sin(x)
+		\sin(x) =& \sin(1) + \frac{(x-1)}{1!}\cos(1) + \frac{(x-1)^2}{2!}(-\sin(1)) \\
+		& + \frac{(x-1)^3}{3!}(-\cos(1)) + \frac{(x-1)^4}{4!}\sin(1) + \dots
 	\end{align*}
-	
-	
+
+	Misalkan $ x - 1 = h $, maka
+		
+	\begin{align*}
+		\sin(x) =&~ \sin(1) + h\cos(1) + \frac{h^2}{2}(-\sin(1)) + \frac{h^3}{6}(-\cos(1)) \\
+		&+ \frac{h^4}{24}\sin(1) + \dots \\
+		=&~ 0.8415 + 0.5403h - 0.4208h^2 - 0.0901h^3 + 0.0351h^4 + \dots
+	\end{align*}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Deret Maclaurin}
+	\begin{itemize}
+		\item Kasus khusus: jika $ x_0 = 0$, maka deretnya dinamakan \textbf{Deret Maclaurin}, yang merupakan deret Taylor baku.
+		\item \textbf{Contoh 2:} $ \sin(x) $, $ e^x $, $ \cos(x) $ dan $ \ln(x+1) $ masing-masing dalam deret Maclaurin
+	\end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------------
 	
