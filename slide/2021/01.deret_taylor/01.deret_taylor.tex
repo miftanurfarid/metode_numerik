@@ -117,11 +117,26 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Deret Taylor Terpotong}
 	\begin{itemize}
 		\item Karena suku-suku deret Taylor tidak berhingga banyaknya, maka -\textit{untuk alasan praktis}- deret Taylor dipotong sampai suku orde tertentu.
 		\item Deret Taylor yang dipotong sampai suku orde ke-$ n $ dinamakan \textbf{deret Taylor terpotong} dan dinyatakan oleh:
 		\begin{align*}
-			f(x) \approx&~f(x_0) + \frac{(x-x_0)}{1!}f'(x_0)
+			f(x) \approx&~f(x_0) + \frac{(x-x_0)}{1!}f'(x_0) + \frac{(x-x_0)^2}{2!}f''(x_0) + \dots \\
+			& + \frac{(x-x_0)^n}{n!}f^(n)(x_0) + R_n(x) \\
+			R_n(x) =&~ \frac{(x-x_0)^{(n+1)}}{(n+1)!}f^{(n+1)}(c),~~x_0 < c < x
+		\end{align*}
+		\item $ R_n(x) $ adalah \textbf{Galat/residu/sisa.}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Deret Maclaurin Terpotong}
+	\begin{itemize}
+		\item Deret Taylor terpotong di sekitar $ x_0 = 0 $ disebut \textbf{deret Maclaurin terpotong.}
+		\item \textbf{Contoh 3:}
+		\begin{align*}
+			\sin(x) = x - \frac{x^3}{3!}
 		\end{align*}
 	\end{itemize}
 \end{frame}
