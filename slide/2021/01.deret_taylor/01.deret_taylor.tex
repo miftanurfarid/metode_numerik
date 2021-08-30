@@ -136,8 +136,25 @@
 		\item Deret Taylor terpotong di sekitar $ x_0 = 0 $ disebut \textbf{deret Maclaurin terpotong.}
 		\item \textbf{Contoh 3:}
 		\begin{align*}
-			\sin(x) = x - \frac{x^3}{3!}
+			&\sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} + R_5(x);~ R_5(x) = \frac{x^6}{6!}\cos(c) \\
+			&e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + R_4(x);~R_4(x) = \frac{x^5}{5!}e^c \\
+			&\cos(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + R_6(x);~R_6(x) = \frac{x^7}{7!}\cos(c) \\
+			&\ln(x+1) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + R_4(x);~R_4(x) = \frac{x^5}{5!}(c+1)^{-5}
 		\end{align*}
+		dimana $ 0 < c < x $.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item \textbf{Contoh 4:} Hitung hampiran nilai $ \cos(0.2) $
+		\begin{align*}
+		&\sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} + R_5(x);~ R_5(x) = \frac{x^6}{6!}\cos(c) \\
+		&e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + R_4(x);~R_4(x) = \frac{x^5}{5!}e^c \\
+		&\cos(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + R_6(x);~R_6(x) = \frac{x^7}{7!}\cos(c) \\
+		&\ln(x+1) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + R_4(x);~R_4(x) = \frac{x^5}{5!}(c+1)^{-5}
+		\end{align*}
+		dimana $ 0 < c < x $.
 	\end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------------
