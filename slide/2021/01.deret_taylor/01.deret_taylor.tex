@@ -304,10 +304,88 @@
 \begin{frame}
 	\frametitle{Pembulatan ke digit terdekat (in-rounding)}
 	\begin{itemize}
-		\item Misalkan $ a = \pm 0.d_1 d_2 d_3 \dots d_nd_{n+1} \dots \times 10^p $\\
-		$ fl_{chop}(a) = \pm 0.d_1 d_2 d_3 \dots d_{n-1}d_n \times 10^p $
+		\item Misalkan $ a = \pm 0.d_1 d_2 d_3 \dots d_n d_{n+1} \dots \times 10^p $\\
+		$ fl_{chop}(a) = \pm 0.d_1 d_2 d_3 \dots \hat{d}_n \times 10^p $
+		\[
+		\hat{d}_n = 
+			\begin{cases}
+				d_n 	&, \text{jika } d_{n+1} < 5 \\
+				d_n + 1 &, \text{jika } d_{n+1} > 5 \\
+				d_n 	&, \text{jika } d_{n+1} = 5 \text{ dan } n \text{ genap}\\
+				d_n + 1 &, \text{jika } d_{n+1} = 5 \text{ dan } n \text{ ganjil}
+			\end{cases}
+		\]
 	\end{itemize}
 \end{frame}
-% ----------------------------------------------------------------------------
+
+\begin{frame}
+	\begin{itemize}
+		\item \textbf{Contoh 9:} $ a = 0.5682785715287 \times 10^{-4} $ :
+		\begin{itemize}
+			\item di dalam komputer 7 digit dibulatkan menjadi $ fl_{\text{round}}(a) =  0.5682786 \times 10^{-4} $
+			\item di dalam komputer 8 digit dibulatkan menjadi $ fl_{\text{round}}(a) =  0.56827857 \times 10^{-4} $
+			\item di dalam komputer 6 digit dibulatkan menjadi $ fl_{\text{round}}(a) =  0.568278 \times 10^{-4} $
+			\item di dalam komputer 9 digit dibulatkan menjadi $ fl_{\text{round}}(a) =  0.568278572 \times 10^{-4} $
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Aritmetika Bilangan Titik-Kambang}
+	\begin{itemize}
+		\item \textbf{Kasus 1}: Penjumlahan (termasuk pengurangan) bilangan yang sangat kecil ke (atau dari) bilangan yang lebih besar menyebabkan timbulnya galat pembulatan.
+		\item \textbf{Contoh 10}: Misalkan digunakan komputer dengan mantis 4 digit (basis 10). Hitunglah
+		\[ 1.557 + 0.04381 = 0.1557 \times 10^1 + 0.4381 \times 10-1 \]
+		\textbf{Penyelesaian:}
+		\begin{center}
+			\includegraphics[width=0.6\linewidth]{img/img104.png}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{align*}
+		\text{Galat pembulatan }&= | (0.160081 \times 10^1) - (0.1601 \times 10^1)| \\ &= 0.000019
+	\end{align*}
+	\begin{align*}
+		\text{Galat pemenggalan } &= | (0.160081 \times 10^1) - (0.1600 \times 10^1)| \\&= 0.000081
+	\end{align*}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Tips: untuk menjumlahkan deret bilangan, selalu jumlahkan dari yang kecil-kecil lebih dahulu, baru menjumlahkan dengan bulangan yang lebih besar
+		\item Contoh: \[ x = 1.0 + \sum_{i=1}^1000 0.00001 = 1.0 + 0.00001 + \dots + 0.00001 \]
+		Jumlahkan dulu 0.00001 sebanyak 1000 kali, baru jumlahkan dengan 1.0
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item \textbf{Kasus 2}: Pengurangan dua buah bilangan yang hampir sama besar (\textit{nearly equal}).
+		\item Bila dua bilangan titik-kambang dikurangkan, hasilnya mungkin mengandung nol pada posisi digit mantis yang paling berarti (posisi digit paling kiri).
+		\item Keadaan ini dinamakan \textbf{kehilangan angka bena} (\textit{loss of significance}). Baik pemenggalan maupun pembulatan ke digit terdekat menghasilkan jawaban yang sama.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item \textbf{Contoh 11}: Kurangi $ 0.56780 \times 10^5 $ dengan $ 0.56430 \times 10^5 $ (5 angka bena)
+		\item[] \textbf{Penyelesaian}:
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{img/img105.png}
+		\end{center}
+		\ite[] Hasil yang diperoleh hanya mempunyai 3 angka bena. Jadi kita kehilangan 2 buah angka bena.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item \textbf{Contoh 12}: Kurangi 3.1415926536 dengan
+		3.1415957341 (11 angka bena).
+		\item[] \textbf{Penyelesaian}:
+		
+	\end{itemize}
+\end{frame}
 	
 \end{document}
