@@ -412,7 +412,80 @@
 		\begin{align*}
 		f(x) &= x( \sqrt{x+1} - \sqrt{x}) \\
 			 &= x( \sqrt{x+1} - \sqrt{x}) \frac{( \sqrt{x+1} + \sqrt{x})}{( \sqrt{x+1} + \sqrt{x})} \\
+			 &= \frac{x[(\sqrt{x+1})^2 - (\sqrt{x})^2]}{(\sqrt{x+1} + \sqrt{x})} \\
+			 &= \frac{x}{\sqrt{x+1} + \sqrt{x}} = p(x) \\
+		p(500) &= \frac{500}{\sqrt{501}+\sqrt{500}} = \frac{500}{22 .3830 + 22.3607 } = 11 .1748 
 		\end{align*}
 	\end{itemize}
 \end{frame}
+
+\begin{frame}
+	\frametitle{Kondisi Buruk (Ill Conditioned)}
+	\begin{itemize}
+		\item Suatu persoalan dikatakan berkondisi buruk (ill conditioned) bila jawabannya sangat peka terhadap perubahan kecil data (misalnya perubahan kecil akibat pembulatan).
+		\item Ciri-ciri: Bila kita mengubah sedikit data, maka jawabannya berubah sangat besar (drastis).
+		\item Lawan dari berkondisi buruk adalah berkondisi baik (well conditioned).
+		\item Suatu persoalan dikatakan berkondisi baik bila perubahan kecil data hanya mengakibatkan perubahan kecil pada jawabannya.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Contoh: persoalan menghitung akar persamaan kuadrat $ ax^2 + bx + c = 0 $ dengan mengubah nilai $ c $
+		\begin{enumerate}
+			\item $ x^2 - 4x + \textbf{3.999} = 0 \implies x_1 = 2.032 \text{ dan } x_2 = 1.968 $
+			\item $ x^2 - 4x + \textbf{4.000} = 0 \implies x_1 = x_2 = 2.000 $
+			\item $ x^2 - 4x + \textbf{4.001} = 0 \implies $ akar-akarnya imajiner!
+		\end{enumerate}
+		\item Kesimpulan: persoalan akar-akar persamaan kuadrat di atas berkondisi buruk.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Kapankah akar persamaan $ f(x) = 0 $ berkondisi buruk?
+		\item Misalkan $ f(x) $ diubah sebesar $\varepsilon$ sehingga akarnya berubah sebesar $ h $:
+		\[f(x + h) + \varepsilon = 0\]
+		\item Bila karena pengubahan $ \varepsilon $ yang sangat kecil mengakibatkan $ h $ menjadi besar, dikatakan persoalan mencari akar $ f(x) = 0 $ berkondisi buruk.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item \textbf{Contoh lain}: persoalan mencari mencari solusi sistem persamaan lanjar
+		\begin{enumerate}
+			\item $ x+y=2 $\\
+			$ x+0.9999y = 1.9999 $\\
+			$ \rightarrow \text{ solusi: } x = y = 1.0000$
+			\item $ x+y=2 $\\
+			$ x+0.9999y = 2.0010 $\\
+			$ \rightarrow \text{ solusi: } x = 12,~y = -10$
+			\item $ x+y=2 $\\
+			$ x+y = 1.999 $\\
+			$ \rightarrow $ olusi: tidak ada			
+			\item $ x+y=2 $\\
+			$ x+y = 2 $\\
+			$ \rightarrow $ solusi: tidak berhingga, yaitu disepanjang garis $ x + y = 2 $
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img107}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[width=\linewidth]{../../../img/thank_you.jpg}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[width=\linewidth]{../../../img/any_questions.png}
+	\end{center}
+\end{frame}
+
 \end{document}
