@@ -375,7 +375,7 @@
 		\begin{center}
 			\includegraphics[width=0.8\linewidth]{img/img105.png}
 		\end{center}
-		\ite[] Hasil yang diperoleh hanya mempunyai 3 angka bena. Jadi kita kehilangan 2 buah angka bena.
+		\item[] Hasil yang diperoleh hanya mempunyai 3 angka bena. Jadi kita kehilangan 2 buah angka bena.
 	\end{itemize}
 \end{frame}
 
@@ -384,8 +384,35 @@
 		\item \textbf{Contoh 12}: Kurangi 3.1415926536 dengan
 		3.1415957341 (11 angka bena).
 		\item[] \textbf{Penyelesaian}:
-		
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{img/img106.png}
+		\end{center}
+		\item[] Jadi, kita kehilangan 6 angka bena!	
 	\end{itemize}
 \end{frame}
-	
+
+\begin{frame}
+	\begin{itemize}
+		\item \textbf{Contoh 13}: Diberikan $ f(x) = x(\sqrt{x+1}-\sqrt{x}). $ Hitunglah $ f(500) $ dengan menggunakan 6 angka bena dan pembulatan ke digit terdekat.
+		\item[] \textbf{Penyelesaian}:
+		\begin{align*}
+		f(500) &= 500(\sqrt{501}-\sqrt{500}) \\
+		&= 500(22.3830- 22.3607) \\
+		&= 500(0.0223) \\
+		&= 11.15 (\text{ 4 angka bena})
+		\end{align*}
+		\item[] (solusi eksaknya adalah 11.174755300747198$\dots$)
+		\item[] Hasil yang tidak akurat ini disebabkan adanya operasi pengurangan dua bilangan yang hampir sama besar, yaitu 22.3830 - 22.3607.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Cara komputasi yang lebih baik:
+		\begin{align*}
+		f(x) &= x( \sqrt{x+1} - \sqrt{x}) \\
+			 &= x( \sqrt{x+1} - \sqrt{x}) \frac{( \sqrt{x+1} + \sqrt{x})}{( \sqrt{x+1} + \sqrt{x})} \\
+		\end{align*}
+	\end{itemize}
+\end{frame}
 \end{document}
