@@ -69,13 +69,13 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1366"
-     inkscape:window-height="743"
+     inkscape:window-height="713"
      id="namedview4"
      showgrid="false"
      inkscape:zoom="1.6253312"
-     inkscape:cx="81.848152"
+     inkscape:cx="145.88923"
      inkscape:cy="112.94735"
-     inkscape:window-x="1366"
+     inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="g96" /><g
@@ -135,6 +135,7 @@
 
 
 
+
 <path
    style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
    d="m -329.0084,70.310034 h 99.32352"
@@ -157,6 +158,7 @@
 
 
 
+
 <text
    id="text146-3"
    style="font-variant:normal;font-weight:normal;font-size:10.90909958px;font-family:CMSS10;-inkscape-font-specification:CMSS10;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.99999994"
@@ -174,6 +176,7 @@
    id="tspan103-7">5</tspan></tspan></text>
 
 
+
 <text
    id="text146-3-5"
    style="font-variant:normal;font-weight:normal;font-size:10.90909958px;font-family:CMSS10;-inkscape-font-specification:CMSS10;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.99999994"
@@ -189,6 +192,7 @@
      y="-57.464733">0.00350 × 10<tspan
    style="font-size:64.99999762%;baseline-shift:super"
    id="tspan1329">5</tspan></tspan></text>
+
 
 
 <path
@@ -209,9 +213,10 @@
      id="tspan144-6-3-9"
      sodipodi:role="line"
      x="-213.95709"
-     y="-57.368851">normalisasi: 0.0350 × 10<tspan
-   style="font-size:64.99999762%;baseline-shift:super"
-   id="tspan1331">5</tspan></tspan></text>
+     y="-57.368851">normalisasi: 0.350 × 10<tspan
+   style="font-size:65%;baseline-shift:super"
+   id="tspan890">3</tspan></tspan></text>
+
 
 
 <text
@@ -229,6 +234,7 @@
      y="-44.114479">(3 angka bena)</tspan></text>
 
 
+
 <g
    id="g1608"
    transform="translate(-45.742089,8.1550601)"
@@ -244,6 +250,7 @@
      sodipodi:role="line"
      id="tspan144-6-3-0"
      style="stroke-width:0.99999994">in-rounding</tspan></text>
+
 
 
 <path
@@ -265,6 +272,7 @@
    id="tspan1617">3</tspan></tspan></text>
 
 
+
 </g><g
    id="g1615"
    transform="translate(-44.922154,18.922646)"
@@ -280,6 +288,7 @@
      sodipodi:role="line"
      id="tspan144-6-3-0-0"
      style="stroke-width:0.99999994">chopping</tspan></text>
+
 
 
 <path
@@ -299,6 +308,7 @@
      style="stroke-width:0.99999994">0.350 × 10<tspan
    style="font-size:64.99999762%;baseline-shift:super"
    id="tspan1619">3</tspan></tspan></text>
+
 
 
 </g></g></g></g></g></g></svg>

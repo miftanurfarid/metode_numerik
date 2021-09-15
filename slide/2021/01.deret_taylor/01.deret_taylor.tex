@@ -37,7 +37,7 @@
 		\item Andaikan $ f $ dan semua turunannya, $ f' $, $ f'' $, $ f''' $, ..., menerus di dalam selang $ [a, b] $. Misalkan $ x_0 \subset [a, b] $, maka untuk nilai-nilai $ x $ di sekitar $ x_0 $ (Gambar 2.1) dan $ x \subset [a, b] $, $ f(x) $ dapat diperluas (diekspansi) ke dalam deret Taylor:
 		\begin{align*}
 			f(x) =& f(x_0) + \frac{(x-x_0)}{1!}f'(x_0) + \frac{(x-x_0)^2}{2!}f''(x_0) \\
-			&+ \frac{(x-x_0)^3}{1!}f'''(x_0) + \cdots + \frac{(x-x_0)^m}{m!}f^m(x_0) + \cdots
+			&+ \frac{(x-x_0)^3}{3!}f'''(x_0) + \cdots + \frac{(x-x_0)^m}{m!}f^m(x_0) + \cdots
 		\end{align*}
 		\begin{center}
 			\includegraphics[width=0.5\linewidth]{img/img101}
@@ -50,14 +50,14 @@
 	\begin{itemize}
 		\item Misalkan $ x - x_0 = h $, maka:
 		\begin{align*}
-			f(x) =& f(x_0) + \frac{h}{1!}f'(x_0) + \frac{h^2}{2!}f''(x_0) + \frac{h^3}{1!}f'''(x_0) \\
+			f(x) =& f(x_0) + \frac{h}{1!}f'(x_0) + \frac{h^2}{2!}f''(x_0) + \frac{h^3}{3!}f'''(x_0) \\
 			&+ \dots + \frac{h^m}{m!}f^m(x_0) + \dots
 		\end{align*}
 		\item \textbf{Contoh 1}: Hampiri fungsi $ f(x) = \sin(x) $ ke dalam deret Taylor di sekitar $ x_0 = 1 $.
 		\item \textbf{Penyelesaian:}
 			\begin{align*}
 				f(x) = \sin(x),~ &f'(x) = \cos(x),~f''(x) = -\sin(x) \\
-				&f'''(x) = -\cos(x), f^{(4)}(x) = -\cos(x)
+				&f'''(x) = -\cos(x), f^{(4)}(x) = \sin(x)
 			\end{align*}
 	\end{itemize}
 \end{frame}
@@ -125,7 +125,7 @@
 		\item Deret Taylor yang dipotong sampai suku orde ke-$ n $ dinamakan \textbf{deret Taylor terpotong} dan dinyatakan oleh:
 		\begin{align*}
 			f(x) \approx&~f(x_0) + \frac{(x-x_0)}{1!}f'(x_0) + \frac{(x-x_0)^2}{2!}f''(x_0) + \dots \\
-			& + \frac{(x-x_0)^n}{n!}f^(n)(x_0) + R_n(x) \\
+			& + \frac{(x-x_0)^n}{n!}f^{(n)}(x_0) + R_n(x) \\
 			R_n(x) =&~ \frac{(x-x_0)^{(n+1)}}{(n+1)!}f^{(n+1)}(c),~~x_0 < c < x
 		\end{align*}
 		\item $ R_n(x) $ adalah \textbf{Galat/residu/sisa.}
@@ -258,8 +258,8 @@
 	\begin{itemize}
 		\item Bilangan riil di dalam komputer umumnya disajikan dalam format bilangan titik-kambang.
 		\item Bilangan titik-kambang $ a $ ditulis sebagai
-		\[ a = \pm m \times B^p = \pm 0.d_2 d_3 d_4 d_5 d_6 d_2 \dots d_n \times B^p \]
-		m = mantisa (riil), $ 0.d_2 d_3 d_4 d_5 d_6 d_2 \dots d_n $ adalah digit mantisa.\\
+		\[ a = \pm m \times B^p = \pm 0.d_2 d_3 d_4 d_5 d_6 d_7 \dots d_n \times B^p \]
+		m = mantisa (riil), $ 0.d_2 d_3 d_4 d_5 d_6 d_7 \dots d_n $ adalah digit mantisa.\\
 		B = basis sistem bilangan yang dipakai (2, 8, 10, 16, dsb)\\
 		p = pangkat (bilangan bulat), dari $ -P_{min} $ sampai $ +P_{maks} $
 		\item contoh $ 245.7654 \rightarrow 0.2457654 \times 10^3 $
@@ -267,15 +267,15 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Bilangan Titik-Kambang Ternormalisasi}
+	\frametitle{Bilangan Titik-Kambang yang Ternormalisasi}
 	\begin{itemize}
 		\item Syarat: digit mantis yang pertama tidak boleh 0
 		\item Pada sistem desimal, $ 1 \leq d_1 \leq 9 $ dan $ 0 \leq d_k \leq 9 $,
 		sedangkan pada sistem biner, $ d_1 = 1 $ dan $ 0 \leq d_k \leq 1 $.
 		\item \textbf{Contoh 8:} 
 		\begin{align*}
-			0.0563 \times 10{-3} &\rightarrow 0.563 × 10^{-4} \\
-			0.00023270 × 10^6 &\rightarrow 0.23270 \times 10^3
+			0.0563 \times 10^{-3} &\rightarrow 0.563 \times 10^{-4} \\
+			0.00023270 \times 10^6 &\rightarrow 0.23270 \times 10^3
 		\end{align*}
 	\end{itemize}
 \end{frame}
@@ -296,7 +296,7 @@
 		\item Misalkan $ a = \pm 0.d_1 d_2 d_3 \dots d_nd_{n+1} \dots \times 10^p $\\
 		$ fl_{chop}(a) = \pm 0.d_1 d_2 d_3 \dots d_{n-1}d_n \times 10^p $
 		\item Contoh: $ \pi = 0.31459265358 \dots \times 10^0 $\\
-		$ fl_{chop(\pi)} = 0.3141592 × 100 $ ( 6 digit mantis)\\
+		$ fl_{chop(\pi)} = 0.314592 \times 10^0 $ ( 6 digit mantis)\\
 		Galat = $ 0.00000065\dots $
 	\end{itemize}
 \end{frame}
@@ -305,7 +305,7 @@
 	\frametitle{Pembulatan ke digit terdekat (in-rounding)}
 	\begin{itemize}
 		\item Misalkan $ a = \pm 0.d_1 d_2 d_3 \dots d_n d_{n+1} \dots \times 10^p $\\
-		$ fl_{chop}(a) = \pm 0.d_1 d_2 d_3 \dots \hat{d}_n \times 10^p $
+		$ fl_{round}(a) = \pm 0.d_1 d_2 d_3 \dots \hat{d}_n \times 10^p $
 		\[
 		\hat{d}_n = 
 			\begin{cases}
@@ -335,7 +335,7 @@
 	\begin{itemize}
 		\item \textbf{Kasus 1}: Penjumlahan (termasuk pengurangan) bilangan yang sangat kecil ke (atau dari) bilangan yang lebih besar menyebabkan timbulnya galat pembulatan.
 		\item \textbf{Contoh 10}: Misalkan digunakan komputer dengan mantis 4 digit (basis 10). Hitunglah
-		\[ 1.557 + 0.04381 = 0.1557 \times 10^1 + 0.4381 \times 10-1 \]
+		\[ 1.557 + 0.04381 = 0.1557 \times 10^1 + 0.4381 \times 10^{-1} \]
 		\textbf{Penyelesaian:}
 		\begin{center}
 			\includegraphics[width=0.6\linewidth]{img/img104.png}
@@ -355,7 +355,7 @@
 \begin{frame}
 	\begin{itemize}
 		\item Tips: untuk menjumlahkan deret bilangan, selalu jumlahkan dari yang kecil-kecil lebih dahulu, baru menjumlahkan dengan bulangan yang lebih besar
-		\item Contoh: \[ x = 1.0 + \sum_{i=1}^1000 0.00001 = 1.0 + 0.00001 + \dots + 0.00001 \]
+		\item Contoh: \[ x = 1.0 + \sum_{i=1}^{1000} 0.00001 = 1.0 + 0.00001 + \dots + 0.00001 \]
 		Jumlahkan dulu 0.00001 sebanyak 1000 kali, baru jumlahkan dengan 1.0
 	\end{itemize}
 \end{frame}
@@ -462,7 +462,7 @@
 			$ \rightarrow \text{ solusi: } x = 12,~y = -10$
 			\item $ x+y=2 $\\
 			$ x+y = 1.999 $\\
-			$ \rightarrow $ olusi: tidak ada			
+			$ \rightarrow $ solusi: tidak ada			
 			\item $ x+y=2 $\\
 			$ x+y = 2 $\\
 			$ \rightarrow $ solusi: tidak berhingga, yaitu disepanjang garis $ x + y = 2 $
