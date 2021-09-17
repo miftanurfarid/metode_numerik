@@ -15,6 +15,8 @@
 	
 \maketitle
 
+\section{Pengantar}
+
 \begin{frame}
 	\frametitle{Rumusan Masalah}
 	\begin{itemize}
@@ -37,6 +39,8 @@
 
 	\[ 10e^{-t} \sin(2 \pi t) – 2 = 0 \]
 \end{frame}
+
+\section{Metode Pencarian Akar}
 
 \begin{frame}
 	\frametitle{Metode Pencarian Akar}
@@ -66,6 +70,8 @@
 		\end{itemize}
 	\end{enumerate}
 \end{frame}
+
+\section{Metode Tertutup}
 
 \begin{frame}
 	\frametitle{Metode Tertutup}
@@ -127,14 +133,15 @@
 \end{frame}
 
 \begin{frame}
-	\begin{itemize}
-		\item Metode Tertutup ada dua:
-		\begin{enumerate}
-			\item Metode bagidua
-			\item Metode regula-falsi
-		\end{enumerate}
-	\end{itemize}
+	\frametitle{Metode Tertutup}
+	Metode tertutup ada 2:
+	\begin{enumerate}
+		\item Metode bagidua
+		\item Metode regula-falsi
+	\end{enumerate}
 \end{frame}
+
+\subsection{Metode Bagidua}
 
 \begin{frame}
 	\frametitle{Metode Bagidua (Bisection Method)}
@@ -142,4 +149,50 @@
 		\includegraphics[width=0.7\linewidth]{img/img05.png}
 	\end{center}
 \end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Proses pembagian selang $ [a, b] $ dengan metode bagidua
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=0.7\linewidth]{img/img06.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	Kondisi berhenti lelaran dapat dipilih salah satu dari tiga kriteria berikut:
+	\begin{enumerate}
+		\item Lebar selang baru: $|a - b| < \varepsilon$ , yang dalam hal ini $\varepsilon$ adalah nilai toleransi lebar selang yang mengurung akar.
+		\item Nilai fungsi di hampiran akar: $ f(c) < \mu $ , yang dalam hal ini $\mu$ adalah nilai yang sangat kecil mendekati 0.
+		\item Galat relatif hampiran akar: $ |(c_{baru} - c_{lama}) / c_{baru}| < \delta $, yang dalam hal ini $\delta$ adalah galat relatif hampiran yang diinginkan.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	Kita lakukan prosedure metode bagi dua dalam bahasa pemrograan python !
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item \textbf{Contoh 1:} Temukan akar $ f(x) = e^x - 5x^2 $ di dalam selang $ [0, 1] $ dan $ \varepsilon = 0.00001 $.
+		\item Penyelesaian:
+		\begin{center}
+			\includegraphics[width=0.7\linewidth]{img/img07.png}
+		\end{center}
+		Jadi, hampiran akarnya adalah x = 0.605263
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	Kasus yang mungkin terjadi pada penggunaan metode bagidua
+	\begin{itemize}
+		\item \textbf{Contoh 1:} Temukan akar $ f(x) = e^x - 5x^2 $ di dalam selang $ [0, 1] $ dan $ \varepsilon = 0.00001 $.
+		\item Penyelesaian:
+		\begin{center}
+			\includegraphics[width=0.7\linewidth]{img/img07.png}
+		\end{center}
+		Jadi, hampiran akarnya adalah x = 0.605263
+	\end{itemize}
+\end{frame}
+
 \end{document}
