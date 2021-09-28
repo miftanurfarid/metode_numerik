@@ -171,30 +171,51 @@
 \end{frame}
 
 \begin{frame}
-	Kita lakukan prosedure metode bagi dua dalam bahasa pemrograan python !
-\end{frame}
-
-\begin{frame}
+	\frametitle{Contoh 1}
 	\begin{itemize}
-		\item \textbf{Contoh 1:} Temukan akar $ f(x) = e^x - 5x^2 $ di dalam selang $ [0, 1] $ dan $ \varepsilon = 0.00001 $.
-		\item Penyelesaian:
-		\begin{center}
-			\includegraphics[width=0.7\linewidth]{img/img07.png}
-		\end{center}
-		Jadi, hampiran akarnya adalah x = 0.605263
+		\item Temukan akar $ f(x) = e^x - 5x^2 $ di dalam selang $ [0, 1] $ dan $ \varepsilon = 0.00001 $.
+		\item Penyelesaian:\\Kita lakukan prosedure metode bagi dua dalam bahasa pemrograman python !
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	Kasus yang mungkin terjadi pada penggunaan metode bagidua
-	\begin{itemize}
-		\item \textbf{Contoh 1:} Temukan akar $ f(x) = e^x - 5x^2 $ di dalam selang $ [0, 1] $ dan $ \varepsilon = 0.00001 $.
-		\item Penyelesaian:
-		\begin{center}
-			\includegraphics[width=0.7\linewidth]{img/img07.png}
-		\end{center}
-		Jadi, hampiran akarnya adalah x = 0.605263
-	\end{itemize}
+	\frametitle{Kasus yang mungkin terjadi pada penggunaan metode bagidua}
+	\begin{enumerate}
+		\item Jumlah akar lebih dari satu
+		\begin{itemize}
+			\item Bila dalam selang [a, b] terdapat lebih dari satu akar (banyaknya akar ganjil), hanya satu buah akar yang dapat ditemukan
+			\item Cara mengatasinya: gunakan selang [a,b] yang cukup kecil yang memuat hanya satu buah akar.
+		\end{itemize}
+		\item Akar ganda
+		\begin{itemize}
+			\item Metode bagidua tidak berhasil menemukan akar ganda. Hal ini disebabkan karena tidak terdapat perbedaan tanda di ujung-ujung selang yang baru
+			\begin{multicols}{2}
+				\item Contoh: $ f(x) = (x - 3)^2 = (x-3)(x-3) $, mempunyai dua akar yang sama, yaitu $ x = 3 $
+				\columnbreak
+				\begin{center}
+					\includegraphics[width=\linewidth]{img/img09}
+				\end{center}
+			\end{multicols}
+		\end{itemize}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Kasus yang mungkin terjadi pada penggunaan metode bagidua}
+	\begin{enumerate}
+		\setcounter{enumi}{2}
+		\item Singularitas
+		\begin{itemize}
+			\item Pada titik singular, nilai fungsinya tidak terdefinisi. Bila selang [a, b] mengandung titik singular, lelaran metode bagidua tidak pernah berhenti. Penyebabnya, metode bagidua menganggap titik singular sebagai akar karena lelaran cenderung konvergen. Yang sebenarnya, titik singular bukanlah akar, melainkan akar semu.
+			\begin{multicols}{2}
+				\item Cara mengatasinya: periksa nilai $ |f(b) - f(a)| $. Jika $ |f(b) - f(a)| $ konvergen ke nol, akar yang dicari pasti akar sejati, tetapi jika $ |f(b) - f(a)| $ divergen, akar yang dicari merupakan titik singular (akar semu).
+				\columnbreak
+				\begin{center}
+					\includegraphics[width=\linewidth]{img/img08}
+				\end{center}
+			\end{multicols}
+		\end{itemize}
+	\end{enumerate}
 \end{frame}
 
 \end{document}
