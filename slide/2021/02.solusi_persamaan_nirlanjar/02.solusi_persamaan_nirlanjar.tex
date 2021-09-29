@@ -218,4 +218,72 @@
 	\end{enumerate}
 \end{frame}
 
+\subsection{Metode Regula-Falsi}
+
+\begin{frame}
+	\frametitle{Metode Regula-Falsi\\(False Position Method)}
+	\begin{itemize}
+		\item Kelemahan metode bagidua: kecepatan konvergensinya sangat lambat.
+		\item Kecepatan konvergensi dapat ditingkatkan bila nilai $ f(a) $ dan $ f(b) $ juga turut diperhitungkan.
+		\item Logikanya, bila $ f(a) $ lebih dekat ke nol daripada $ f(b) $ tentu akar lebih dekat ke $ x = a $ daripada ke $ x = b $.
+		\item Metode yang memanfaatkan nilai $ f(a) $ dan $ f(b) $ ini adalah \textbf{metode regula-falsi} (bahasa Latin) atau \textbf{metode posisi palsu}. (\textit{false position method})
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Metode Regula-Falsi\\(False Position Method)}
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{img/img10}
+	\end{center}
+	\begin{itemize}
+		\item[] gradien garis AB = gradien garis BC
+		\[ \frac{f(b) - f(a)}{b - a} = \frac{f(b) - 0}{b - c} \rightarrow c = b - \frac{f(b)(b-a)}{f(b)-f(a)}\]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 1}
+	\begin{itemize}
+		\item Temukan akar $ f(x) = e^x - 5x^2 $ di dalam selang $ [0, 1] $ dan $ \varepsilon = 0.00001 $.
+		\item Penyelesaian:\\Kita lakukan prosedure metode regula falsi dalam bahasa pemrograman python !
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Metode Regula-Falsi\\(False Position Method)}
+	\begin{itemize}
+		\item Secara umum, lelaran metode regula-falsi lebih cepat daripada lelaran metode bagidua
+		\item Tetapi, ada kemungkinan lelaran metode regula falsi lebih lambat
+		\item Kasus seperti ini akan terjadi bila kurva fungsinya cekung (konkaf) di dalam selang $ [a, b] $.
+		\item Akibatnya, garis potongnya selalu terletak di atas kurva atau atau selalu terletak di bawah kurva.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Metode Regula-Falsi\\(False Position Method)}
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{img/img11}
+	\end{center}
+\end{frame}
+
+\subsection{Perbaikan Metode Regula-Falsi}
+\begin{frame}
+	\frametitle{Perbaikan Metode Regula-Falsi \\ (Modified False Position Method)}
+	\begin{itemize}
+		\item Tentukan titik ujung selang yang tidak berubah (jumlah perulangan $ > $ 1) yang kemudian menjadi titik mandek.
+		\item Nilai f pada titik mandek itu diganti menjadi setengah kalinya
+		\begin{center}
+			\includegraphics[height=0.5\textheight]{img/img12}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 1}
+	\begin{itemize}
+		\item Temukan akar $ f(x) = e^x - 5x^2 $ di dalam selang $ [0, 1] $ dan $ \varepsilon = 0.00001 $.
+		\item Penyelesaian:\\Kita lakukan prosedure metode modified regula falsi dalam bahasa pemrograman python !
+	\end{itemize}
+\end{frame}
+
 \end{document}
