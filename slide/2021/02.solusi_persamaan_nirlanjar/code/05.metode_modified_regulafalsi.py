@@ -14,15 +14,23 @@ epsilon1 = 0.00001
 epsilon2 = 0.000001
 i = 0
 
+mandek = 0
+
 for i in range(0,200,1):
-    c = b - f(b) * (b - a) / (f(b) - f(a))
     
-    if abs(a-b) < epsilon1 or f(c) < epsilon2:
+    if mandek == 0:
+        c = b - f(b) * (b - a) / (f(b) - f(a))
+    else:
+        c = b - f(b)/2 * (b - a) / (f(b)/2 - f(a))
+    
+    if abs(a-b) < epsilon1 or abs(f(c)) < epsilon2:
         break
     
     if f(a)*f(c) < 0:
         b = c
+        mandek = 0
     else:
         a = c
+        mandek = 1
     
     print("Iterasi ke-{:02d} akar = {:.6f} lebar = {:.6f}".format(i, c, b-a))

@@ -15,7 +15,7 @@ epsilon2 = 0.000001
 i = 0
 
 for i in range(0,200,1):
-    c = b - f(b)/2 * (b - a) / (f(b)/2 - f(a))
+    c = b - f(b) * (b - a) / (f(b) - f(a))
     
     if abs(a-b) < epsilon1 or abs(f(c)) < epsilon2:
         break
