@@ -5,6 +5,7 @@
 
 \usepackage{graphicx}
 \usepackage{multicol}
+\usepackage[bahasai]{babel}
 
 \title{METODE NUMERIK}
 \subtitle{Solusi Persamaan Nirlanjar}
@@ -52,7 +53,7 @@
 			\item Mencari akar di dalam selang $ [a, b] $.
 			\item Selang $ [a, b] $ sudah dipastikan berisi minimal satu buah akar.
 			\item Karena itu metode jenis ini selalu berhasil menemukan akar.
-			\item Dengan kata lain, lelarannya selalu konvergen (menuju) ke akar,
+			\item Dengan kata lain, iterasinya selalu konvergen (menuju) ke akar,
 			\item Karena itu metode tertutup kadang-kadang dinamakan juga \textbf{metode konvergen}.
 		\end{itemize}
 	\end{enumerate}
@@ -64,9 +65,9 @@
 		\item Metode terbuka
 		\begin{itemize}
 			\item Tidak memerlukan selang $ [a, b] $ yang mengandung akar.
-			\item Mencari akar melalui suatu lelaran yang dimulai
+			\item Mencari akar melalui suatu iterasi yang dimulai
 			dari sebuah tebakan (\textit{guest}) awal.
-			\item Pada setiap lelaran kita menghitung hampiran akar yang baru.
+			\item Pada setiap iterasi kita menghitung hampiran akar yang baru.
 			\item Mungkin saja hampiran akar yang baru mendekati akar sejati (konvergen), atau mungkin juga menjauhinya (divergen).
 			\item Karena itu, metode terbuka tidak selalu berhasil menemukan akar, kadang-kadang konvergen, kadangkala ia divergen.
 		\end{itemize}
@@ -162,7 +163,7 @@
 \end{frame}
 
 \begin{frame}
-	Kondisi berhenti lelaran dapat dipilih salah satu dari tiga kriteria berikut:
+	Kondisi berhenti iterasi dapat dipilih salah satu dari tiga kriteria berikut:
 	\begin{enumerate}
 		\item Lebar selang baru: $|a - b| < \varepsilon$ , yang dalam hal ini $\varepsilon$ adalah nilai toleransi lebar selang yang mengurung akar.
 		\item Nilai fungsi di hampiran akar: $ f(c) < \mu $ , yang dalam hal ini $\mu$ adalah nilai yang sangat kecil mendekati 0.
@@ -206,7 +207,7 @@
 		\setcounter{enumi}{2}
 		\item Singularitas
 		\begin{itemize}
-			\item Pada titik singular, nilai fungsinya tidak terdefinisi. Bila selang [a, b] mengandung titik singular, lelaran metode bagidua tidak pernah berhenti. Penyebabnya, metode bagidua menganggap titik singular sebagai akar karena lelaran cenderung konvergen. Yang sebenarnya, titik singular bukanlah akar, melainkan akar semu.
+			\item Pada titik singular, nilai fungsinya tidak terdefinisi. Bila selang [a, b] mengandung titik singular, iterasi metode bagidua tidak pernah berhenti. Penyebabnya, metode bagidua menganggap titik singular sebagai akar karena iterasi cenderung konvergen. Yang sebenarnya, titik singular bukanlah akar, melainkan akar semu.
 			\begin{multicols}{2}
 				\item Cara mengatasinya: periksa nilai $ |f(b) - f(a)| $. Jika $ |f(b) - f(a)| $ konvergen ke nol, akar yang dicari pasti akar sejati, tetapi jika $ |f(b) - f(a)| $ divergen, akar yang dicari merupakan titik singular (akar semu).
 				\columnbreak
@@ -252,10 +253,10 @@
 \begin{frame}
 	\frametitle{Metode Regula-Falsi\\(False Position Method)}
 	\begin{itemize}
-		\item Secara umum, lelaran metode regula-falsi lebih cepat daripada lelaran metode bagidua
-		\item Tetapi, ada kemungkinan lelaran metode regula falsi lebih lambat
+		\item Secara umum, iterasi metode regula-falsi lebih cepat daripada iterasi metode bagidua
+		\item Tetapi, ada kemungkinan iterasi metode regula falsi lebih lambat
 		\item Kasus seperti ini akan terjadi bila kurva fungsinya cekung (konkaf) di dalam selang $ [a, b] $.
-		\item Akibatnya, garis potongnya selalu terletak di atas kurva atau atau selalu terletak di bawah kurva.
+		\item Akibatnya, garis potongnya selalu terletak di atas kurva atau selalu terletak di bawah kurva.
 	\end{itemize}
 \end{frame}
 
@@ -293,9 +294,145 @@
 	\frametitle{Metode Terbuka}
 	\begin{itemize}
 		\item Tidak memerlukan selang yang mengurung akar.
-		\item Hanya memerlukan tebagan awal akar atau dua buah tebakan yang tidak mengurung akar.
-		\item 
+		\item Hanya memerlukan tebakan awal akar atau dua buah tebakan yang tidak mengurung akar.
+		\item Hampiran akar didasarkan pada hampiran akar sebelumnya melalui prosedur iterasi.
+		\item Iterasi bisa konvergen, bisa juga divergen.
+		\item Jika iterasi konvergen, prosesnya sangat cepat dibandingkan metode tertutup.
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Metode Terbuka}
+	Yang termasuk ke dalam metode terbuka:
+	\begin{enumerate}
+		\item Metode iterasi titik-tetap (fixed-point iteration)
+		\item Metode Newton-Raphson
+		\item Metode secant
+	\end{enumerate}
+\end{frame}
+
+\subsection{Metode Iterasi Titik-Tetap (Fix-point Iteration))}
+
+\begin{frame}
+	\frametitle{Metode Iterasi Titik-Tetap\\(Fix-point Iteration)}
+	\begin{itemize}
+		\item Metode ini kadang-kadang dinamakan juga \textbf{metode iterasi sederhana}, \textbf{metode langsung}, atau \textbf{metode sulih beruntun}.
+		\item Susunlah persamaan $ f(x) = 0 $ menjadi bentuk $ x = g(x) $. Lalu, bentuklah menjadi prosedur iterasi
+		\[ x_{r+1} = g(x_r);~r = 0,1,2,3,\dots \]
+		\item Terkalah sebuah nilai awal $ x_0 $ , lalu hitung $ x_1 $ , $ x_2 $ , $ x_3 $ , $ \dots $ yang mudah-mudahan konvergen ke akar sejati.
+		\item Kondisi berhenti iterasi dinyatakan bila
+		\[ |x_{r+1} - x_r | < \varepsilon \text{ atau } \left| \frac{x_{r+1} - x_r}{x_{r+1}} \right| < \delta\]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 2}
+	\begin{itemize}
+		\item Carilah akar persamaan $ f(x) = x^2 – 2x – 3 = 0 $ dengan metode iterasi titik-tetap. Gunakan $\varepsilon$ = 0.000001.
+		\item Ada beberapa kemungkinan prosedur iterasi yang dapat dibentuk
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Prosedur 1}
+	\begin{enumerate}
+		\item Ubah bentuk persamaannya
+		\begin{align*}
+		x^2 - 2x - 3 &= 0 \\
+		x^2 &= 2x + 3 \\
+		x &= \sqrt{2x + 3}
+		\end{align*}
+		\item Dalam hal ini, $ g(x) = \sqrt{2x + 3} $.
+		\item Prosedur iterasinya adalah $ x_{r+1} = \sqrt{2x_r + 3} $. \item Ambil terkaan awal $ x_0 $ = 4
+		\item Mari kita lakukan proses komputasinya dengan python.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Prosedur 2}
+	\begin{enumerate}
+		\item Ubah bentuk persamaannya
+		\begin{align*}
+		x^2 - 2x - 3 &= 0 \\
+		x(x-2) &= 3 \\
+		x &= 3/(x-2)
+		\end{align*}
+		\item Dalam hal ini, $ g(x) = 3/(x-2) $.
+		\item Prosedur iterasinya adalah $ x_{r+1} = 3/(x_r-2) $.
+		\item Ambil terkaan awal $ x_0 $ = 4
+		\item Mari kita lakukan proses komputasinya dengan python.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Prosedur 3}
+	\begin{enumerate}
+		\item Ubah bentuk persamaannya
+		\begin{align*}
+		x^2 - 2x - 3 &= 0 \\
+		2x &= x^2 - 3 \\
+		x &= (x^2 - 3)/2
+		\end{align*}
+		\item Dalam hal ini, $ g(x) = (x^2 - 3)/2 $.
+		\item Prosedur iterasinya adalah $ x_{r+1} = ({x_r}^2 - 3)/2 $.
+		\item Ambil terkaan awal $ x_0 $ = 4
+		\item Mari kita lakukan proses komputasinya dengan python.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Kriteria Konvergensi}
+	\begin{itemize}
+		\item Kadang-kadang iterasi konvergen, kadang-kadang ia divergen.
+		\item Adakah suatu 'tanda' bagi kita untuk mengetahui kapan suatu iterasi konvergen dan kapan divergen?
+	\end{itemize}
+
+	\begin{block}{Teorema}
+		Misalkan $ g(x) $ dan $ g'(x) $ menerus di dalam selang \[ [a,b] = [s-h, s+h] \] yang mengandung titik tetap $ s $ dan nilai awal $ x_0 $ dipilih dalam selang tersebut.\\
+		Jika $ |g'(x)| < 1 $ untuk semua $ x \in [a, b] $ maka iterasi $ x_{r+1} = g(x_r) $ akan konvergen ke $ s $. Pada kasus ini s disebut juga titik atraktif.\\
+		Jika $ |g'(x)| > 1 $ untuk semua $ x \in [a, b] $ maka iterasi $ x_{r+1} = g(x_r) $
+		akan divergen dari s.
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Kriteria Konvergensi}
+	\begin{itemize}
+		\item Teorema tadi dapat kita sarikan sebagai berikut:
+		\item Di dalam selang $ I = [s-h, s+h] $, dengan $ s $ titik tetap,
+		\begin{enumerate}
+			\item jika $ 0 < g'(x) < 1 $ untuk setiap $ x \in I $, maka iterasi konvergen monoton;
+			\item jika $ -1 < g'(x) < 0 $ untuk setiap $ x \in I $, maka iterasi konvergen bersosilasi;
+			\item jika $ g'(x) > 1 $ untuk setiap $ x \in I $, maka iterasi divergen monoton;
+			\item jika $ g'(x) < -1 $ untuk setiap $ x \in I $, maka iterasi divergen berosilasi.
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Kriteria Konvergensi}
+	\begin{center}
+		\includegraphics[height=0.8\textheight]{img/img13}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Analisis Contoh 2}
+	\begin{enumerate}
+		\item Prosedur iterasi pertama $ x_{r+1} = \sqrt{2x_r + 3} $
+		\[ g(x) =  \sqrt{2x_r + 3} \rightarrow g'(x) =  \frac{1}{2\sqrt{2x_r + 3}} \]
+		\item[] Terlihat bahwa $ |g(x) < 1| $ untuk $ x $ di sekitar titik-tetap $ s = 3 $.
+		\item[] Karena itu, pengambilan tebakan awal $ x_0 = 4 $ akan menghasilkan iterasi yang konvergen sebab
+		\[ |g'(x)| = |1 / [2 \sqrt{(8+3)}]| = 0.1508 < 1\]
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Analisis Contoh 2}
+	\begin{enumerate}
+		\item Prosedur iterasi pertama $ x_{r+1} = 3/(x_r - 2) $
+		\[ g(x) =  3/(x - 2) \rightarrow g'(x) =  -3/(x - 2)^2 \]
+	\end{enumerate}
 \end{frame}
 
 \end{document}
