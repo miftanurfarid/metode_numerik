@@ -385,35 +385,8 @@
 	\begin{itemize}
 		\item Kadang-kadang iterasi konvergen, kadang-kadang ia divergen.
 		\item Adakah suatu 'tanda' bagi kita untuk mengetahui kapan suatu iterasi konvergen dan kapan divergen?
+		\item Terdapat suatu teorema yang intisarinya mengatakan bahwa syarat konvergen adalah $ |g'(x_0)| < 1 $ yang mana $ x_0 $ adalah titik awal.
 	\end{itemize}
-
-	\begin{block}{Teorema}
-		Misalkan $ g(x) $ dan $ g'(x) $ menerus di dalam selang \[ [a,b] = [s-h, s+h] \] yang mengandung titik tetap $ s $ dan nilai awal $ x_0 $ dipilih dalam selang tersebut.\\
-		Jika $ |g'(x)| < 1 $ untuk semua $ x \in [a, b] $ maka iterasi $ x_{r+1} = g(x_r) $ akan konvergen ke $ s $. Pada kasus ini s disebut juga titik atraktif.\\
-		Jika $ |g'(x)| > 1 $ untuk semua $ x \in [a, b] $ maka iterasi $ x_{r+1} = g(x_r) $
-		akan divergen dari s.
-	\end{block}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Kriteria Konvergensi}
-	\begin{itemize}
-		\item Teorema tadi dapat kita sarikan sebagai berikut:
-		\item Di dalam selang $ I = [s-h, s+h] $, dengan $ s $ titik tetap,
-		\begin{enumerate}
-			\item jika $ 0 < g'(x) < 1 $ untuk setiap $ x \in I $, maka iterasi konvergen monoton;
-			\item jika $ -1 < g'(x) < 0 $ untuk setiap $ x \in I $, maka iterasi konvergen bersosilasi;
-			\item jika $ g'(x) > 1 $ untuk setiap $ x \in I $, maka iterasi divergen monoton;
-			\item jika $ g'(x) < -1 $ untuk setiap $ x \in I $, maka iterasi divergen berosilasi.
-		\end{enumerate}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Kriteria Konvergensi}
-	\begin{center}
-		\includegraphics[height=0.8\textheight]{img/img13}
-	\end{center}
 \end{frame}
 
 \begin{frame}
@@ -421,18 +394,128 @@
 	\begin{enumerate}
 		\item Prosedur iterasi pertama $ x_{r+1} = \sqrt{2x_r + 3} $
 		\[ g(x) =  \sqrt{2x_r + 3} \rightarrow g'(x) =  \frac{1}{2\sqrt{2x_r + 3}} \]
-		\item[] Terlihat bahwa $ |g(x) < 1| $ untuk $ x $ di sekitar titik-tetap $ s = 3 $.
-		\item[] Karena itu, pengambilan tebakan awal $ x_0 = 4 $ akan menghasilkan iterasi yang konvergen sebab
-		\[ |g'(x)| = |1 / [2 \sqrt{(8+3)}]| = 0.1508 < 1\]
+		\item[] Pengambilan tebakan awal $ x_0 = 4 $ akan menghasilkan iterasi yang konvergen sebab
+		\[ |g'(4)| = |1 / [2 \sqrt{(8+3)}]| = 0.1508 < 1\]
 	\end{enumerate}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Analisis Contoh 2}
 	\begin{enumerate}
-		\item Prosedur iterasi pertama $ x_{r+1} = 3/(x_r - 2) $
+		\item Prosedur iterasi kedua $ x_{r+1} = 3/(x_r - 2) $
 		\[ g(x) =  3/(x - 2) \rightarrow g'(x) =  -3/(x - 2)^2 \]
+		\item[] Pengambilan tebakan awal $ x_0 = 4 $ akan menghasilkan iterasi yang konvergen sebab
+		\[ |g'(4)| = |-3/(4-2)^2| = 0.75 < 1\]
 	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Analisis Contoh 2}
+	\begin{enumerate}
+		\item Prosedur iterasi ketiga $ x_{r+1} = ({x_r}^2 - 3)/2 $
+		\[ g(x) = ({x}^2 - 3)/2 \rightarrow g'(x) =  x \]
+		\item[] Pengambilan tebakan awal $ x_0 = 4 $ akan menghasilkan iterasi yang konvergen sebab
+		\[ |g'(4)| = |4| = 4 > 1\]
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Kesimpulan}
+	Ada 2 hal yang mempengaruhi kekonvergenan prosedur iterasi:
+	\begin{enumerate}
+		\item Bentuk formula $ x_{r+1} = g(x_r) $
+		\item Pemilihan tebakan awal $ x $, yaitu $ x_0 $
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 3}
+	Gunakan metode lelaran titik-tetap untuk mencari akar persamaan $ x^3 - 3x + 1 $ di dalam selang [1,2]
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{img/img14}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Penyelesaian Contoh 3}
+	\begin{enumerate}
+		\item $ x_{r+1} = ({x_r}^3 + 1)/3 \rightarrow g'(x) = x^2$ 
+		\item $ x_{r+1} = -1/({x_r}^2-3) \rightarrow g'(x) = 2x/(x^2-3)^3$
+		\item $ x_{r+1} = 3/x_r - 1/{x_r}^2 \rightarrow g'(x) = (-3x + 2)/x^3 $
+		\item[]
+		\item[] Kita cek bersama apakah memenuhi kriteria konvergensi atau tidak.
+		\item[] Jika ada yang memenuhi kriteria konvergensi, maka kita cari solusinya/akarnya.
+	\end{enumerate}
+\end{frame}
+
+\subsection{Metode Newton-Raphson}
+
+\begin{frame}
+	\frametitle{Metode Newton-Raphson}
+	\begin{itemize}
+		\item Metode Newton-Raphson yang paling terkenal dan paling banyak dipakai dalam terapan sains dan rekayasa.
+		\item Metode ini paling disukai karena konvergensinya paling cepat diantara metode lainnya.
+		\item Ada dua pendekatan dalam menurunkan rumus metode Newton-Raphson, yaitu:
+		\begin{enumerate}
+			\item Penurunan rumus Newton-Raphson secara geometri,
+			\item Penurunan rumus Newton-Raphson dengan bantuan deret Taylor
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Penurunan rumus Newton-Raphson secara geometri}
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{img/img15}
+	\end{center}
+	\begin{itemize}
+		\item Gradien garis singgung di $ x_r $ adalah
+		\begin{align*}
+			m = f'(x_r) &= \frac{\Delta y}{\Delta x} = \frac{f(x_r)-0}{x_r - x_{r+1}} \\
+			f'(x_r) &= \frac{f(x_r)}{x_r - x_{r+1}} \rightarrow x_{r+1} = x_r - \frac{f(x_r)}{f'(x_r)}, f'(x_r) \neq 0
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Penurunan rumus Newton-Raphson dengan bantuan deret Taylor}
+	\begin{itemize}
+		\item Uraikan $ f(x_{r+1}) $ di sekitar $ x_r $ ke dalam deret Taylor:
+		\begin{align*}
+			f(x_{r+1}) \approx f(x_r) + (x_{r+1} - x_r)f'(x_r) + \frac{(x_{r+1} - x_r)^2}{2}f''(t),\\
+			~x_r<t<x_{r+1}
+		\end{align*}
+		\item yang bila dipotong sampai suku orde-2 saja menjadi
+		\[ f(x_{r+1}) \approx f(x_r) + (x_{r+1} - x_r)f'(x_r) \]
+		\item dan karena persoalan mencari akar, maka $ f(x_{r+1} ) = 0 $, sehingga \[ 0 = f(x_r) + (x_{r+1} - x_r)f'(x_r) \text{ atau } x_{r+1} = x_r - \frac{f(x_r)}{f'(x_r)},~f'(x_r) \neq 0\]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Kondisi berhenti lelaran Newton-Raphson adalah bila
+		\[ | x_{r+1} - x_r | < \varepsilon \]
+		atau bila menggunakan galat relatif hampiran
+		\[ | \frac{x_{r+1} - x_r}{x_{r+1}} | < \delta \]
+		dengan $\varepsilon$ dan $\delta$ adalah toleransi galat yang diinginkan
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 4}
+	\begin{itemize}
+		\item Hitunglah akar $ f(x) = e^x - 5x^2 $ dengan metode Newton-
+		Raphson. Gunakan $\varepsilon = 0.00001$. Tebakan awal akar $ x_0 = 1 $.
+		\item[] \textbf{Penyelesaian:}
+		\begin{align*}
+			f(x) &= e^x - 5x^2\\
+			f'(x) &= e^x - 10x
+		\end{align*}
+		\item[] Prosedur iterasi Newton-Raphson:
+		\[ x_{r+1} = x_r - \frac{e^{x_r} - 5{x_r}^2}{e^{x_r} - 10{x_r}} \]
+		\item[] Tebakan awal $ x_0 = 1 $
+		\item[] Kita lakukan komputasinya dengan python.
+	\end{itemize}
 \end{frame}
 
 \end{document}
