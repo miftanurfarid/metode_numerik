@@ -7,7 +7,7 @@ Created on Thu Sep 30 08:57:32 2021
 """
 import numpy as np
 
-a = 0
+a = 0.5
 b = 1
 eps = 0.00001
 mu = 0.000001

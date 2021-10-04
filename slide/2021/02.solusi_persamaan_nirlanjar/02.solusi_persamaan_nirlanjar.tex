@@ -194,7 +194,7 @@
 				\item Contoh: $ f(x) = (x - 3)^2 = (x-3)(x-3) $, mempunyai dua akar yang sama, yaitu $ x = 3 $
 				\columnbreak
 				\begin{center}
-					\includegraphics[width=\linewidth]{img/img09}
+					\includegraphics[width=0.8\linewidth]{img/img09}
 				\end{center}
 			\end{multicols}
 		\end{itemize}
@@ -414,7 +414,7 @@
 	\begin{enumerate}
 		\item Prosedur iterasi ketiga $ x_{r+1} = ({x_r}^2 - 3)/2 $
 		\[ g(x) = ({x}^2 - 3)/2 \rightarrow g'(x) =  x \]
-		\item[] Pengambilan tebakan awal $ x_0 = 4 $ akan menghasilkan iterasi yang konvergen sebab
+		\item[] Pengambilan tebakan awal $ x_0 = 4 $ akan menghasilkan iterasi yang divergen sebab
 		\[ |g'(4)| = |4| = 4 > 1\]
 	\end{enumerate}
 \end{frame}
@@ -698,7 +698,7 @@
 	\frametitle{Metode Newton-Raphson}
 	\begin{align*}
 		x_{r+1} &= x_r - \frac{ u_r \frac{\partial v_r}{\partial y} + v_r \frac{\partial u_r}{\partial y} }{ \frac{\partial u_r}{\partial x}\frac{\partial v_r}{\partial y} - \frac{\partial u_r}{\partial y}\frac{\partial v_r}{\partial x} } \\
-		y_{r+1} &= y_r - \frac{ u_r \frac{\partial v_r}{\partial x} + v_r \frac{\partial u_r}{\partial x} }{ \frac{\partial u_r}{\partial x}\frac{\partial v_r}{\partial y} - \frac{\partial u_r}{\partial y}\frac{\partial v_r}{\partial x} } 
+		y_{r+1} &= y_r + \frac{ u_r \frac{\partial v_r}{\partial x} - v_r \frac{\partial u_r}{\partial x} }{ \frac{\partial u_r}{\partial x}\frac{\partial v_r}{\partial y} - \frac{\partial u_r}{\partial y}\frac{\partial v_r}{\partial x} } 
 	\end{align*}
 	\begin{itemize}
 		\item Penyebut dari masing-masing persamaan ini diacu
@@ -744,7 +744,7 @@
 		\item Nilai $ x $ dan $ y $ pada lelaran pertama adalah
 		\begin{align*}
 		x_1 &= 1.5 - \frac{(-2.5)(32.5) - 1.625(1.5)}{156.125} = 2.03603 \\
-		y_1 &= 3.5 - \frac{(-2.5)(36.75) - 1.625(6.5)}{156.125} = 2.84388
+		y_1 &= 3.5 + \frac{(-2.5)(36.75) - 1.625(6.5)}{156.125} = 2.84388
 		\end{align*}
 		\item Apabila iterasinya diteruskan, ia konvergen ke akar sejati $ x = 2 $ dan $ y = 3 $.
 	\end{itemize}
