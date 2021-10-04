@@ -520,4 +520,234 @@
 
 \subsection{Metode Secant}
 
+\begin{frame}
+	\frametitle{Metode Secant}
+	\begin{itemize}
+		\item Prosedur iterasi metode Newton-Raphson memerlukan perhitungan turunan fungsi, $ f'(x) $.
+		\item Sayangnya, tidak semua fungsi mudah dicari turunannya, terutama fungsi yang bentuknya rumit.
+		\item Turunan fungsi dapat dihilangkan dengan cara menggantinya dengan bentuk lain yang ekivalen.
+		\item Modifikasi metode Newton-Raphson ini dinamakan \textbf{Metode Secant}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Metode Secant}
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{img/img16}
+	\end{center}
+	\begin{align*}
+	f'(x_r) &= \frac{\Delta y}{\Delta x} = \frac{AC}{BC} = \frac{f(x_r) - f(x_{r-1})}{x_r - x_{r-1}}
+	\end{align*}
+	\begin{align*}
+	x_{r+1} &= x_r - \frac{f(x_r)}{f'(x_r)} \rightarrow x_{r+1} = x_r - \frac{f(x_r)(x_r - x_{r-1})}{f(x_r) - f(x_{r-1})}
+	\end{align*}	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Metode Secant}
+	\begin{itemize}
+		\item Metode Secant memerlukan dua buah tebakan awal akar, yaitu $ x_0 $ dan $ x_1 $
+		\item Kondisi berhenti iterasi adalah bila $ |x_{r+1} - x_r| < \varepsilon $ (galat mutlak) atau $ \left| \frac{x_{r+1}-x_r}{x_{r+1}} \right| < \delta$
+		\item Sepintas metode secant mirip dengan metode regula-falsi, namun sesungguhnya prinsip dasar keduanya berbeda, seperti yang dirangkum pada tabel di bawah ini:
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Perbandingan Metode Secant dan Regula-Falsi}
+	\begin{center}
+		\includegraphics[width=0.7\linewidth]{img/img17}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Perbandingan Metode Secant dan Regula-Falsi}
+	\begin{center}
+		\includegraphics[width=0.7\linewidth]{img/img18}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 5}
+	\begin{itemize}
+		\item Hitunglah akar $ f(x) = e^x - 5x^2 $ dengan metode secant. Gunakan $\varepsilon = 0.00001$. Tebakan awal akar $ x_0 = 0.5 $ dan $ x_1 = 1 $.
+		\item Mari kita selesaikan bersama menggunakan pemrograman python.
+	\end{itemize}
+\end{frame}
+
+\section{Sistem Persamaan Nirlanjar}
+
+\begin{frame}
+	\frametitle{Sistem Persamaan Nirlanjar}
+	\begin{itemize}
+		\item Dalam dunia nyata, umumnya persamaan matematika dapat lebih dari satu, sehingga membentuk sebuah sistem yang disebut sistem persamaan nirlanjar.
+		\item Bentuk umum sistem persamaan nirlanjar dapat ditulis
+		sebagai
+		\begin{align*}
+			f_1(x_1,x_2,\dots,x_n) &= 0 \\
+			f_2(x_1,x_2,\dots,x_n) &= 0 \\
+			\dots \\
+			f_n(x_1,x_2,\dots,x_n) &= 0 \\
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sistem Persamaan Nirlanjar}
+	\begin{itemize}
+		\item Solusi sistem ini adalah himpunan nilai $ x $ simultan, $ x_1 $ , $ x_2 $ , $\dots$, $ x_n $ , yang memenuhi seluruh persamaan.
+		\item Sistem persamaan dapat diselesaikan secara beriterasi dengan metode lelaran titik-tetap atau dengan metode Newton-Raphson.
+	\end{itemize}
+\end{frame}
+
+\subsection{Metode Iterasi Titik Tetap}
+
+\begin{frame}
+	\frametitle{Metode Iterasi Titik Tetap}
+	\begin{itemize}
+		\item Prosedur iterasinya titik-tetap untuk sistem dengan dua persamaan nirlanjar:
+		\begin{align*}
+			x_{r+1} &= g_1(x_r,y_r) \\
+			y_{r+1} &= g_2(x_r,y_r) \\
+			r &= 0,1,2,\dots
+		\end{align*}
+		\item Metode iterasi titik-tetap seperti ini dinamakan \textbf{metode iterasi Jacobi}.
+		\item Kondisi berhenti (konvergen) adalah $ |x_{r+1} - x_r < \varepsilon| $ dan $ |y_{r+1} - y_r| < \varepsilon $
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Metode Iterasi Titik Tetap}
+	\begin{itemize}
+		\item Kecepatan konvergensi iterasi titik-tetap ini dapat ditingkatkan. Nilai $ x_{r+1} $ yang baru dihitung langsung dipakai untuk menghitung $ y_{r+1} $. Jadi,
+		\begin{align*}
+			x_{r+1} &= g_1(x_r,y_r) \\
+			y_{r+1} &= g_2(x_{r+1},y_r) \\
+			r &= 0, 1, 2, \dots
+		\end{align*}
+		\item Metode iterasi titik-tetap seperti ini dinamakan metode \textbf{iterasi Seidel}.
+		\item Kondisi berhenti (konvergen) adalah $ |x_{r+1} - x_r| < \varepsilon $ dan $ |y_{r+1} - y_r| < \varepsilon $
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Metode Iterasi Titik Tetap}
+	\begin{itemize}
+		\item Untuk fungsi dengan tiga persamaan nirlanjar, iterasi Seidel-nya adalah
+		\begin{align*}
+		x_{r+1} &= g_1(x_r,y_r,z_r) \\
+		y_{r+1} &= g_2(x_{r+1},y_r,z_r) \\
+		z_{r+1} &= g_3(x_{r+1},y_{r+1},z_r) \\
+		r &= 0, 1, 2, \dots
+		\end{align*}
+		\item Kondisi berhenti (konvergen) adalah $ |x_{r+1} - x_r| < \varepsilon $ dan $ |y_{r+1} - y_r| < \varepsilon $ dan $ |z_{r+1} - z_r| < \varepsilon $
+	\end{itemize}
+\end{frame}
+
+\subsection{Contoh 6}
+
+\begin{frame}
+	\frametitle{Contoh 6}
+	\begin{itemize}
+		\item Selesaikan sistem persamaan nirlanjar berikut ini,
+		\begin{align*}
+			f_1(x,y) &= x^2 + xy - 10 = 0 \\
+			f_2(x,y) &= y + 3xy^2 - 57
+		\end{align*}
+		\item[] (akar sejatinya adalah $ x = 2 $ dan $ y = 3 $)
+		\item Prosedur iterasi titik-tetapnya adalah $ x_{r+1} = \frac{10 - x_r^2}{y_r} $, $ y_{r+1} = 57 - 3x_{r+1} y_r^2 $
+		\item Gunakan tebakan awal $ x_0 = 1.5 $ dan $ y_0 = 3.5 $ dan $\varepsilon = 0.000001$
+		\item Mari kita selesaikan dengan menggunakan pemrograman python
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 6}
+	\begin{itemize}
+		\item Ternyata iterasinya divergen!
+		\item Sekarang kita ubah persamaan prosedur iterasinya menjadi $ x_{r+1} = \sqrt{10-x_r y_r} $ dan $ y_{r+1} = \sqrt{\frac{57-y_r}{3x_{r+1}}}$
+		\item Tebakan awal $ x_0 = 1.5 $ dan $ y_0 = 3.5 $ dan $\varepsilon = 0.000001$
+		\item Mari kita selesaikan dengan menggunakan pemrograman python
+	\end{itemize}
+\end{frame}
+
+\subsection{Metode Newton-Raphson}
+
+\begin{frame}
+	\frametitle{Metode Newton-Raphson}
+	\begin{itemize}
+		\item Tinjau fungsi dengan dua peubah, $ u = f(x, y) $.
+		\item Deret Taylor orde pertama dapat dituliskan untuk masing- masing persamaan sebagai
+		\[ u_{r+1} = u_r + (x_{r+1} - x_r)\frac{\partial u_r}{\partial x} + (y_{r+1} - y_r)\frac{\partial u_r}{\partial y} \] dan 
+		\[ v_{r+1} = v_r + (x_{r+1} - x_r)\frac{\partial v_r}{\partial x} + (y_{r+1} - y_r)\frac{\partial v_r}{\partial y} \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Metode Newton-Raphson}
+	\begin{itemize}
+		\item Karena persoalan mencari akar, maka $ u_{r+1} = 0 $ dan $ v_{r+1} = 0 $, untuk memberikan
+		\begin{align*}
+			\frac{\partial u_r}{\partial x}x_{r+1} + \frac{\partial u_r}{\partial y}y_{r+1} &= -u_r + x_r \frac{\partial u_r}{\partial x} + y_r\frac{\partial u_r}{\partial y} \\
+			\frac{\partial v_r}{\partial x}x_{r+1} + \frac{\partial v_r}{\partial y}y_{r+1} &= -v_r + x_r \frac{\partial v_r}{\partial x} + y_r\frac{\partial v_r}{\partial y}
+		\end{align*}
+		\item Dengan sedikit manipulasi aljabar, kedua persamaan terakhir ini dapat dipecahkan menjadi:
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Metode Newton-Raphson}
+	\begin{align*}
+		x_{r+1} &= x_r - \frac{ u_r \frac{\partial v_r}{\partial y} + v_r \frac{\partial u_r}{\partial y} }{ \frac{\partial u_r}{\partial x}\frac{\partial v_r}{\partial y} - \frac{\partial u_r}{\partial y}\frac{\partial v_r}{\partial x} } \\
+		y_{r+1} &= y_r - \frac{ u_r \frac{\partial v_r}{\partial x} + v_r \frac{\partial u_r}{\partial x} }{ \frac{\partial u_r}{\partial x}\frac{\partial v_r}{\partial y} - \frac{\partial u_r}{\partial y}\frac{\partial v_r}{\partial x} } 
+	\end{align*}
+	\begin{itemize}
+		\item Penyebut dari masing-masing persamaan ini diacu
+		sebagai \textbf{determinan Jacobi} dari sistem tersebut
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 7}
+	\begin{itemize}
+		\item Gunakan metode Newton-Raphson untuk mencari akar
+		\begin{align*}
+			f_1(x,y) &= u = x^2 + xy -10 = 0 \\
+			f_2 (x,y) &= v = y + 3xy^2 - 57 = 0
+		\end{align*}
+		dengan tebakan awal $ x_0 =1.5 $ dan $ y_0 = 3.5 $
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 7}
+	\begin{itemize}
+		\item Penyelesaian:
+		\begin{align*}
+		\frac{\partial u_0}{\partial x} &= 2x + y = 2(1.5) + 3.5 = 6.5 \\
+		\frac{\partial u_0}{\partial y} &= x = 1.5 \\
+		\frac{\partial v_0}{\partial x} &= 3y^2 = 3(3.5)^2 = 36.75\\
+		\frac{\partial v_0}{\partial y} &= 1 + 6xy = 1 + 6(1.5) = 32.5
+		\end{align*}
+		\item Determinan Jacobi untuk lelaran pertama adalah
+		\[ 6.5(32.5) - 1.5(36.75) = 156.125 \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 7}
+	\begin{itemize}
+		\item Nilai-nilai fungsi dapat dihitung dari tebakan awal sebagai
+		\begin{align*}
+		u_0 &= (1.5)^2 + 1.5(3.5) - 10 = -2.5 \\
+		v_0 &= (3.5)^2 + 3(1.5)(3.5)^2 - 57 = 1.625
+		\end{align*}
+		\item Nilai $ x $ dan $ y $ pada lelaran pertama adalah
+		\begin{align*}
+		x_1 &= 1.5 - \frac{(-2.5)(32.5) - 1.625(1.5)}{156.125} = 2.03603 \\
+		y_1 &= 3.5 - \frac{(-2.5)(36.75) - 1.625(6.5)}{156.125} = 2.84388
+		\end{align*}
+		\item Apabila iterasinya diteruskan, ia konvergen ke akar sejati $ x = 2 $ dan $ y = 3 $.
+	\end{itemize}
+\end{frame}
+
 \end{document}
