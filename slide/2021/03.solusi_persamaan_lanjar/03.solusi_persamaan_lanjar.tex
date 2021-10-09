@@ -758,10 +758,10 @@
 	\end{itemize}
 \end{frame}
 
-\section{Metoda Eliminasi Gauss-Jordan}
+\section{Metode Eliminasi Gauss-Jordan}
 
 \begin{frame}
-	\frametitle{Metoda Eliminasi Gauss-Jordan}
+	\frametitle{Metode Eliminasi Gauss-Jordan}
 	\begin{itemize}
 		\item Metode eliminasi Gauss-Jordan merupakan variasi dari metode eliminasi Gauss.
 		\item Dalam hal ini, matriks $ A $ dieliminasi menjadi matriks identitas $ I $.
@@ -787,6 +787,7 @@
 		\item Penyelesaian:
 	\end{itemize}
 	\[
+	\Scale[0.9]{
 	\left[
 		\begin{matrix}
 			3 & -0.1 & -0.2 \\
@@ -799,9 +800,141 @@
 			7.85 \\ -19.3 \\ 71.4
 		\end{matrix}
 	\right]
+	\begin{matrix}
+		R_1 / 3\\
+		\\
+		\\
+	\end{matrix}
+	\left[
+		\begin{matrix}
+			1 & -0.0333333 & -0.0666667 \\
+			0.1 & 7 & -0.3 \\
+			0.3 & -0.2 & 10
+		\end{matrix}
+	\right|
+	\left.
+		\begin{matrix}
+			2.61667 \\ -19.3 \\ 71.4
+		\end{matrix}
+	\right]
+	}
+	\]
+	\[
+	\Scale[0.9]{
+	\begin{matrix}
+		\\
+		R_2 - 0.1R_1\\
+		R_3 - 0.3R_1
+	\end{matrix}
+	\left[
+		\begin{matrix}
+			1 & -0.0333333 & -0.0666667 \\
+			0 & 7.00333 & -0.2933333 \\
+			0 & -0.190000 & 10.0200
+		\end{matrix}
+	\right|
+	\left.
+		\begin{matrix}
+			2.61667 \\ -19.5617 \\ 70.6150
+		\end{matrix}
+	\right]
+	}
+	\]
+	\[
+	\Scale[0.9]{
+		\begin{matrix}
+		\\
+		R_2 /7.00333\\
+		\\
+		\end{matrix}
+		\left[
+		\begin{matrix}
+		1 & -0.0333333 & -0.0666667 \\
+		0 & 1 & -0.0418848 \\
+		0 & -0.190000 & 10.0200
+		\end{matrix}
+		\right|
+		\left.
+		\begin{matrix}
+		2.61667 \\ -2.79320 \\ 70.6150
+		\end{matrix}
+		\right]
+	}
 	\]
 \end{frame}
 
-
+\begin{frame}
+	\[
+	\Scale[0.9]{
+		\begin{matrix}
+		R_1 - (-0.003333)R_2\\
+		\\
+		R_3 - (-0.190000)R_2
+		\end{matrix}
+		\left[
+		\begin{matrix}
+		1 & 0 & -0.0680629 \\
+		0 & 1 & -0.0418848 \\
+		0 & 0 & 10.01200
+		\end{matrix}
+		\right|
+		\left.
+		\begin{matrix}
+		2.52356 \\ -2.79320 \\ 70.0843
+		\end{matrix}
+		\right]
+	}
+	\]
+	\[
+	\Scale[0.9]{
+		\begin{matrix}
+		\\
+		\\
+		R_3 /10.0200\\
+		\end{matrix}
+		\left[
+		\begin{matrix}
+		1 & 0 & -0.0680629 \\
+		0 & 1 & -0.0418848 \\
+		0 & 0 & 1
+		\end{matrix}
+		\right|
+		\left.
+		\begin{matrix}
+		2.52356 \\ -2.79320 \\ 7.00003
+		\end{matrix}
+		\right]
+	}
+	\]
+	\[
+	\Scale[0.9]{
+		\begin{matrix}
+		R_1 - (-0.0680629) R_3\\
+		R_2 - (-0.0418848) R_2\\
+		\\
+		\end{matrix}
+		\left[
+		\begin{matrix}
+		1 & 0 & 0 \\
+		0 & 1 & 0 \\
+		0 & 0 & 1
+		\end{matrix}
+		\right|
+		\left.
+		\begin{matrix}
+		3.00000 \\ -2.50001 \\ 7.00003
+		\end{matrix}
+		\right]
+	}
+	\]
+	\begin{itemize}
+		\item Solusi:
+		\begin{align*}
+			x_1 &= 3.00000 \\
+			x_2 &= -2.50001 \\
+			x_3 &= 7.00003
+		\end{align*}
+	\end{itemize}
+\end{frame}
 
 \end{document}
