@@ -937,4 +937,62 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}
+	\begin{itemize}
+		\item Penyelesaian SPL dengan metode eliminasi Gauss-Jordan membutuhkan jumlah komputasi yang lebih banyak daripada metode eliminasi Gauss.
+		\item Karena alasan itu, metode eliminasi Gauss sudah cukup memuaskan untuk digunakan dalam penyelesaian SPL.
+		\item Namun metode eliminasi Gauss-Jordan merupakan dasar pembentukan matriks balikan (inverse).
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Penyelesaian dengan SPL metode matriks balikan tidak lebih mangkus daripada metode eliminasi Gauss, sebab lebih banyak proses komputasi yang dibutuhkan.
+		\item Metode matriks balikan baru mangkus bila digunakan untuk penyelesaian sejumlah SPL dengan matriks A yang sama tetapi dengan vektor kolom b yang berbeda-beda:
+		\begin{align*}
+			Ax &= b_I \\
+			Ax &= b_{II} \\
+			Ax &= b_{III} \\
+			&\dots \text{dst}
+		\end{align*}
+		\item Sekali $ A^{-1} $ telah diperoleh, maka ia dapat dipakai untuk
+		menyelesaikan sejumlah SPL tersebut.
+	\end{itemize}
+\end{frame}
+
+\section{Matriks Balikan (inverse matrices)}
+
+\begin{frame}
+	\frametitle{Matriks Balikan (inverse matrices)}
+	\begin{itemize}
+		\item Matriks balikan, $ A^{-1} $ , banyak dipakai dalam pengolahan
+		matriks.
+		\item Akan ditunjukkan juga bahwa matriks balikan dapat diperoleh dengan metode eliminasi Gauss-Jordan.
+		\item Cara analitis untuk menghitung matriks balikan untuk matriks $2 \times 2$:
+		\[
+		A = 
+		\begin{bmatrix}
+			a_{11} & a_{12} \\ a_{21} & a_{22}
+		\end{bmatrix}
+		\rightarrow A^{-1} = \frac{1}{a_{11}a_{22} - a_{12}a_{21}}
+		\begin{bmatrix}
+			a_{22} & -a_{12} \\ -a_{21} & a_{11}
+		\end{bmatrix}
+		\]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Nilai $ a_{11} a_{22} - a_{21}a_{12} $ ini disebut \textbf{determinan}.
+		\item Determinan dilambangkan dengan dua buah garis tegak $ (| |) $.
+		\item Bila determinan A = 0, matriks A tidak mempunya
+		balikan, sehingga dinamakan matriks singular.
+		\item Sistem persamaan lanjar yang mempunyai matriks A
+		singular (sistem singular) tidak mempunyai solusi
+		yang unik, yaitu solusinya banyak atau solusinya tidak
+		ada.
+	\end{itemize}
+\end{frame}
+
 \end{document}
