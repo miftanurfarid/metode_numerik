@@ -24,49 +24,44 @@
 \begin{frame}
 	\frametitle{Pengantar}
 	\begin{itemize}
-		\item \textbf{Persoalan:} Temukan vektor x yang memenuhi sistem persamaan lanjar \[ Ax = b \] yang dalam hal ini,
+		\item \textbf{Persoalan:} Temukan vektor $ x $ yang memenuhi sistem persamaan lanjar \[ Ax = b \] yang dalam hal ini,
 		\begin{align*}
 			A &= [a_{ij}] \text{ adalah matriks berukuran } n \times n\\
-			x &= [x_{j}]  \text{ adalah matriks berukuran } n \times n1 \\
+			x &= [x_{j}]  \text{ adalah matriks berukuran } n \times 1 \\
 			b &= [b_{j}]  \text{ adalah matriks berukuran } n \times 1 \text{ (vektor kolom) }
 		\end{align*}
 	\end{itemize}
-\end{frame}
-
-\begin{frame}[t]
-	\[
-	\begin{matrix}
-	a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n &= b_1 \\
-	a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n &= b_2 \\
-	&\vdots\\
-	a_{n1}x_1 + a_{n2}x_2 + \dots + a_{nn}x_n &= b_n
-	\end{matrix}
-	\]
-	\[\downarrow\]
-	\[
-	\begin{bmatrix}
-		a_{11} & a_{12} & a_{13} & \dots & a_{1n} \\
-		a_{21} & a_{22} & a_{23} & \dots & a_{2n} \\
-		a_{31} & a_{32} & a_{33} & \dots & a_{3n} \\
-		& & & \vdots &  \\
-		a_{n1} & a_{n2} & a_{n3} & \dots & a_{nn}
-	\end{bmatrix}
-	\begin{bmatrix}
-		x_1 \\
-		x_2 \\
-		x_3 \\
-		\vdots\\
-		x_n \\
-	\end{bmatrix}
-	=
-	\begin{bmatrix}
-		b_1 \\
-		b_2 \\
-		b_3 \\
-		\vdots\\
-		b_n \\
-	\end{bmatrix}
-	\]
+	\[\Scale[0.7]{
+		\begin{matrix}
+			a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n &= b_1 \\
+			a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n &= b_2 \\
+			&\vdots\\
+			a_{n1}x_1 + a_{n2}x_2 + \dots + a_{nn}x_n &= b_n
+		\end{matrix}
+		\rightarrow
+		\begin{bmatrix}
+			a_{11} & a_{12} & a_{13} & \dots & a_{1n} \\
+			a_{21} & a_{22} & a_{23} & \dots & a_{2n} \\
+			a_{31} & a_{32} & a_{33} & \dots & a_{3n} \\
+			& & & \vdots &  \\
+			a_{n1} & a_{n2} & a_{n3} & \dots & a_{nn}
+		\end{bmatrix}
+		\begin{bmatrix}
+			x_1 \\
+			x_2 \\
+			x_3 \\
+			\vdots\\
+			x_n \\
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			b_1 \\
+			b_2 \\
+			b_3 \\
+			\vdots\\
+			b_n \\
+		\end{bmatrix}
+	}\]
 \end{frame}
 
 \begin{frame}
@@ -81,7 +76,7 @@
 			\item Metode lelaran Jacobi
 			\item Metode lelaran Gauss-Seidel.
 		\end{enumerate}
-		\item Metode 2, 3, da, 4, didasarkan pada Metode 1
+		\item Metode 2, 3, dan 4, didasarkan pada Metode 1
 		\item Metode 5 dan 6 dikembangkan dari gagasan metode lelaran pada solusi persamaan nirlanjar
 	\end{itemize}
 \end{frame}
@@ -96,7 +91,7 @@
 			\begin{bmatrix}
 				a_{11} & a_{12} & a_{13} & \cdots & a_{1n}\\
 				0 & a_{22} & a_{23} & \cdots & a_{2n}\\
-				0 & 0 & a_{e3} & \cdots & a_{en}\\
+				0 & 0 & a_{33} & \cdots & a_{3n}\\
 				& & & \vdots & \\
 				0 & 0 & 0 & \cdots & a_{nn}\\
 			\end{bmatrix}
@@ -117,7 +112,7 @@
 			\end{bmatrix}
 		\end{equation*}
 		\item maka solusinya dapat dihitung dengan \textbf{teknik penyulihan
-		mundur} (backward substitution)
+		mundur} (\textit{backward substitution})
 	\end{itemize}
 \end{frame}
 
