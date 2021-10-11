@@ -960,7 +960,7 @@
 	\end{itemize}
 \end{frame}
 
-\section{Matriks Balikan (inverse matrices)}
+\subsection{Matriks Balikan (inverse matrices)}
 
 \begin{frame}
 	\frametitle{Matriks Balikan (inverse matrices)}
@@ -986,13 +986,377 @@
 	\begin{itemize}
 		\item Nilai $ a_{11} a_{22} - a_{21}a_{12} $ ini disebut \textbf{determinan}.
 		\item Determinan dilambangkan dengan dua buah garis tegak $ (| |) $.
-		\item Bila determinan A = 0, matriks A tidak mempunya
-		balikan, sehingga dinamakan matriks singular.
-		\item Sistem persamaan lanjar yang mempunyai matriks A
-		singular (sistem singular) tidak mempunyai solusi
-		yang unik, yaitu solusinya banyak atau solusinya tidak
-		ada.
+		\item Bila determinan $ A = 0 $, matriks A tidak mempunya balikan, sehingga dinamakan matriks singular.
+		\item Sistem persamaan lanjar yang mempunyai matriks A singular (sistem singular) tidak mempunyai solusi yang unik, yaitu solusinya banyak atau solusinya tidak ada.
 	\end{itemize}
 \end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Untuk matriks $ n \times n $, matriks balikannya dapat diperoleh dengan metode eliminasi Gauss-Jordan, yaitu:
+	\end{itemize}
+	\[
+		\begin{matrix}
+			\left[ A \right|
+			\left. I \right]
+		\end{matrix}
+		\rightarrow
+		\begin{matrix}
+			\left[ I \right|
+			\left. A^{-1} \right]
+		\end{matrix}
+	\]
+	\begin{itemize}
+		\item[] maka
+	\end{itemize}
+	\[\Scale[0.9]{
+		\left[
+			\begin{matrix}
+				a_{11} & a_{12} & \dots & a_{1n} \\
+				a_{21} & a_{22} & \dots & a_{2n} \\
+				\vdots &  &  & \vdots \\
+				a_{n1} & a_{n2} & \dots & a_{nn}
+			\end{matrix}
+		\right|
+		\left.
+			\begin{matrix}
+			1 & 0 & \dots & 0 \\
+			0 & 1 & \dots & 0 \\
+			\vdots &  &  & \vdots \\
+			0 & 0 & \dots & 1
+			\end{matrix}
+		\right]
+		\rightarrow
+		\left[
+		\begin{matrix}
+			1 & 0 & \dots & 0 \\
+			0 & 1 & \dots & 0 \\
+			\vdots &  &  & \vdots \\
+			0 & 0 & \dots & 1
+		\end{matrix}
+		\right|
+		\left.
+		\begin{matrix}
+			p_{11} & p_{12} & \dots & p_{1n} \\
+			p_{21} & p_{22} & \dots & p_{2n} \\
+			\vdots &  &  & \vdots \\
+			p_{n1} & p_{n2} & \dots & p_{nn}
+		\end{matrix}
+		\right]
+	}\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 6}
+	\begin{itemize}
+		\item \textbf{Soal:} Tentukan matriks balikan dari matriks $ A $ berikut
+		\[ A = \begin{bmatrix}
+			1 & -1 & 2 \\
+			3 & 0 & 1 \\
+			1 & 0 & 2
+		\end{bmatrix} \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item \textbf{Penyelesaian:}
+	\end{itemize}
+	\[
+	\left[
+		\begin{matrix}
+			1 & -1 & 2 \\
+			3 & 0 & 1 \\
+			1 & 0 & 2
+		\end{matrix}
+	\right|
+	\left.
+		\begin{matrix}
+			1 & 0 & 0 \\
+			0 & 1 & 0 \\
+			0 & 0 & 1
+		\end{matrix}
+	\right]
+	\begin{matrix}
+		\\
+		R_2 - 3R_1 \\
+		R_3 - R_1
+	\end{matrix}
+	\left[
+		\begin{matrix}
+			1 & -1 & 2 \\
+			0 & 3 & -5 \\
+			0 & 1 & 0
+		\end{matrix}
+	\right|
+	\left.
+		\begin{matrix}
+			1 & 0 & 0 \\
+			3 & 1 & 0 \\
+			1 & 0 & 1
+		\end{matrix}
+	\right]
+	\]
+	\[
+	\cdots
+	\left[
+		\begin{matrix}
+		1 & 0 & 0 \\
+		0 & 1 & 0 \\
+		0 & 0 & 12
+		\end{matrix}
+	\right|
+	\left.
+		\begin{matrix}
+		0 & 0.4 & -0.2 \\
+		-1 & 0 & 1 \\
+		0 & -0.5 & 0.6
+		\end{matrix}
+	\right]
+	\]
+	\begin{itemize}
+		\item[] Jadi, matriks balikan dari $ A $ adalah
+	\end{itemize}
+	\[
+	A^{-1} = 
+	\begin{bmatrix}
+		0 & 0.4 & -0.2 \\
+		-1 & 0 & 1 \\
+		0 & -0.5 & 0.6
+	\end{bmatrix}
+	\]
+\end{frame}
+
+\section{Metode Matriks Balikan}
+
+\begin{frame}
+	\frametitle{Metode Matriks Balikan}
+	\begin{itemize}
+		\item Misalkan $ A{-1} $ adalah matriks balikan dari A. Sistem persamaan lanjar $ Ax = b $ dapat diselesaikan sebagai berikut:
+		\begin{align*}
+			Ax &= b \\
+			A^{-1}Ax &= A^{-1}b \\
+			Ix &= A^{-1}b \qquad (A^{-1}A = I)\\
+			x = A^{-1}b
+		\end{align*}
+		\item Cara penyelesaian dengan mengalikan matriks $ A^{-1} $ dengan $ b $ itu dinamakan \textbf{metode matriks balikan}.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 7}
+	\begin{itemize}
+		\item \textbf{Persoalan:} Selesaikan sistem persamaan lanjar
+		\begin{align*}
+			x_1 - x_2 + 2x_3 &= 5 \\
+			3x_1 + x_3 &= 10 \\
+			x_1 + 2x_3 &= 5
+		\end{align*}
+		dengan metode matriks balikan.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item \textbf{Penyelesain:}
+		\[
+			\left[
+				\begin{matrix}
+					1 & -1 & 2 \\
+					3 & 0 & 1 \\
+					1 & 0 & 2 \\
+				\end{matrix}
+			\right|
+			\left.
+				\begin{matrix}
+					1 & 0 & 0 \\
+					0 & 1 & 0 \\
+					0 & 0 & 1 \\
+				\end{matrix}
+			\right]
+			\begin{matrix}
+				\\
+				R_2 - 3R-1 \\
+				R_3 - R_1\\
+			\end{matrix}
+			\left[
+				\begin{matrix}
+					1 & -1 & 2 \\
+					0 & 3 & -5 \\
+					0 & 1 & 0 \\
+				\end{matrix}
+			\right|
+			\left.
+				\begin{matrix}
+					1 & 0 & 0 \\
+					-3 & 1 & 0 \\
+					-1 & 0 & 1 \\
+				\end{matrix}
+			\right]
+		\]
+		\[
+		\dots
+		\left[
+			\begin{matrix}
+				1 & 0 & 0 \\
+				0 & 1 & 0 \\
+				0 & 0 & 1 \\
+			\end{matrix}
+		\right|
+		\left.
+			\begin{matrix}
+				0 & 0.4 & -0.2 \\
+				-1 & 0 & 1 \\
+				0 & -0.2 & 0.6 \\
+			\end{matrix}
+		\right]
+		\]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Solusinya adalah $ x = A^{-1}b $
+	\end{itemize}
+	\[
+		\begin{bmatrix}
+		x_1\\ x_2 \\ x_3
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			0 & 0.4 & -0.2 \\
+			-1 & 0 & 1 \\
+			0 & -0.2 & 0.6 \\
+		\end{bmatrix}
+		\begin{bmatrix}
+		5 \\ 10 \\ 5
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+		0 + 4 -1 \\
+		-5 + 0 + 5 \\
+		0 - 2 + 3 \\
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+		3 \\ 0 \\ 1
+		\end{bmatrix}
+	\]
+\end{frame}
+
+\section{Metode Dekomposisi LU}
+
+\begin{frame}
+	\frametitle{Metode Dekomposisi LU}
+	\begin{itemize}
+		\item Jika matriks $ A $ non-singular maka ia dapat difaktorkan (diuraikan atau di-dekomposisi) menjadi matriks segitiga bawah L (lower) dan matriks segitiga atas U (upper):
+		$ A = LU $
+	\end{itemize}
+	\[
+	\begin{bmatrix}
+		a_{11} & a_{12} & a_{13} & \dots & a_{1n} \\
+		a_{21} & a_{22} & a_{23} & \dots & a_{2n} \\
+		a_{31} & a_{32} & a_{33} & \dots & a_{3n} \\
+		\vdots \\
+		a_{n1} & a_{n2} & a_{n3} & \dots & a_{nn} \\
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		1 & 0 & 0 & \dots & 0 \\
+		l_{21} & 1 & 0 & \dots & 0 \\
+		l_{31} & l_{32} & 1 & \dots & 0 \\
+		\vdots \\
+		l_{n1} & l_{n2} & l_{n3} & \dots & 1 \\
+	\end{bmatrix}
+	\]
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Sebagai contoh, matriks $3 \times 3$ di bawah ini difaktorkan menjadi:
+		\[
+		\begin{bmatrix}
+			2 & -1 & -1 \\
+			0 & -4 & 2 \\
+			6 & -3 & 1 \\
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			1 & 0 & 0 \\
+			0 & 1 & 0 \\
+			3 & 0 & 1 \\
+		\end{bmatrix}
+		\begin{bmatrix}
+			2 & -1 & -1 \\
+			0 & -4 & 2 \\
+			0 & 0 & 4 \\
+		\end{bmatrix}
+		\]
+		\item Sekali $ A $ difaktorkan menjadi $ L $ dan $ U $, kedua matriks tersebut dapat digunakan untuk menyelesaikan $ Ax = b $.
+		\item Metode penyelesaian SPL dengan cara ini dikenal dengan nama \textbf{metode dekomposisi LU}.
+		\item Metode ini dinamakan juga \textbf{metode pemfaktoran segitiga} (\textit{triangular factorization }).
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Tinjau sistem persamaan lanjar \[Ax = b\]
+		\item Faktorkan $ A $ menjadi $ L $ dan $ U $ sedemikian sehingga \[ A - LU \]
+		\item Jadi, \[Ax = b \rightarrow LUx = b\]
+		\item Misalkan \[ Ux = y \]
+		maka \[ Ly = b \]
+	\end{itemize}
+\end{frame}
+
+\begin{itemize}
+	\item Untuk memperoleh $ y_1 $, $ y_2 $, $\dots$, $ y_n $, kita menggunakan teknik penyulihan maju (\textit{forward substitution}):
+	\[
+	\Scale[0.9]{
+	Ly = b \rightarrow \begin{bmatrix}
+	1 & 0 & 0 & \dots & 0\\
+	l_{21} & 1 & 0 & \dots & 0\\
+	\vdots & \vdots & \vdots & \vdots & \vdots\\
+	l_{n1} & l_{n2} & l_{n3} & \dots & 0\\
+	\end{bmatrix}
+	\begin{bmatrix}
+	y_1 \\ y_2 \\ \vdots \\ y_n
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+	b_1 \\ b_2 \\ \vdots \\ b_n
+	\end{bmatrix}
+	\rightarrow 
+	\begin{matrix}
+	\text{diperoleh}& \\
+	y_1 , y_2 ,\dots, y_n&\\
+	\text{dengan teknik}&\\
+	\text{penyulihan maju}&
+	\end{matrix}
+	}\]
+	\item Dan untuk memperoleh solusi SPL, $ x_1 $, $ x_2 $, $ \dots $, $ x_n $, kita menggunakan teknik penyulihan mundur (\textit{backward substitution}):
+	\[
+	\Scale[0.9]{
+		Ux = y \rightarrow \begin{bmatrix}
+		u_{11} & 0 & 0 & \dots & 0\\
+		l_{21} & 1 & 0 & \dots & 0\\
+		\vdots & \vdots & \vdots & \vdots & \vdots\\
+		l_{n1} & l_{n2} & l_{n3} & \dots & 0\\
+		\end{bmatrix}
+		\begin{bmatrix}
+		y_1 \\ y_2 \\ \vdots \\ y_n
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+		b_1 \\ b_2 \\ \vdots \\ b_n
+		\end{bmatrix}
+		\rightarrow 
+		\begin{matrix}
+		\text{diperoleh}& \\
+		y_1 , y_2 ,\dots, y_n&\\
+		\text{dengan teknik}&\\
+		\text{penyulihan maju}&
+		\end{matrix}
+	}\]
+\end{itemize}
 
 \end{document}
