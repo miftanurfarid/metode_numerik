@@ -1308,55 +1308,258 @@
 	\end{itemize}
 \end{frame}
 
-\begin{itemize}
-	\item Untuk memperoleh $ y_1 $, $ y_2 $, $\dots$, $ y_n $, kita menggunakan teknik penyulihan maju (\textit{forward substitution}):
-	\[
-	\Scale[0.9]{
-	Ly = b \rightarrow \begin{bmatrix}
-	1 & 0 & 0 & \dots & 0\\
-	l_{21} & 1 & 0 & \dots & 0\\
-	\vdots & \vdots & \vdots & \vdots & \vdots\\
-	l_{n1} & l_{n2} & l_{n3} & \dots & 0\\
-	\end{bmatrix}
-	\begin{bmatrix}
-	y_1 \\ y_2 \\ \vdots \\ y_n
-	\end{bmatrix}
-	=
-	\begin{bmatrix}
-	b_1 \\ b_2 \\ \vdots \\ b_n
-	\end{bmatrix}
-	\rightarrow 
-	\begin{matrix}
-	\text{diperoleh}& \\
-	y_1 , y_2 ,\dots, y_n&\\
-	\text{dengan teknik}&\\
-	\text{penyulihan maju}&
-	\end{matrix}
-	}\]
-	\item Dan untuk memperoleh solusi SPL, $ x_1 $, $ x_2 $, $ \dots $, $ x_n $, kita menggunakan teknik penyulihan mundur (\textit{backward substitution}):
-	\[
-	\Scale[0.9]{
-		Ux = y \rightarrow \begin{bmatrix}
-		u_{11} & 0 & 0 & \dots & 0\\
-		l_{21} & 1 & 0 & \dots & 0\\
-		\vdots & \vdots & \vdots & \vdots & \vdots\\
-		l_{n1} & l_{n2} & l_{n3} & \dots & 0\\
-		\end{bmatrix}
+\begin{frame}
+	\begin{itemize}
+		\item Untuk memperoleh $ y_1 $, $ y_2 $, $\dots$, $ y_n $, kita menggunakan teknik penyulihan maju (\textit{forward substitution}):
+		\[
+		\Scale[0.8]{
+			Ly = b \rightarrow \begin{bmatrix}
+			1 & 0 & 0 & \dots & 0\\
+			l_{21} & 1 & 0 & \dots & 0\\
+			\vdots & \vdots & \vdots & \vdots & \vdots\\
+			l_{n1} & l_{n2} & l_{n3} & \dots & 0\\
+			\end{bmatrix}
+			\begin{bmatrix}
+			y_1 \\ y_2 \\ \vdots \\ y_n
+			\end{bmatrix}
+			=
+			\begin{bmatrix}
+			b_1 \\ b_2 \\ \vdots \\ b_n
+			\end{bmatrix}
+			\rightarrow 
+			\begin{matrix}
+			\text{diperoleh}& \\
+			y_1 , y_2 ,\dots, y_n&\\
+			\text{dengan teknik}&\\
+			\text{penyulihan maju}&
+			\end{matrix}
+		}\]
+		\item Dan untuk memperoleh solusi SPL, $ x_1 $, $ x_2 $, $ \dots $, $ x_n $, kita menggunakan teknik penyulihan mundur (\textit{backward substitution}):
+		\[
+		\Scale[0.8]{
+			Ux = y \rightarrow \begin{bmatrix}
+			u_{11} & u_{12} & u_{13} & \dots & u_{1n}\\
+			0 & u_{22} & u_{23} & \dots & u_{2n}\\
+			\vdots & \vdots & \vdots & \vdots & \vdots\\
+			0 & 0 & 0 & \dots & u_{nm}\\
+			\end{bmatrix}
+			\begin{bmatrix}
+			x1 \\ x_2 \\ \vdots \\ x_n
+			\end{bmatrix}
+			=
+			\begin{bmatrix}
+			y_1 \\ y_2 \\ \vdots \\ y_n
+			\end{bmatrix}
+			\rightarrow 
+			\begin{matrix}
+			\text{diperoleh}& \\
+			x_1 , x_2 ,\dots, x_n&\\
+			\text{dengan teknik}&\\
+			\text{penyulihan mundur}&
+			\end{matrix}
+		}\]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Jadi, langkah-langkah menghitung solusi SPL dengan metode dekomposi LU dapat diringkas sebagai berikut:
+		\begin{enumerate}
+			\item Bentuklah matriks $ L $ dan $ U $ dari $ A $
+			\item Pecahkan $ Ly = b $, lalu hitung $ y $ dengan teknik penyulihan maju
+			\item Pecahkan $ Ux = y $, lalu hitung $ x $ dengan teknik penyulihan mundur
+		\end{enumerate}
+		\item Terdapat dua metode untuk memfaktorkan A atas L dan U:
+		\begin{enumerate}
+			\item Metode LU Gauss.
+			\item Metode reduksi Crout.
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\subsection{Pemfaktoran dengan Metode LU Gauss}
+
+\begin{frame}
+	\frametitle{Pemfaktoran dengan Metode\\LU Gauss}
+	\begin{itemize}
+		\item Misalkan matriks $ A $ berukuran $ 4 \times 4 $ difaktorkan atas $ L $ dan $ U $,
+		\[A = LU\]
+		\[\Scale[0.8]{
+			\begin{bmatrix}
+				a_{11} & a_{12} & a_{13} & a_{14} \\
+				a_{21} & a_{22} & a_{23} & a_{24} \\
+				a_{31} & a_{32} & a_{33} & a_{34} \\
+				a_{41} & a_{42} & a_{43} & a_{44} \\
+			\end{bmatrix}
+			=
+			\begin{bmatrix}
+			1 & 0 & 0 & 0 \\
+			m_{21} & 1 & 0 & 0 \\
+			m_{31} & m_{32} & 1 & 0 \\
+			m_{41} & m_{42} & m_{43} & 1 \\
+			\end{bmatrix}
+			\begin{bmatrix}
+			u_{11} & u_{12} & u_{13} & u_{14} \\
+			0 & u_{22} & u_{23} & u_{24} \\
+			0 & 0 & u_{33} & u_{34} \\
+			0 & 0 & 0 & u_{44} \\
+			\end{bmatrix}
+		}\]
+		\item Di sini kita menggunakan simbol $ m_{ij} $ ketimbang $ l_{ij} $ , karena nilai $ l_{ij} $ berasal dari faktor pengali ($ l_{ij} $) pada proses eliminasi Gauss.
+		\item Langkah-langkah pembentukan $ L $ dan $ U $ dari matriks $ A $ adalah sebagai berikut:
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{enumerate}
+		\item Nyatakan $ A $ sebagai $ A = IA $
+		\[
 		\begin{bmatrix}
-		y_1 \\ y_2 \\ \vdots \\ y_n
+			a_{11} & a_{12} & a_{13} & \dots & a_{1n}\\
+			a_{21} & a_{22} & a_{23} & \dots & a_{2n}\\
+			a_{31} & a_{32} & a_{33} & \dots & a_{3n}\\
+			\vdots & \vdots & \vdots & \dots & \vdots\\
+			a_{n1} & a_{n2} & a_{n3} & \dots & a_{nn}
 		\end{bmatrix}
 		=
 		\begin{bmatrix}
-		b_1 \\ b_2 \\ \vdots \\ b_n
+			1 & 0 & 0 & \dots & 0\\
+			0 & 1 & 0 & \dots & 0\\
+			0 & 0 & 1 & \dots & 0\\
+			\vdots & \vdots & \vdots & \dots & \vdots\\
+			0 & 0 & 0 & \dots & 1
 		\end{bmatrix}
-		\rightarrow 
+		\begin{bmatrix}
+			a_{11} & a_{12} & a_{13} & \dots & a_{1n}\\
+			a_{21} & a_{22} & a_{23} & \dots & a_{2n}\\
+			a_{31} & a_{32} & a_{33} & \dots & a_{3n}\\
+			\vdots & \vdots & \vdots & \dots & \vdots\\
+			a_{n1} & a_{n2} & a_{n3} & \dots & a_{nn}
+		\end{bmatrix}
+		\]
+		\item Eliminasikan matriks $ A $ di ruas kanan menjadi matriks segitiga atas $ U $.
+		Tempatkan faktor pengali $ m_{ij} $ pada posisi $ l_{ij} $ di matriks $ I $.
+		\item Setelah seluruh proses eliminasi Gauss selesai, matriks $ I $ menjadi matriks $ L $, dan matriks $ A $ di ruas kanan menjadi matriks $ U $.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\[\Scale[0.8]{
+	\left[
 		\begin{matrix}
-		\text{diperoleh}& \\
-		y_1 , y_2 ,\dots, y_n&\\
-		\text{dengan teknik}&\\
-		\text{penyulihan maju}&
+			a_{11} & a_{12} & a_{13} & \dots & a_{1n}\\
+			a_{21} & a_{22} & a_{23} & \dots & a_{2n}\\
+			a_{31} & a_{32} & a_{33} & \dots & a_{3n}\\
+			\vdots & \vdots & \vdots & \dots & \vdots\\
+			a_{n1} & a_{n2} & a_{n3} & \dots & a_{nn}
 		\end{matrix}
+	\right]
+	\left[
+		\begin{matrix}
+			b_1 \\ b_2 \\ b_3 \\ \vdots \\ b_n
+		\end{matrix}
+	\right]
+	\rightarrow
+	\left[
+		\begin{matrix}
+			1 & 0 & 0 & \dots & 0\\
+			0 & 1 & 0 & \dots & 0\\
+			0 & 0 & 1 & \dots & 0\\
+			\vdots & \vdots & \vdots & \dots & \vdots\\
+			0 & 0 & 0 & \dots & 1
+		\end{matrix}
+	\right]
+	\left[
+		\begin{matrix}
+			b_1' \\ b_2' \\ b_3' \\ \vdots \\ b_n'
+		\end{matrix}
+	\right]
 	}\]
-\end{itemize}
+	Solusinya:
+	\[\Scale[0.8]{
+	\begin{matrix}
+		x_1 & & & &= b_1' \\
+		&x_2  & & &= b_2' \\
+		& & \dots & &= \dots \\
+		& & & x_n &= b_n'
+	\end{matrix}
+	}\]
+	\begin{itemize}
+		\item Seperti halnya metode eliminasi Gauss, tata-ancang pivoting dan penskalaan juga dapat diterapkan pada metoda ini untuk memperkecil galat pembulatan.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 8}
+	\begin{itemize}
+		\item \textbf{Persoalan:} Faktorkan matriks $ A $ berikut dengan metode LU Gauss.
+		\[ A = 
+		\begin{bmatrix}
+			4 & 3 & -1\\
+			-2 & -4 & 5\\
+			1 & 2 & 6\\
+		\end{bmatrix}
+		\]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item \textbf{Penyelesaian:}
+		\[\Scale[0.7]{ A = 
+		\begin{bmatrix}
+			4 & 3 & -1\\
+			-2 & -4 & 5\\
+			1 & 2 & 6\\
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			1 & 0 & 0\\
+			0 & 1 & 0\\
+			0 & 0 & 1\\
+		\end{bmatrix}
+		\begin{bmatrix}
+			4 & 3 & -1\\
+			-2 & -4 & 5\\
+			1 & 2 & 6\\
+		\end{bmatrix}
+		}\]
+		\item Eliminasikan matriks $ A $ di ruas kanan menjadi matriks segitiga atas $ U $, dan tempatkan faktor pengali $ m_{ij} $ pada posisi $ l_{ij} $ di matriks $ I $.
+		\[\Scale[0.7]{
+		\begin{bmatrix}
+			4 & 3 & -1\\
+			-2 & -4 & 5\\
+			1 & 2 & 6\\
+		\end{bmatrix}
+		\begin{matrix}
+			\\
+			R_2 - (-2/4)R_1\\
+			R_3 - (1/4)R_1
+		\end{matrix}
+		\begin{bmatrix}
+			4 & 3 & -1\\
+			0 & -2.5 & 4.5\\
+			0 & 1.25 & 6.25\\
+		\end{bmatrix}
+		}\]
+		\item Tempatkan $ m_{21} = -2/4 = 0.5 $ dan $ m_{31} = 1/4 = 0.25 $ ke dalam matriks $ L $:
+		\[\Scale[0.7]{ L = 
+		\begin{bmatrix}
+			1 & 0 & 0\\
+			-0.5 & 1 & 0\\
+			0 & m_{32} & 1\\
+		\end{bmatrix}
+		}\]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Teruskan proses eliminasi Gauss pada matriks A,
+		\item Tempatkan m 32 = 1.25/-2.5 = -0.5 ke dalam matriks L:
+		\item Jadi,
+	\end{itemize}
+\end{frame}
+
 
 \end{document}
