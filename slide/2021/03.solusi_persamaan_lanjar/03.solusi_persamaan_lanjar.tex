@@ -86,7 +86,7 @@
 \begin{frame}
 	\frametitle{Metode Eliminasi Gauss}
 	\begin{itemize}
-		\item Metode ini berangkat dari kenyataan bahwa bila matriks A berbentuk segitiga atas seperti sistem persamaan berikut ini
+		\item Metode ini berangkat dari kenyataan bahwa bila matriks $ A $ berbentuk segitiga atas seperti sistem persamaan berikut ini
 		\begin{equation*}
 			\begin{bmatrix}
 				a_{11} & a_{12} & a_{13} & \cdots & a_{1n}\\
@@ -113,6 +113,20 @@
 		\end{equation*}
 		\item maka solusinya dapat dihitung dengan \textbf{teknik penyulihan
 		mundur} (\textit{backward substitution})
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\scalebox{0.7}{\parbox{.5\linewidth}{%
+	\begin{align*}
+		a_{nn}x_n = b_n &\rightarrow x_n = b_n / a_{nn} \\
+		a_{n-1,n-1}x_{n-1} + a_{n-1,n}x_{n} = b_{n-1} &\rightarrow x_{n-1} = \frac{b_{n-1} - a_{n-1,n}x_n}{a_{n-1,n-1}}\\
+		a_{n-2,n-2}x_{n-2} + a_{n-2,n-1}x_{n-1} + a_{n-2,n}x_{n} = b_{n-2} &\rightarrow x_{n-2} = \frac{b_{n-2} - a_{n-2,n-1}x_{n-1} - a_{n-2,n}x_{n}}{a_{n-2,n-2}}\\
+	\end{align*}
+	}}
+	\begin{itemize}
+		\item Sekali $ x_n $, $ x_{n-1} $, $ x_{n-2} $, $\dots$, $ x_{k+1} $ diketahui, maka nilai $ x_k $ dapat dihitung dengan
+		\[ x_k = \frac{b_k - \sum_{j=k+1}^{n}a_{kj}x_j}{a_{kk}}.\qquad k=n-1, n-2, \dots, 1 \text{ dan } a_{kk} \neq 0 \]
 	\end{itemize}
 \end{frame}
 
@@ -157,7 +171,8 @@
 
 \begin{frame}
 	\begin{itemize}
-		\item Metode eliminasi Gauss pada prinsipnya bertujuan mentransformasi sistem $ Ax = b $ menjadi sistem \[ Ux = y \] dengan $ U $ adalah matriks segitiga atas. Selanjutnya solusi $ x $ dapat dihitung dengan teknik penyulihan mundur
+		\item Metode eliminasi Gauss pada prinsipnya bertujuan mentransformasi sistem $ Ax = b $ menjadi sistem \[ Ux = y \] dengan $ U $ adalah \textbf{matriks segitiga atas}.
+		\item Selanjutnya solusi $ x $ dapat dihitung dengan \textbf{teknik penyulihan mundur}.
 	\end{itemize}
 \end{frame}
 
@@ -206,9 +221,9 @@
 \begin{frame}
 	Proses eliminasi terdiri atas tiga operasi baris elementer:
 	\begin{enumerate}
-		\item Pertukaran : Urutan dua persamaan dapat ditukar karena pertukaran tersebut tidak mempengaruhi solusi akhir.
-		\item Penskalaan : Persamaan dapat dikali dengan konstanta bukan nol, karena perkalian tersebut tidak mempengaruhi solusi akhir.
-		\item Penggantian : Persamaan dapat diganti dengan penjumlahan persamaan itu dengan gandaan persamaan lain. Misalnya persamaan diganti dengan selisih persamaan itu dengan dua kali persamaan lain; yaitu
+		\item \textbf{Pertukaran:} Urutan dua persamaan dapat ditukar karena pertukaran tersebut tidak mempengaruhi solusi akhir.
+		\item \textbf{Penskalaan:} Persamaan dapat dikali dengan konstanta bukan nol, karena perkalian tersebut tidak mempengaruhi solusi akhir.
+		\item \textbf{Penggantian:} Persamaan dapat diganti dengan penjumlahan persamaan itu dengan gandaan persamaan lain. Misalnya persamaan diganti dengan selisih persamaan itu dengan dua kali persamaan lain; yaitu
 		\[ \text{baris}_r := \text{baris}_r - m_{p,r}\text{baris}_p \]
 	\end{enumerate}
 \end{frame}
@@ -225,7 +240,7 @@
 \begin{frame}
 	\frametitle{Contoh 2}
 	\begin{itemize}
-		\item Selesaikan sistem persamaan lanjar dengan metode eliminasi Gauss naif:
+		\item \textbf{Persoalan:}  Selesaikan sistem persamaan lanjar dengan metode eliminasi Gauss naif:
 		\begin{align*}
 			2x_1 + 3x_2 - x_3 &= 5 \\
 			4x_1 + 4x_2 - 3x_3 &= 3 \\
@@ -236,77 +251,69 @@
 
 \begin{frame}
 	\begin{itemize}
-		\item Penyelesaian
-	\end{itemize}
-	\begin{align*}
-	\Scale[0.8]{
-		\left[
-		\begin{matrix}
-		\textbf{2} & 3 & -1 \\
-		4 & 4 & -3 \\
-		-2 & 3 & -1
-		\end{matrix}
-		\right|
-		\left.
-		\begin{matrix}
-		5 \\
-		3 \\
-		1
-		\end{matrix}
-		\right]
-		\begin{matrix}
-		 \\
-		R_2 - \frac{4}{2}R_1 \\
-		R_3 - \frac{-2}{2}R_1
-		\end{matrix}
-		\left[
-		\begin{matrix}
-		2 & 3 & -1 \\
-		0 & \textbf{-2} & -1 \\
-		0 & 6 & -2
-		\end{matrix}
-		\right|
-		\left.
-		\begin{matrix}
-		5 \\
-		-7 \\
-		6
-		\end{matrix}
-		\right]
-		\begin{matrix}
-		\\
-		\\
-		R_3 - \frac{6}{-2}R_1
-		\end{matrix}
-		\left[
-		\begin{matrix}
-		2 & 3 & -1 \\
-		0 & -2 & -1 \\
-		0 & 0 & -5
-		\end{matrix}
-		\right|
-		\left.
-		\begin{matrix}
-		5 \\
-		-7 \\
-		-15
-		\end{matrix}
-		\right]}
-	\end{align*}
-\end{frame}
-
-\begin{frame}
-	\begin{itemize}
+		\item \textbf{Penyelesaian:}
+		\[
+			\Scale[0.8]{
+			\left[
+				\begin{matrix}
+				\textbf{2} & 3 & -1 \\
+				4 & 4 & -3 \\
+				-2 & 3 & -1
+				\end{matrix}
+			\right|
+			\left.
+				\begin{matrix}
+				5 \\
+				3 \\
+				1
+				\end{matrix}
+			\right]
+				\begin{matrix}
+				\\
+				R_2 - \frac{4}{2}R_1 \\
+				R_3 - \frac{-2}{2}R_1
+				\end{matrix}
+			\left[
+				\begin{matrix}
+				2 & 3 & -1 \\
+				0 & \textbf{-2} & -1 \\
+				0 & 6 & -2
+				\end{matrix}
+			\right|
+			\left.
+				\begin{matrix}
+				5 \\
+				-7 \\
+				6
+				\end{matrix}
+			\right]
+				\begin{matrix}
+				\\
+				\\
+				R_3 - \frac{6}{-2}R_1
+				\end{matrix}
+			\left[
+				\begin{matrix}
+				2 & 3 & -1 \\
+				0 & -2 & -1 \\
+				0 & 0 & -5
+				\end{matrix}
+			\right|
+			\left.
+				\begin{matrix}
+				5 \\
+				-7 \\
+				-15
+				\end{matrix}
+			\right]}
+		\]
 		\item Solusi sistem diperoleh dengan teknik penyulihan mundur sebagai berikut:
 		\begin{align*}
-			-5x_3 = -15 &\rightarrow x_3 = 3 \\
-			-2x_2 - x_3 = -7 &\rightarrow x_2 = (-7 + 3)/-2 = 2 \\
-			2x_1 + 3x_2 - x_3 = 5 &\rightarrow x_1 = (5 + 3 - 6)/2 = 1
+		-5x_3 = -15 &\rightarrow x_3 = 3 \\
+		-2x_2 - x_3 = -7 &\rightarrow x_2 = (-7 + 3)/-2 = 2 \\
+		2x_1 + 3x_2 - x_3 = 5 &\rightarrow x_1 = (5 + 3 - 6)/2 = 1
 		\end{align*}
-		\item Jadi, solusinya adalah \[ x = 
-		\begin{bmatrix}
-		1 \\ 2 \\ 3 
-		\end{bmatrix} \]
+		\item Jadi, solusinya adalah $ x = (1,2,3)^T $
 	\end{itemize}
 \end{frame}
 
@@ -314,7 +321,7 @@
 	\frametitle{Kelemahan eliminasi Gauss naif}
 	\begin{itemize}
 		\item Jika pivot $ a_{pp} = 0 $, baris ke-$ k $ tidak dapat digunakan untuk memgeliminasi elemen pada kolom $ p $, karena terjadinya pembagian dengan nol.
-		\item Oleh karena itu, pivot yang bernilai nol harus dihindari dengan tata-ancang (\textit{strategy}) pivoting.
+		\item Oleh karena itu, pivot yang bernilai nol harus dihindari dengan tata-ancang (\textit{strategy pivoting}).
 	\end{itemize}
 \end{frame}
 
@@ -323,7 +330,7 @@
 \begin{frame}
 	\frametitle{Tata-ancang Pivoting}
 	\begin{itemize}
-		\item jika $ a_{p,p}^{(p-1)} = 0 $, cari baris $ k $ dengan $ a_{k,p} \neq 0 $ dan $ k > p $, lalu pertukarkan baris $ p $ dan baris $ k $.
+		\item Jika $ a_{p,p}^{(p-1)} = 0 $, cari baris $ k $ dengan $ a_{k,p} \neq 0 $ dan $ k > p $, lalu pertukarkan baris $ p $ dan baris $ k $.
 		\item Metode eliminasi Gauss dengan tata-ancang pivoting disebut metode eliminasi Gauss yang diperbaiki (\textit{modified Gaussian elimination}).
 	\end{itemize}
 \end{frame}
@@ -331,7 +338,7 @@
 \begin{frame}
 	\frametitle{Contoh 3}
 	\begin{itemize}
-		\item Selesaikan sistem persamaam lanjar berikut dengan metode eliminasi Gauss yang menerapkan tatancang pivoting.
+		\item \textbf{Persoalan:} Selesaikan sistem persamaan lanjar berikut dengan metode eliminasi Gauss yang menerapkan tata-ancang pivoting.
 		\begin{align*}
 			x_1 + 2x_2 + x_3 &= 2 \\
 			3x_1 + 6x_2 &= 9 \\
@@ -342,7 +349,7 @@
 
 \begin{frame}
 	\begin{itemize}
-		\item Penyelesaian
+		\item \textbf{Penyelesaian:}
 	\end{itemize}
 	
 	\[
@@ -403,17 +410,17 @@
 \begin{frame}
 	\frametitle{Pivoting Sederhana}
 	\begin{itemize}
-		\item Melakukan pertukarkan baris untuk menghindari pivot yang bernilai nol adalah cara pivoting yang sederhana (simple pivoting).
-		\item Masalah lain dapat juga timbul bila elemen pivot sangat dekat ke nol, karena jika elemen pivot sangat kecil dibandingkan terhadap elemen lainnya, maka galat pembulatan dapat muncul.
-		\item Jadi, disamping menghindari pembagian dengan nol, tatancang pivoting dapat juga diperluas untuk mengurangi galat pembulatan.
-		\item Terdapat 2 macam pivoting yaitu pivoting sebagian dan pivoting lengkap.
+		\item Melakukan pertukarkan baris untuk menghindari \textit{pivot} yang bernilai nol adalah cara \textit{pivoting} yang sederhana (\textit{simple pivoting}).
+		\item Masalah lain dapat juga timbul bila elemen \textit{pivot} sangat dekat ke nol, karena jika elemen \textit{pivot} sangat kecil dibandingkan terhadap elemen lainnya, maka galat pembulatan dapat muncul.
+		\item Jadi, disamping menghindari pembagian dengan nol, tata-ancang \textit{pivoting} dapat juga diperluas untuk mengurangi galat pembulatan.
+		\item Terdapat 2 macam \textit{pivoting} yaitu \textbf{\textit{pivoting} sebagian} dan \textbf{\textit{pivoting} lengkap}.
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Pivoting Sebagian}
+	\frametitle{Pivoting Sebagian (Partial Pivoting)}
 	\begin{itemize}
-		\item Pada tatancang pivoting sebagian, pivot dipilih dari semua elemen pada kolom $ p $ yang mempunyai nilai mutlak terbesar,
+		\item Pada tata-ancang \textit{pivoting} sebagian, \textit{pivot} dipilih dari semua elemen pada kolom $ p $ yang mempunyai nilai mutlak terbesar,
 		\[ |a_{k,p}| = \text{max}\{|a_{p,p}|,|a_{p+1,p}|,\dots,|a_{n-1,p}|, |a_{n,p}|\} \]
 		\item  lalu pertukarkan baris ke-$ k $ dengan baris ke-$ p $.
 		\[
@@ -436,14 +443,14 @@
 
 \begin{frame}
 	\begin{itemize}
-		\item Perhatikanlah bahwa teknik pivoting sebagian juga sekaligus menghindari pemilihan pivot = 0 (sebagaimana pada simple pivoting)
-		\item karena 0 tidak akan pernah menjadi elemen dengan nilai mutlak terbesar, kecuali jika seluruh elemen di kolom yang diacu adalah 0.
-		\item Apabila setelah melakukan pivoting sebagian ternyata elemen pivot = 0, itu berarti sistem persamaan lanjar tidak dapat diselesaikan (singular system).
+		\item Perhatikanlah bahwa teknik pivoting sebagian juga sekaligus menghindari pemilihan \textit{pivot} = 0 (sebagaimana pada \textit{simple pivoting})
+		\item Karena 0 tidak akan pernah menjadi elemen dengan nilai mutlak terbesar, kecuali jika seluruh elemen di kolom yang diacu adalah 0.
+		\item Apabila setelah melakukan \textit{pivoting} sebagian ternyata elemen \textit{pivot} = 0, itu berarti sistem persamaan lanjar tidak dapat diselesaikan (\textit{singular system}).
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Pivoting Lengkap}
+	\frametitle{Pivoting Lengkap (Complete Pivoting)}
 	\begin{itemize}
 		\item Jika disamping baris, kolom juga diikutkan dalam pencarian elemen terbesar dan kemudian dipertukarkan, maka tata ancang ini disebut pivoting lengkap.
 		\item Pivoting lengkap jarang dipakai dalam program sederhana karena pertukaran kolom mengubah urutan suku $ x $ dan akibatnya menambah kerumitan program secara berarti.
@@ -453,7 +460,7 @@
 \begin{frame}
 	\frametitle{Contoh 4}
 	\begin{itemize}
-		\item Dengan menggunakan empat angka bena, selesaikan sistem persamaan berikut dengan metode eliminasi Gauss:
+		\item \textbf{Persoalan:} Dengan menggunakan empat angka bena, selesaikan sistem persamaan berikut dengan metode eliminasi Gauss:
 		\begin{align*}
 			0.0003x_1 + 1.566x_2 &= 1.569 \\
 			0.3454x_1 - 2.436x_2 &= 1.018
@@ -468,7 +475,7 @@
 
 \begin{frame}
 	\begin{itemize}
-		\item Penyelesaian:
+		\item \textbf{Penyelesaian:}
 		\begin{enumerate}
 			\item tanpa tata ancang pivoting sebagian (Gauss naif)
 			\[
@@ -543,16 +550,17 @@
 	\begin{itemize}
 		\item Jadi, $ x = (3.333, 1.001)^T $.
 		\item Solusi ini sangat jauh berbeda dengan solusi sejatinya.
-		\item Kegagalan ini terjadi karena $ | a_{11} | $ sangat kecil dibandingkan $ |x_{12} | $, sehingga galat pembulatan yang kecil pada $ x_2 $ menghasilkan galat besar di $ x_1 $ .
-		\item Perhatikan juga bahwa $ 1.569 - 1.568 $ adalah pengurangan dua buah bilangan yang hampir sama, yang menimbulkan hilangnya angka bena pada hasil pengurangannya (loss of significance).
+		\item Kegagalan ini terjadi karena $ | a_{11} | $ sangat kecil dibandingkan $ |a_{12} | $, sehingga galat pembulatan yang kecil pada $ x_2 $ menghasilkan galat besar di $ x_1 $ .
+		\item Perhatikan juga bahwa $ 1.569 - 1.568 $ adalah pengurangan dua buah bilangan yang hampir sama, yang menimbulkan hilangnya angka bena pada hasil pengurangannya (\textit{loss of significance}).
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\begin{itemize}
-		\item Penyelesaian:
+		\item \textbf{Penyelesaian:}
 		\begin{enumerate}
-			\item Baris pertama dipertukarkan dengan baris kedua sehingga 0.3454 menjadi pivot
+		   \setcounter{enumi}{1}
+		   \item Baris pertama dipertukarkan dengan baris kedua sehingga 0.3454 menjadi pivot
 			\[
 			\left[
 				\begin{matrix}
@@ -593,10 +601,8 @@
 
 \begin{frame}
 	\begin{itemize}
-		\item[]
-		\begin{enumerate}
-			\item[] Keberhasilan ini karena $ | a_{21} | $ tidak sangat kecil dibandingkan dengan $ | a_{22} | $, sehingga galat pembulatan yang kecil pada $ x_2 $ tidak akan menghasilkan galat yang besar pada $ x_1 $ .
-		\end{enumerate}
+		\item Keberhasilan ini karena $ | a_{21} | $ tidak sangat kecil dibandingkan dengan $ | a_{22} | $
+		\item sehingga galat pembulatan yang kecil pada $ x_2 $ tidak akan menghasilkan galat yang besar pada $ x_1 $ . 
 	\end{itemize}
 \end{frame}
 
@@ -607,9 +613,9 @@
 	\begin{itemize}
 		\item Tidak semua SPL mempunyai solusi. Ada tiga kemungkinan solusi yang dapat terjadi pada SPL:
 		\begin{enumerate}
-			\item mempunyai solusi yang unik,
-			\item mempunyai banyak solusi, atau
-			\item tidak ada solusi sama sekali.
+			\item Mempunyai solusi yang unik.
+			\item Mempunyai banyak solusi.
+			\item Tidak ada solusi sama sekali.
 		\end{enumerate}
 	\end{itemize}
 	\begin{center}
@@ -722,7 +728,7 @@
 		\right|
 		\left.
 		\begin{matrix}
-		4 \\ -6 \\ 0
+		4 \\ -6 \\ 1
 		\end{matrix}
 		\right]
 	}\]
@@ -768,7 +774,7 @@
 \begin{frame}
 	\frametitle{Contoh 5}
 	\begin{itemize}
-		\item Selesaikan sistem persamaan lanjar di bawah ini dengan metode eliminasi Gauss-Jordan.
+		\item \textbf{Persoalan:} Selesaikan sistem persamaan lanjar di bawah ini dengan metode eliminasi Gauss-Jordan.
 		\begin{align*}
 		3x_1 - 0.1x_2 - 0.2x_3 = 7.85 \\
 		0.1x_1 + 7x_2 - 0.3x_3 = -19.3 \\
@@ -779,7 +785,7 @@
 
 \begin{frame}
 	\begin{itemize}
-		\item Penyelesaian:
+		\item \textbf{Penyelesaian:}
 	\end{itemize}
 	\[
 	\Scale[0.9]{
@@ -955,8 +961,6 @@
 	\end{itemize}
 \end{frame}
 
-\subsection{Matriks Balikan (inverse matrices)}
-
 \begin{frame}
 	\frametitle{Matriks Balikan (inverse matrices)}
 	\begin{itemize}
@@ -981,7 +985,7 @@
 	\begin{itemize}
 		\item Nilai $ a_{11} a_{22} - a_{21}a_{12} $ ini disebut \textbf{determinan}.
 		\item Determinan dilambangkan dengan dua buah garis tegak $ (| |) $.
-		\item Bila determinan $ A = 0 $, matriks A tidak mempunya balikan, sehingga dinamakan matriks singular.
+		\item Bila determinan $ A = 0 $, matriks A tidak mempunya balikan, sehingga dinamakan \textit{matriks singular}.
 		\item Sistem persamaan lanjar yang mempunyai matriks A singular (sistem singular) tidak mempunyai solusi yang unik, yaitu solusinya banyak atau solusinya tidak ada.
 	\end{itemize}
 \end{frame}
@@ -1044,7 +1048,7 @@
 \begin{frame}
 	\frametitle{Contoh 6}
 	\begin{itemize}
-		\item \textbf{Soal:} Tentukan matriks balikan dari matriks $ A $ berikut
+		\item \textbf{Persoalan:} Tentukan matriks balikan dari matriks $ A $ berikut
 		\[ A = \begin{bmatrix}
 			1 & -1 & 2 \\
 			3 & 0 & 1 \\
@@ -1098,7 +1102,7 @@
 		\begin{matrix}
 		1 & 0 & 0 \\
 		0 & 1 & 0 \\
-		0 & 0 & 12
+		0 & 0 & 1
 		\end{matrix}
 	\right|
 	\left.
@@ -1127,12 +1131,12 @@
 \begin{frame}
 	\frametitle{Metode Matriks Balikan}
 	\begin{itemize}
-		\item Misalkan $ A{-1} $ adalah matriks balikan dari A. Sistem persamaan lanjar $ Ax = b $ dapat diselesaikan sebagai berikut:
+		\item Misalkan $ A^{-1} $ adalah matriks balikan dari A. Sistem persamaan lanjar $ Ax = b $ dapat diselesaikan sebagai berikut:
 		\begin{align*}
 			Ax &= b \\
 			A^{-1}Ax &= A^{-1}b \\
 			Ix &= A^{-1}b \qquad (A^{-1}A = I)\\
-			x = A^{-1}b
+			x &= A^{-1}b
 		\end{align*}
 		\item Cara penyelesaian dengan mengalikan matriks $ A^{-1} $ dengan $ b $ itu dinamakan \textbf{metode matriks balikan}.
 	\end{itemize}
@@ -1171,7 +1175,7 @@
 			\right]
 			\begin{matrix}
 				\\
-				R_2 - 3R-1 \\
+				R_2 - 3R_1 \\
 				R_3 - R_1\\
 			\end{matrix}
 			\left[
@@ -1244,10 +1248,10 @@
 \begin{frame}
 	\frametitle{Metode Dekomposisi LU}
 	\begin{itemize}
-		\item Jika matriks $ A $ non-singular maka ia dapat difaktorkan (diuraikan atau di-dekomposisi) menjadi matriks segitiga bawah L (lower) dan matriks segitiga atas U (upper):
-		$ A = LU $
+		\item Jika matriks $ A $ \textit{non-singular} maka ia dapat difaktorkan (diuraikan atau di-dekomposisi) menjadi matriks segitiga bawah L (\textit{lower}) dan matriks segitiga atas U (\textit{upper}):
 	\end{itemize}
-	\[
+	\[ A = LU \]
+	\[\Scale[0.8]{
 	\begin{bmatrix}
 		a_{11} & a_{12} & a_{13} & \dots & a_{1n} \\
 		a_{21} & a_{22} & a_{23} & \dots & a_{2n} \\
@@ -1263,7 +1267,14 @@
 		\vdots \\
 		l_{n1} & l_{n2} & l_{n3} & \dots & 1 \\
 	\end{bmatrix}
-	\]
+	\begin{bmatrix}
+		u_{11} & u_{12} & u_{13} & \dots & u_{1n} \\
+		0 & u_{22} & u_{23} & \dots & u_{2n} \\
+		0 & 0 & u_{33} & \dots & u_{3n} \\
+		\vdots \\
+		0 & 0 & 0 & \dots & u_{nn} \\
+	\end{bmatrix}
+	}\]
 \end{frame}
 
 \begin{frame}
@@ -1289,7 +1300,7 @@
 		\]
 		\item Sekali $ A $ difaktorkan menjadi $ L $ dan $ U $, kedua matriks tersebut dapat digunakan untuk menyelesaikan $ Ax = b $.
 		\item Metode penyelesaian SPL dengan cara ini dikenal dengan nama \textbf{metode dekomposisi LU}.
-		\item Metode ini dinamakan juga \textbf{metode pemfaktoran segitiga} (\textit{triangular factorization }).
+		\item Metode ini dinamakan juga \textbf{metode pemfaktoran segitiga} (\textit{triangular factorization}).
 	\end{itemize}
 \end{frame}
 
@@ -1408,7 +1419,7 @@
 \begin{frame}
 	\begin{enumerate}
 		\item Nyatakan $ A $ sebagai $ A = IA $
-		\[
+		\[\Scale[0.8]{
 		\begin{bmatrix}
 			a_{11} & a_{12} & a_{13} & \dots & a_{1n}\\
 			a_{21} & a_{22} & a_{23} & \dots & a_{2n}\\
@@ -1431,57 +1442,11 @@
 			\vdots & \vdots & \vdots & \dots & \vdots\\
 			a_{n1} & a_{n2} & a_{n3} & \dots & a_{nn}
 		\end{bmatrix}
-		\]
+		}\]
 		\item Eliminasikan matriks $ A $ di ruas kanan menjadi matriks segitiga atas $ U $.
 		Tempatkan faktor pengali $ m_{ij} $ pada posisi $ l_{ij} $ di matriks $ I $.
 		\item Setelah seluruh proses eliminasi Gauss selesai, matriks $ I $ menjadi matriks $ L $, dan matriks $ A $ di ruas kanan menjadi matriks $ U $.
 	\end{enumerate}
-\end{frame}
-
-\begin{frame}
-	\[\Scale[0.8]{
-	\left[
-		\begin{matrix}
-			a_{11} & a_{12} & a_{13} & \dots & a_{1n}\\
-			a_{21} & a_{22} & a_{23} & \dots & a_{2n}\\
-			a_{31} & a_{32} & a_{33} & \dots & a_{3n}\\
-			\vdots & \vdots & \vdots & \dots & \vdots\\
-			a_{n1} & a_{n2} & a_{n3} & \dots & a_{nn}
-		\end{matrix}
-	\right]
-	\left[
-		\begin{matrix}
-			b_1 \\ b_2 \\ b_3 \\ \vdots \\ b_n
-		\end{matrix}
-	\right]
-	\rightarrow
-	\left[
-		\begin{matrix}
-			1 & 0 & 0 & \dots & 0\\
-			0 & 1 & 0 & \dots & 0\\
-			0 & 0 & 1 & \dots & 0\\
-			\vdots & \vdots & \vdots & \dots & \vdots\\
-			0 & 0 & 0 & \dots & 1
-		\end{matrix}
-	\right]
-	\left[
-		\begin{matrix}
-			b_1' \\ b_2' \\ b_3' \\ \vdots \\ b_n'
-		\end{matrix}
-	\right]
-	}\]
-	Solusinya:
-	\[\Scale[0.8]{
-	\begin{matrix}
-		x_1 & & & &= b_1' \\
-		&x_2  & & &= b_2' \\
-		& & \dots & &= \dots \\
-		& & & x_n &= b_n'
-	\end{matrix}
-	}\]
-	\begin{itemize}
-		\item Seperti halnya metode eliminasi Gauss, tata-ancang pivoting dan penskalaan juga dapat diterapkan pada metoda ini untuk memperkecil galat pembulatan.
-	\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -1537,12 +1502,12 @@
 			0 & 1.25 & 6.25\\
 		\end{bmatrix}
 		}\]
-		\item Tempatkan $ m_{21} = -2/4 = 0.5 $ dan $ m_{31} = 1/4 = 0.25 $ ke dalam matriks $ L $:
+		\item Tempatkan $ m_{21} = -2/4 = -0.5 $ dan $ m_{31} = 1/4 = 0.25 $ ke dalam matriks $ L $:
 		\[\Scale[0.7]{ L = 
 		\begin{bmatrix}
 			1 & 0 & 0\\
 			-0.5 & 1 & 0\\
-			0 & m_{32} & 1\\
+			0.25 & 0 & 1\\
 		\end{bmatrix}
 		}\]
 	\end{itemize}
@@ -1631,11 +1596,11 @@
 		0 & 0 & 3 \\
 		0 & 2 & 0
 		\end{bmatrix} \]
-		\item Tempatkan $ m_{21} = 2 $ dan $ m_{31} = 1/1 = 1 $ ke dalam matriks $ L $:
+		\item Tempatkan $ m_{21} = 2/1 = 2 $ dan $ m_{31} = -1/1 = -1 $ ke dalam matriks $ L $:
 		\[ L = \begin{bmatrix}
 			1 & 0 & 0 \\
 			2 & 1 & 0 \\
-			-1 & m_{32} & 1
+			-1 & 0 & 1
 		\end{bmatrix} \]
 	\end{itemize}
 \end{frame}
@@ -1646,25 +1611,25 @@
 		\[ \begin{bmatrix}
 			1 & 1 & -1 \\
 			0 & \textbf{0} & 3 \\
-			0 & 2 & 0
+			0 & \textbf{2} & 0
 		\end{bmatrix} R_2 \Leftrightarrow R_3
 		\begin{bmatrix}
 			1 & 1 & -1 \\
-			0 & 2 & 0 \\
-			0 & 0 & 3 \\
+			0 & \textbf{2} & 0 \\
+			0 & \textbf{0} & 3 \\
 		\end{bmatrix}\]
 		\item Jangan lupa mempertukarkan juga $ R_2 \Leftrightarrow R_3 $ pada matriks $ L $, kecuali elemen diagonalnya
 		\[
 		L = \begin{bmatrix}
 			1 & 0 & 0 \\
-			2 & 1 & 0 \\
-			-1 & m_{32} & 1
+			\textbf{2} & 1 & 0 \\
+			\textbf{-1} & 0 & 1
 		\end{bmatrix}
 		R_2 \Leftrightarrow R_3
 		\begin{bmatrix}
 			1 & 0 & 0 \\
-			-1 & 1 & 0 \\
-			2 & m_{32} & 1
+			\textbf{-1} & 1 & 0 \\
+			\textbf{2} & 0 & 1
 		\end{bmatrix}
 		\]
 	\end{itemize}
@@ -1674,10 +1639,10 @@
 	\begin{itemize}
 		\item Jangan lupa mempertukarkan juga $ R_2 \Leftrightarrow R_3 $ pada vektor $ b $,
 		\[ b = \begin{bmatrix}
-		1 \\ 5 \\ 1
+		1 \\ \textbf{5} \\ \textbf{1}
 		\end{bmatrix} R_2 \Leftrightarrow R_3
 		 \begin{bmatrix}
-		1 \\ 1 \\ 5
+		1 \\ \textbf{1} \\ \textbf{5}
 		\end{bmatrix}
 		\]
 		\item Teruskan proses eliminasi Gauss pada matriks $ A $:
