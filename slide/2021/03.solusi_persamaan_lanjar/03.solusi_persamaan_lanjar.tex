@@ -1899,15 +1899,226 @@
 		\end{bmatrix}\qquad b = \begin{bmatrix}
 		1 \\ 5 \\ 1
 		\end{bmatrix} \]
-		\item diperoleh
+		\item[] diperoleh
 		\begin{align*}
 			u_{11} &= a_{11} = 1 \\
 			u_{12} &= a_{12} = 1 \\
 			u_{13} &= a_{13} = -1 \\
 			\\
 			l_{21} &= a_{21}/u_{11} = 2/1 = 2 \\
+			l_{31} &= a_{31}/u_{11} = -1/1 = -1 \\
 		\end{align*}
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item[]
+		\begin{align*}
+			u_{22} &= a_{22} - l_{21}u_{12} = 2 - 2(1) = 0 \\
+		\end{align*}
+		\item Karena $ u_{qq} $ tidak boleh nol, lakukan pertukaran baris, baik untuk matriks $ A $ maupun untuk vektor $ b $:
+		\[
+		A = R_2 \Leftrightarrow R_3 \begin{bmatrix}
+		1 & 1 & -1\\ -1 & 1 & 1 \\ 2 & 2 & 1 
+		\end{bmatrix} \qquad R_2 \Leftrightarrow b = R_3\begin{bmatrix}
+		1 \\ 1 \\ 5 
+		\end{bmatrix}
+		\]
+		\item Hitung kembali nilai $ l_{21} $ , $ l_{31} $ , dan $ u_{22} $ (Perhatikan bahwa nilai $ u_{11} $ , $ u_{12} $ , $ u_{13} $ tidak berubah)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item[]
+		\begin{align*}
+		l_{21} &= a_{21}/u_{11} = -1/1 = -1 \\
+		l_{31} &= a_{31}/u_{11} = 2/1 = 2 \\
+		\\
+		u_{22} &= a_{22} - l_{21}u_{12} = 1-(-1)(1) = 2 \\
+		u_{23} &= a_{23} - l_{21}u_{13} = 1-(-1)(-1) = 0 \\
+		\\
+		l_{32} &= \frac{a_{32}-l_{31}u_{12}}{u_{22}} = \frac{2-2(1)}{2} = 0
+		\\
+		u_{33} &= a_{33} - (l_{31}u_{13}+l_{32}u_{23}) = 1 - [2\cdot(-1) + 0\cdot0] = 3
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Diperoleh $ L $ dan $ U $ sebagai berikut,
+		\[U = \begin{bmatrix}
+		1 & 1 & -1 \\ 0 & 2 & 0 \\ 0 & 0 & 3
+		\end{bmatrix}\quad L = \begin{bmatrix}
+		1 & 0 & 0 \\ -1 & 1 & 0 \\ 2 & 0 & 1
+		\end{bmatrix} \text{ dan } b = \begin{bmatrix}
+		1 \\ 1 \\ 5
+		\end{bmatrix}\]
+		\item Berturut-turut dihitung $ y $ dan $ x $ sebagai berikut:
+		\[ Ly = b \rightarrow \begin{bmatrix}
+		1 & 0 & 0 \\ -1 & 1 & 0 \\ 2 & 0 & 1
+		\end{bmatrix} \begin{bmatrix}
+		y_1 \\ y_2 \\ y_3
+		\end{bmatrix} = \begin{bmatrix}
+		1 \\ 1 \\ 5
+		\end{bmatrix}\]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item $ y_1 $, $ y_2 $, dan $ y_3 $ dihitung dengan teknik penyulihan maju:
+		\begin{align*}
+			y_1 &= 1 \\
+			-y_1 + y_2 &= 1 \rightarrow y_2 = 1 + y_1 = 1 + 1 = 2 \\
+			2y_1 + 0y_2 + y_3 &= 5 \rightarrow y_3 = 5 - 2y_1 = 3
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item[] 
+		\[ Ux = y \rightarrow \begin{bmatrix}
+		1 & 1 & -1 \\ 0 & 2 & 0 \\ 0 & 0 & 3
+		\end{bmatrix} \begin{bmatrix}
+		x_1 \\ x_2 \\ x_3
+		\end{bmatrix} = \begin{bmatrix}
+		1 \\ 2 \\ 3
+		\end{bmatrix}\]
+		\item $ x_1 $, $ x_2 $, dan $ x_3 $ dihitung dengan teknik penyulihan mundur:
+		\begin{align*}
+		3x_3 &= 3 \rightarrow x_3 = 1 \\
+		2x_2 + 0x_3 &= 2 \rightarrow x_2 = 1 \\
+		x_1 + x_2 - x_3 &= 1 \rightarrow x_1 = 1
+		\end{align*}
+		\item Jadi, solusi sistem persamaan lanjar di atas adalah $ x = (1, 1, 1)^T $.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Jika diamati elemen segitiga bawah pada matriks $ U $ semuanya bernilai nol, sehingga ruang yang tidak terpakai itu dapat dipakai untuk menyimpan elemen matriks $ L $.
+		\item Elemen diagonal matriks $ L $ seluruhnya 1, jadi tidak perlu disimpan (\textit{default}). Dengan demikian, penyimpanan elemen $ L $ dan $ U $ pada satu matriks dapat menghemat penggunaan memori.
+		\item Selain itu, matriks $ A $ hanya dipakai sekali untuk
+		memperoleh $ L $ dan $ U $, sesudah itu tidak dipakai lagi.
+		\item Dengan demikian, setelah $ L $ dan $ U $ diperoleh, elemennya dapat dipindahkan ke dalam $ A $.
+		\item Karena alasan ini, maka metode dekomposisi $ LU $ dinamakan juga metode kompaksi memori.
+	\end{itemize}
+\end{frame}
+
+\section{Determinan}
+
+\begin{frame}
+	\frametitle{Determinan}
+	\begin{itemize}
+		\item Metode eliminasi Gauss dapat diterapkan untuk menghitung
+		determinan matriks $ n \times n $.
+		\item Determinannya dapat dihitung setelah ia ditransformasi menjadi matriks segitiga atas $ U $.
+		\item Dua hukum penting determinan:
+		\begin{itemize}
+			\item $ det(BC) = det(B) \times det(C) $
+			\item $ det(M) = $ hasil kali semua elemen diagonal $ M $ jika $ M $ adalah matriks segitiga atas atau matriks segitiga
+			bawah.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Kasus 1: Bila eliminasi Gauss tidak menerapkan tata-ancang pivoting.}
+	\begin{itemize}
+		\item Jika pivoting tidak diterapkan, determinan matriks $ A $
+		adalah:
+		\begin{align*}
+			det(A) &= det(LU) \\
+			&= det(L) \times det(U) \\
+			&= det(U) \\
+			&= u_{11}u_{22}u_{33} \dots u_{nn}
+		\end{align*}
+		\item yang dalam hal ini $ det(L) = 1 $ sebab semua elemen diagonal $ L $ adalah satu.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Kasus 1: Bila eliminasi Gauss menerapkan tata-ancang pivoting.}
+	\begin{itemize}
+		\item Tatancang pivoting mengakibatkan pertukaran baris.
+		\item Dekomposisi LU dengan pivoting setara dengan mengerjakan dua proses terpisah berikut:
+		\begin{enumerate}
+			\item Transformasikan matriks $ A $ menjadi matriks $ A' $ dengan cara permutasi baris-baris matriks (sama dengan mengalikan $ A $ dengan matriks permutasi $ P $),
+			\[ A' = PA \] atau setara dengan \[ A = P^{-1}A' \]
+			\item Dekomposisi $ A' $ menjadi $ LU $ tanpa pivoting
+			\[A' = LU\]
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Dari (1) dan (2), $ L $ dan $ U $ dihubungkan dengan $ A $ oleh
+		\[ A = P -1 A' = P -1 LU \]
+		\item Determinan $ A $ dapat ditulis sebagai
+		\begin{align*}
+			det(A) &= det(P^{-1}) \times det(L) \times det(U) \\
+			&= det(P^{-1}) \times 1 \times det(U) \\
+			&= det(P^{-1}) \times det(U) \\
+			&= \alpha det(U)
+		\end{align*}
+		\item yang dalam hal ini $ \alpha = det(P^{-1}) = -1 $ atau $ 1 $ bergantung pada apakah pivoting sejumlah bilangan ganjil atau genap.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Jika pivoting dilakukan sejumlah $ p $ kali, maka $\alpha$ dapat ditulis sebagai:
+		$ \alpha = (-1)^p $
+		\item $\alpha$ bernilai 1 untuk $ p $ genap dan -1 untuk$  p $ ganjil. Karena itu,
+		\[ det(A) = (-1)^pdet(U) = (-1)^p u_{11} u_{22} u_{33} \dots u_{nn} \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 11}
+	\begin{itemize}
+		\item \textbf{Persoalan:} Hitung determinan matriks $ A $ berikut:
+		\[ A = \begin{bmatrix}
+		2 & 3 & -1 \\ 4 & 4 & -3 \\ -2 & 3 & -1
+		\end{bmatrix} \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 11}
+	\begin{itemize}
+		\item \textbf{Penyelesaian:}
+		\[ \begin{bmatrix}
+		2 & 3 & -1 \\ 4 & 4 & -3 \\ -2 & 3 & -1
+		\end{bmatrix}
+		\begin{matrix}
+		R_2 - \frac{4}{2}R_1 \\
+		R_3 - \frac{-2}{2}R_1 \\
+		\end{matrix}
+		\begin{bmatrix}
+		2 & 3 & -1 \\ 0 & -2 & -1 \\ 1 & 0 & -2
+		\end{bmatrix}
+		\begin{matrix}
+		R_3 - \frac{6}{-2}R_2
+		\end{matrix}
+		\begin{bmatrix}
+		2 & 3 & -1 \\ 0 & -2 & -1 \\ 0 & 0 & -5
+		\end{bmatrix}
+		\]
+		\item Tidak ada proses pivoting selama eliminasi Gauss, maka
+		\[ det(A) = (2) (-2) (-5) = 20 \]
+	\end{itemize}
+\end{frame}
+
+\section{Metode Lelaran Untuk Menyelesaikan SPL}
+
+\begin{frame}
+	\frametitle{Metode Lelaran Untuk Menyelesaikan SPL}
 \end{frame}
 
 \end{document}
