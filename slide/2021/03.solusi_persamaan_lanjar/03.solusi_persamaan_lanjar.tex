@@ -2119,6 +2119,122 @@
 
 \begin{frame}
 	\frametitle{Metode Lelaran Untuk Menyelesaikan SPL}
+	\begin{itemize}
+		\item Metode eliminasi Gauss melibatkan banyak galat pembulatan. Galat pembulatan yang terjadi pada eliminasi Gauss dapat menyebabkan solusi yang diperoleh “jauh” dari solusi sebenarnya.
+		\item Gagasan metoda lelaran pada pencarian akar persamaan nirlanjar dapat juga diterapkan untuk menyelesaikan SPL.
+		\item Dengan metode lelaran, galat pembulatan dapat diperkecil, karena kita dapat meneruskan lelaran sampai solusinya seteliti mungkin, sesuai dengan batas galat yang kita perbolehkan.
+		\item Dengan kata lain, besar galat dapat dikendalikan sampai batas yang bisa diterima
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Jika metode eliminasi Gauss dan variasi-variasinya serta
+		metode dekomposisi $ LU $ dinamakan \textbf{metode langsung} (\textit{direct}) -karena solusi SPL diperoleh tanpa lelaran-
+		\item maka metode lelaran dinamakan \textbf{metode tidak langsung} (\textit{indirect}) atau \textbf{metode iteratif}.
+		\item Tinjau kembali sistem persamaan lanjar
+		\begin{align*}
+			a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n = b_1 \\
+			a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n = b_2 \\
+			\vdots
+			a_{n1}x_1 + a_{n2}x_2 + \dots + a_{nn}x_n = b_n \\
+		\end{align*}
+		\item Dengan syarat $ a_{kk} \neq 0 $, $ k = 1, 2, \dots, n $, maka persamaan lelarannya dapat ditulis sebagai
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{align*}
+	x_1^{(k+1)} &= \frac{b_1 - a_{12}x_2^{(k)} - \dots - a_{1n}x_n^{(k)}}{a_{11}} \\
+	x_2^{(k+1)} &= \frac{b_2 - a_{21}x_1^{(k)}- a_{23}x_3^{(k)} - \dots - a_{2n}x_n^{(k)}}{a_{22}} \\
+	\vdots\\
+	x_n^{(k+1)} &= \frac{b_n - a_{n1}x_1^{(k)}- a_{n2}x_2^{(k)} - \dots - a_{nn-1}x_{n-1}^{(k)}}{a_{nn}} \\
+	\end{align*}
+	dengan $ k = 0, 1, 2, \dots $
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Lelaran dimulai dengan memberikan tebakan awal untuk $ x $,
+		\[ x_0 = \begin{bmatrix}
+		x_1^{(0)} \\ x_2^{(0)} \\ \vdots \\ x_n^{(0)} \\ 
+		\end{bmatrix} \]
+		\item Sebagai kondisi berhenti lelarannya, dapat digunakan pendekatan galat relatif
+		\[ \left| \frac{x_i^{(k+1)}-x_i^{(k)}}{x_i^{(k+1)}} \right| < \varepsilon \qquad \text{ untuk semua } i = 1,2,3,\dots,n \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Syarat cukup agar lelarannya konvergen adalah sistem \textbf{dominan secara diagonal}:
+		\[ \left| a_{ii} \right| > \sum_{j=1,j \neq i}^{n} \left| a_{ij} \right| \qquad \text{ untuk semua } i = 1,2,3,\dots,n \]
+		\item Sebagai contoh, SPL berikut
+		\begin{align*}
+			3x_1 + x_2 - x_3 &= 1 \\
+			2x_1 + 4x_2 + x_3 &= 5 \\
+			-x_1 + 5x_2 + 8x_3 &= 5
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item dominan secara diagonal, karena
+		\begin{align*}
+		|3| &> |1| + |-1| \\
+		|4| &> |2| + |1| \\
+		|8| &> |-1| + |5|
+		\end{align*}
+		\item karena itu lelarannya pasti konvergen.
+		\item Ada dua metode lelaran yang akan kita bahas di sini:
+		\begin{enumerate}
+			\item Metode lelaran Jacobi
+			\item Metode lelaran Gauss-Seidel
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\subsection{Metode Lelaran Jacobi}
+
+\begin{frame}
+	\frametitle{Metode Lelaran Jacobi}
+	\begin{itemize}
+		\item Persamaan lelarannya adalah seperti yang ditulis di atas.
+		\item Misalkan diberikan tebakan awal $ x^{(0)} $ :
+		\[ x^{(0)} = (x_1^{(0)}, x_2^{(0)}, \dots , x_n^{(0)})^T \]
+		\item Prosedur lelaran untuk lelaran pertama, kedua, dan seterusnya adalah sebagai berikut:
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Lelaran pertama:
+		\begin{align*}
+			x_1^{(1)} &= \frac{b_1 - a_{12}x_2^{(0)} - a_{13}x_3^{(0)} - \dots - a_{1n}x_n^{(0)}}{a_{11}} \\
+			x_2^{(1)} &= \frac{b_2 - a_{21}x_1^{(0)} - a_{23}x_3^{(0)} - \dots - a_{2n}x_n^{(0)}}{a_{22}} \\
+			\vdots\\
+			x_n^{(1)} &= \frac{b_n - a_{n1}x_1^{(0)} - a_{n2}x_2^{(0)} - \dots - a_{nn-1}x_{n-1}^{(0)}}{a_{nn}}
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Lelaran kedua:
+		\begin{align*}
+		x_1^{(2)} &= \frac{b_1 - a_{12}x_2^{(1)} - a_{13}x_3^{(1)} - \dots - a_{1n}x_n^{(1)}}{a_{11}} \\
+		x_2^{(2)} &= \frac{b_2 - a_{21}x_1^{(1)} - a_{23}x_3^{(1)} - \dots - a_{2n}x_n^{(1)}}{a_{22}} \\
+		\vdots\\
+		x_n^{(2)} &= \frac{b_n - a_{n1}x_1^{(1)} - a_{n2}x_2^{(1)} - \dots - a_{nn-1}x_{n-1}^{(1)}}{a_{nn}}
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Rumus umum:
+		\[ x_i^{k+1} = \frac{b_1 - \sum\limits_{j=1,j \neq i}^{n}a_{ij}x_j^{(k)}}{a_{ii}},\qquad k=0,1,2,\dots \]
+	\end{itemize}
 \end{frame}
 
 \end{document}
