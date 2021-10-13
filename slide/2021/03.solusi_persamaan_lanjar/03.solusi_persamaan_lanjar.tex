@@ -2237,4 +2237,104 @@
 	\end{itemize}
 \end{frame}
 
+\subsection{Metode Lelaran Gauss-Seidel}
+
+\begin{frame}
+	\frametitle{Metode Lelaran Gauss-Seidel}
+	\begin{itemize}
+		\item Kecepatan konvergen pada lelaran Jacobi dapat dipercepat bila setiap harga $ x_i $ yang baru dihasilkan segera dipakai pada persamaan berikutnya untuk menentukan harga $ x_{i+1} $ yang lainnya.
+		\item Metode lelarannya dinamakan lelaran Gauss-Seidel
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Lelaran pertama:
+		\begin{align*}
+		x_1^{(1)} &= \frac{b_1 - a_{12}x_2^{(0)} - a_{13}x_3^{(0)} - a_{14}x_4^{(0)}}{a_{11}}\\
+		x_2^{(1)} &= \frac{b_1 - a_{21}x_1^{(1)} - a_{23}x_3^{(0)} - a_{24}x_4^{(0)}}{a_{22}}\\
+		x_3^{(1)} &= \frac{b_3 - a_{31}x_2^{(1)} - a_{32}x_2^{(1)} - a_{34}x_4^{(0)}}{a_{33}}\\
+		x_4^{(1)} &= \frac{b_4 - a_{41}x_1^{(1)} - a_{43}x_2^{(1)} - a_{43}x_3^{(1)}}{a_{44}}
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Lelaran kedua:
+		\begin{align*}
+		x_1^{(2)} &= \frac{b_1 - a_{12}x_2^{(1)} - a_{13}x_3^{(1)} - a_{14}x_4^{(1)}}{a_{11}}\\
+		x_2^{(2)} &= \frac{b_1 - a_{21}x_1^{(2)} - a_{23}x_3^{(1)} - a_{24}x_4^{(1)}}{a_{22}}\\
+		x_3^{(2)} &= \frac{b_3 - a_{31}x_2^{(2)} - a_{32}x_2^{(2)} - a_{34}x_4^{(1)}}{a_{33}}\\
+		x_4^{(2)} &= \frac{b_4 - a_{41}x_1^{(2)} - a_{43}x_2^{(2)} - a_{43}x_3^{(2)}}{a_{44}}
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Rumus umum:
+		\[ x_i^{k+1} = \frac{b_1 - \sum\limits_{j=1}^{n}a_{ij}x_j^{(k+1)}-\sum\limits_{j=i+1}^{n}a_{ij}x_j^{(k)}}{a_{ii}},\qquad k=0,1,2,\dots \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 12}
+	\begin{itemize}
+		\item \textbf{Persoalan:} Tentukan solusi SPL
+		\begin{align*}
+			4x - y + z &= 7 \\
+			4x - 8y + z &= -21 \\
+			-2x + y + 5z &= 15
+		\end{align*}
+		dengan nilai awal $ P_0 = (x_0 , y_0 , z_0) = (1, 2, 2) $. (Solusi sejatinya adalah (2, 4, 3) )
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item \textbf{Penyelesaian dengan metode lelaran Jacobi:}
+		\item Persamaan lelarannya:
+		\begin{align*}
+			x_{r+1} &= \frac{7 + y_r - z_r}{4} \\
+			y_{r+1} &= \frac{21 + 4 x_r - z_r}{8} \\
+			z_{r+1} &= \frac{15 + 2 x_r - y_r}{5}
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Lelarannya
+	\end{itemize}
+	\centering
+	\scalebox{0.7}{\parbox{.5\linewidth}{%
+		\begin{align*}
+		x_{1} &= \frac{7 + 2 - 2}{4} = 1.75 \\
+		y_{1} &= \frac{21 + 4 \cdot 1 - 2}{8} = 3.375 \\
+		z_{1} &= \frac{15 + 2 \cdot 1 - 2}{5} = 3.000 \\
+		\\
+		x_{2} &= \frac{7 + 3.375 - 3.00}{4} = 1.84375 \\
+		y_{2} &= \frac{21 + 4 \cdot 3.375 - 3.00}{8} = 3.875 \\
+		z_{2} &= \frac{15 + 2 \cdot 1.75 - 3.375}{5} = 3.025 \\
+		\vdots \\
+		x_{19} &= 2.00000000 \\
+		y_{19} &= 4.00000000 \\
+		z_{19} &= 3.00000000
+		\end{align*}
+	}}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item \textbf{Penyelesaian dengan metode lelaran Gauss-Seidel:}
+		\item Persamaan lelarannya:
+		\begin{align*}
+		x_{r+1} &= \frac{7 + y_r - z_r}{4} \\
+		y_{r+1} &= \frac{21 + 4 x_r - z_r}{8} \\
+		z_{r+1} &= \frac{15 + 2 x_r - y_r}{5}
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
 \end{document}
