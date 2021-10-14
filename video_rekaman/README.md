@@ -5,3 +5,5 @@
 1. [Pertemuan 3 - Solusi Persamaan Nirlanjar - Bagian 1](https://drive.google.com/file/d/1ftrD39-LDY3fTYRhAEZediuZwL5uDEzY/view?usp=sharing)
 1. [Pertemuan 4 - Solusi Persamaan Nirlanjar - Bagian 2](https://drive.google.com/file/d/1rQKW6zrkeEDHa3ylQCZjxWqLpsQ8X6_G/view?usp=sharing)
 1. [Pertemuan 5 - Solusi Persamaan Nirlanjar - Bagian 3](https://drive.google.com/file/d/1u0ntZ0unROuo7jd5n4kY7lLHb3YGYQ3h/view?usp=sharing)
+1. [Pertemuan 6 - Solusi Sistem Persamaan Lanjar - Bagian 1](https://drive.google.com/file/d/1OsFOUZwPUTq0SpNQdeU9eNOYKpf6VTe0/view?usp=sharing)
+1. [Pertemuan 7 - Solusi Sistem Persamaan Lanjar - Bagian 2](https://drive.google.com/file/d/1BdPUGB2dhEMlAKGpeaRt97mGXQt-o6U6/view?usp=sharing)
