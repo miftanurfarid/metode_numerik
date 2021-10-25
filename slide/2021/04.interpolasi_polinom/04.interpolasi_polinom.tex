@@ -294,4 +294,63 @@
 	\end{itemize}
 \end{frame}
 
+\section{Polinom Lagrange}
+
+\begin{frame}
+	\frametitle{Polinom Lagrange}
+	\begin{itemize}
+		\item Tinjau kembali polinom lanjar:
+		\[ p_1(x) = y_0 + \frac{(y_1 - y_0)}{(x_1 - x_0)}(x-x_0) \]
+		\item Persamaan ini dapat diatur kembali sedemikian rupa sehingga menjadi
+		\[ p_1(x) = y_0 + \frac{(x - x_1)}{(x_0 - x_1)} + y_1\frac{(x-x_0)}{(x_1-x_0)} \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Polinom Lagrange}
+	\begin{itemize}
+		\item atau dapat dinyatakan dalam bentuk
+		\[ p_1(x) = a_0 L_0 (x) + a_1 L_1 (x) \]
+		\item yang dalam hal ini
+		\[ a_0 = y_0,\quad L_0(x) = \frac{(x-x_1)}{(x_0-x_1)} \]
+		dan
+		\[ a_1 = y_1,\quad L_1(x) = \frac{(x-x_0)}{(x_1-x_0)} \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Polinom Lagrange}
+	\begin{itemize}
+		\item Bentuk umum polinom Lagrange derajat $ \leq  n $ untuk $ (n + 1) $ titik berbeda adalah
+		\begin{equation}\label{pol.lagr}
+			p_n(x) = \sum_{i=0}^{n} a_i L_i(x) = a_0 L_0(x) + a_1 L_1(x) + \dots + a_n L_n(x)
+		\end{equation}
+		yang dalam hal ini
+		\[ a_i = y_i,\quad i=0,1,2,\dots,n \]
+		dan
+		\begin{align*}
+			L_i(x) &= \prod_{j=0;j\neq i}^{n} \frac{(x-x_j)}{(x_i-x_j)} \\
+			&= \frac{(x-x_0)(x-x_1) \dots (x-x_{i-1})(x-x_{i+1})\dots (x-x_n)}{(x_i -x_0)(x_i-x_1) \dots (x_i-x_{i-1})(x_i-x_{i+1})\dots (x_i-x_n)}
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 4}
+	\begin{itemize}
+		\item \textbf{Persoalan:} Hampiri fungsi $ f(x) = \cos x $ dengan polinom interpolasi derajat tiga di dalam selang $ [0.0, 1.2] $. Gunakan empat titik, $ x_0 = 0.0 $, $ x_1 = 0.4 $, $ x_2 = 0.8 $, dan $ x_3 = 1.2 $. Perkirakan nilai $ p_3(0.5) $, dan bandingkan dengan nilai sejatinya.
+		\item \textbf{Penyelesaian:}
+		\begin{center}
+			\includegraphics[width=0.7\linewidth]{img/img08}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 4}
+	\begin{itemize}
+		\item Polinom Lagrange derajat 3 yang menginterpolasi keempat titik di tabel adalah
+		\begin{align*}
+			p_3 (x) &= a_0 L_0 (x) + a_1 L_1 (x) + a_2 L_2 (x) + a_3 L_3 (x) \\
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
 \end{document}
