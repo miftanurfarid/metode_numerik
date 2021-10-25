@@ -141,12 +141,157 @@
 	\begin{multicols}{2}
 		\[ y_0 = a_0 + a_1 x_0;~y_1 = a_0 + a_1 x_1 \] menjadi
 		\[ a_1 = \frac{y_1 - y_0}{x_1 - x_0};~a_0 = \frac{x_1 y_0 - x_0 y_1}{x_1 - x_0} \] sehingga
-		\[ p_1(x) = \frac{x_1 y_0 - x_0 y_1}{x_1 - x_0} +  \frac{y_1 - y_0}{x_1 - x_0} x \]
+		\[ p_1(x) = \frac{x_1 y_0 - x_0 y_1}{x_1 - x_0} +  \frac{(y_1 - y_0)}{(x_1 - x_0)} x \]
 		\columnbreak
 		\begin{center}
 			\includegraphics[width=0.8\linewidth]{img/img04}
 		\end{center}
 	\end{multicols}
+\end{frame}
+
+\begin{frame}
+	Bila disederhanakan akan lebih lanjut:
+	\begin{equation}\label{int.lanj}
+		p_1(x) = y_0 + \frac{(y_1 - y_0)}{(x_1 - x_0)}(x-x_0)
+	\end{equation}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 1}
+	\begin{itemize}
+		\item \textbf{Persoalan:} Perkirakan jumlah penduduk Amerika Serikat pada tahun 1968 berdasarkan data tabulasi berikut
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{img/img05}
+		\end{center}
+		\item \textbf{Penyelesaian:} Dengan menggunakan persamaan (\ref{int.lanj}) diperoleh
+		\[ p_1(1968) = 179.3 + \frac{(203.2-179.3)(1968-1960)}{1970-1960} = 198.4 \]
+		Jadi, taksiran jumlah penduduk AS pada tahun 1968 adalah 198.4 juta
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 2}
+	\begin{itemize}
+		\item \textbf{Persoalan:} Dari data $ \ln(9.0) = 2.1972 $, $ \ln(9.5) = 2.2513 $, tentukan $ \ln(9.2) $ dengan interpolasi lanjar sampai 5 angka bena. Bandingkan dengan nilai sejati $ ln(9.2) = 2.2192 $.
+		\item \textbf{Penyelesaian:} Dengan menggunakan persamaan (\ref{int.lanj}), diperoleh
+		\[ p_1(9.2) = 2.1972 + \frac{(2.1513-2.197)(9.2-9.0)}{9.5-90} = 2.2188 \]
+		Galat = 2.2192 - 2.2188 = 0.0004. Di sini interpolasi lanjar tidak cukup untuk memperoleh ketelitian sampai 5 angka bena. Ia hanya benar sampai 3 angka bena
+	\end{itemize}
+\end{frame}
+
+\subsection{Interpolasi Kuadratik}
+
+\begin{frame}
+	\frametitle{Interpolasi Kuadratik}
+	\begin{itemize}
+		\item Misal diberikan tiga buah titik data, $ (x_0, y_0) $, $ (x_1, y_1 ) $, dan $ (x_2, y_2) $.
+		\item Polinom yang menginterpolasi ketiga buah titik itu adalah polinom kuadrat yang berbentuk:
+		\begin{equation}\label{int.kuad}
+			p_2(x) = a_0 + a_1x + a_2 x^2
+		\end{equation}
+		\begin{multicols}{2}
+			\begin{center}
+				\includegraphics[width=\linewidth]{img/img06}
+			\end{center}
+			\item Bila digambar, kurva polinom kuadrat berbentuk parabola
+		\end{multicols}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolasi Kuadratik}
+	Polinom $ p_2(x) $ ditentukan dengan cara berikut:
+	\begin{enumerate}
+		\item Sulihkan $ (x_i, y_i) $ ke dalam persamaan (\ref{int.kuad}), $ i = 0, 1, 2 $. Dari sini diperoleh tiga buah persamaan dengan tiga buah parameter yang tidak diketahui, yaitu $ a_0 $, $ a_1 $, dan $ a_2 $:
+		\begin{align*}
+			a_0 + a_1 x_0 + a_2 x_0^2 &= y_0\\
+			a_0 + a_1 x_1 + a_2 x_1^2 &= y_1\\
+			a_0 + a_1 x_2 + a_2 x_2^2 &= y_2
+		\end{align*}
+		\item hitung $ a_0 $, $ a_1 $, $ a_2 $ dari sistem persamaan tersebut dengan metode eliminasi Gauss.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 3}
+	\begin{itemize}
+		\item \textbf{Persoalan:} Diberikan titik $ \ln(8.0) = 2.0794 $, $ \ln(9.0) = 2.1972 $, dan $ \ln(9.5) = 2.2513 $. Tentukan nilai $ \ln(9.2) $ dengan interpolasi kuadratik.
+		\item \textbf{Penyelesaian:} Sisten persamaan lanjar yang terbentuk adalah
+		\begin{align*}
+		a_0 + 8.0 a_1 + 64.00 a_2 &= 2.0794\\
+		a_0 + 9.0 a_1 + 81.00 a_2 &= 2.1972\\
+		a_0 + 9.5 a_1 + 90.25 a_2 &= 2.2513
+		\end{align*}
+		\item Penyelesaian sistem persamaan dengan metode eliminasi Gauss menghasilkan $ a_0 = 0.6762 $, $ a_1 = 0.2266 $, dan $ a_3 = -0.0064 $. Polinom
+		kuadratnya adalah
+		\[ p_2(x) = 0.6762 + 0.2266x - 0.0064x^2 \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 3}
+	\begin{itemize}
+		\item sehingga \[ p_2(9.2) = 2.2192 \] yang sama dengan nilai sejatinya (5 angka bena).
+	\end{itemize}
+\end{frame}
+
+\subsection{Interpolasi Kubik}
+
+\begin{frame}
+	\frametitle{Interpolasi Kubik}
+	\begin{itemize}
+		\item Misal diberikan empat buah titik data, $ (x_0, y_0) $, $ (x_1, y_1) $, $ (x_2, y_2) $,
+		dan $ (x_3 , y_3) $.
+		\item Polinom yang menginterpolasi keempat buah titik itu adalah polinom kubik yang berbentuk:
+		\begin{equation}\label{int.kub}
+			p_3(x) = a_0 + a_1x + a_2 x^2 + a_3 x^3
+		\end{equation}
+		\begin{center}
+			\includegraphics[width=0.4\linewidth]{img/img07}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolasi Kubik}
+	Polinom $ p_3(x) $ ditentukan dengan cara berikut:
+	\begin{enumerate}
+		\item sulihkan $ (x_i, y_i) $ ke dalam persamaan \ref{int.kub} , $ i = 0, 1, 2, 3 $. Dari sini diperoleh empat buah persamaan dengan empat buah parameter yang tidak diketahui, yaitu $ a_0 $, $ a_1 $, $ a_2 $, dan $ a_3 $ :
+		\begin{align*}
+			a_0 + a_1 x_0 + a_2 x_0^2 + a_3 x_0^3 &= y_0 \\
+			a_0 + a_1 x_1 + a_2 x_1^2 + a_3 x_1^3 &= y_1 \\
+			a_0 + a_1 x_2 + a_2 x_2^2 + a_3 x_2^3 &= y_2 \\
+			a_0 + a_1 x_3 + a_2 x_3^2 + a_3 x_3^3 &= y_3
+		\end{align*}
+		\item hitung $ a_0 $, $ a_1 $, $ a_2 $, dan $ a_3 $ dari sistem persamaan tersebut dengan metode eliminasi Gauss.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Dengan cara yang sama kita dapat membuat polinom interpolasi berderajat $ n $ untuk $ n $ yang lebih tinggi:
+		\[ p_n(x) = a_0 + a_1 x + a_2 x^2 + \dots + a_n x^n \]
+		asalkan tersedia $ (n+1) $ buah titik data.
+		\item Dengan menyulihkan $ (x_i, y_i) $ ke dalam persamaan polinom di atas $ y = p_n(x) $ untuk $ i = 0, 1, 2, \dots, n $, akan diperoleh $ n $ buah sistem persamaan lanjar dalam $ a_0, a_1, a_2, \dots , a_n $,
+		\begin{align*}
+			a_0 + a_1 x_0 + a_2 x_0^2 + \dots + a_n x_0^3 &= y_0 \\
+			a_0 + a_1 x_1 + a_2 x_1^2 + \dots + a_n x_1^3 &= y_1 \\
+			&\vdots \\
+			a_0 + a_1 x_n + a_2 x_n^2 + \dots + a_n x_n^3 &= y_n
+		\end{align*}
+		\item[] 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Solusi sistem persamaan lanjar ini diperoleh dengan menggunakan metode eliminasi Gauss yang sudah anda pelajari.
+		\item Secara umum, penentuan polinom interpolasi dengan cara yang diuraikan di atas kurang disukai,
+		\item karena sistem persamaan lanjar yang diperoleh ada kemungkinan berkondisi buruk, terutama untuk derajat polinom yang semakin tinggi.
+		\item Metode polinom interpolasi yang banyak digunakan dalam komputasi numerik adalah:
+		\begin{enumerate}
+			\item Polinom Lagrange
+			\item Polinom Newton
+			\item Polinom Newton-Gregory (kasus khusus dari polinom Newton)
+		\end{enumerate}
+	\end{itemize}
 \end{frame}
 
 \end{document}
