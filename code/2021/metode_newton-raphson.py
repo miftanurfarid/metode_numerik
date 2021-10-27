@@ -8,10 +8,11 @@ Created on Fri Oct  1 10:16:54 2021
 
 import numpy as np
 
-x = 1
+x = 4
 eps = 0.00001
 
-x_New = lambda x: x - (np.exp(x) - 5*x**2)/(np.exp(x) - 10*x)
+#x_New = lambda x: x - (np.exp(x) - 5*x**2)/(np.exp(x) - 10*x)
+x_New = lambda x: 6-x
 
 for i in range(1,101,1):
     x_new = x_New(x)
