@@ -712,6 +712,215 @@
 
 \section{Polinom Newton-Gregory}
 
+\begin{frame}
+	\frametitle{Polinom Newton-Gregory}
+	\begin{itemize}
+		\item Polinom Newton-Gregory merupakan kasus khusus dari polinom Newton untuk titik-titik yang berjarak sama.
+		\item Untuk titik-titik yang berjarak sama, rumus polinom Newton menjadi lebih sederhana. Selain itu, tabel selisih-terbaginya pun lebih mudah dibentuk. Di sini kita menamakan tabel tersebut sebagai \textbf{tabel selisih} saja.
+		\item Ada dua macam tabel selisih, yaitu tabel selisih maju (\textit{forward difference}) dan tabel selisih mundur (\textit{backward difference}).
+		\item Karena itu, ada dua macam polinom Newton-Gregory, yaitu polinom \textbf{Newton-Gregory maju} dan polinom \textbf{Newton-Gregory mundur}.
+	\end{itemize}
+\end{frame}
 
+\subsection{Polinom Newton-Gregory Maju}
+
+\begin{frame}
+	\frametitle{Polinom Newton-Gregory Maju}
+	\begin{itemize}
+		\item Misalkan tabel selisih maju yang dibentuk dari lima buah titik:
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img19}
+		\end{center}
+		\item Bentuk umum:
+		\[ \Delta^{n+1}f_p = \Delta^{n}f_{p+1} - \Delta^{n}f_p,\quad n=0,1,2,\dots \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Penurunan Rumus Polinom Newton-Gregory Maju}
+	\begin{align*}
+		f[x_1,x_0] &= \frac{f(x_1) - f(x_0)}{x_1-x_0} = \frac{\Delta f(x_0)}{h} = \frac{\Delta f_0}{1!h} \\
+		f[x_1, x_2, x_0] &= \frac{f[x_2,x_1] - f[x_1,x_0]}{x_2-x_0} = \frac{\frac{f(x_2) - f(x_1)}{x_2-x_1} - \frac{f(x_1) - f(x_0)}{x_1-x_0}}{x_2-x_0} \\
+		&= \frac{\frac{\Delta f_1 - \Delta f_0}{h}}{2h} = \frac{\Delta^2 f_0}{h}\frac{1}{2h} = \frac{\Delta^2f_0}{2!h^2}
+	\end{align*}
+	\begin{itemize}
+		\item Bentuk umum:
+		\[ f[x_n,\dots,x_1,x_0] = \frac{\Delta^n f(x_0)}{n!h^n} \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Penurunan Rumus Polinom Newton-Gregory Maju}
+	\begin{itemize}
+		\item Dengan demikian polinom Newton untuk data berjarak sama dapat ditulis sebagai:
+	\end{itemize}
+	\begin{align*}
+		p_n(x) &= f(x_0) + (x - x_0) f[x_1, x_0] + (x - x_0 )(x - x_1)f(x_2, x_1, x_0) \\
+		&+ \dots + (x - x_0)(x-x_1)\dots(x-x_{n-1})f[x_n, x_{n-1} , \dots, x_1, x_0] \\
+		&= f_0 + (x - x_0) \frac{\Delta f_0}{1!h} + (x - x_0)(x - x_1)\frac{\Delta^2 f_0}{2!h^2} \\
+		& + \dots + (x - x_0)(x - x_1)\dots(x - x_{n-1})\frac{\Delta^n f_0}{n!h^n}
+	\end{align*}
+	\begin{itemize}
+		\item Persamaan ini dinamakan polinom Newton-Gregory maju.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Penurunan Rumus Polinom Newton-Gregory Maju}
+	\begin{itemize}
+		\item Persamaan di atas dapat juga ditulis sebagai relasi rekursif:
+		\[ p_n(x) = p_{n-1}(x) + (x-x_0)(x-x_1)\dots(x-x_{n-1})\frac{\Delta^nf_0}{n!h^n}\]
+		\item Jika titik-titik berjarak sama dinyatakan sebagai
+		\[ x_i = x_0 + ih,\quad i = 0,1,2,\dots,n \]
+		\item dan nilai $ x $ yang diinterpolasikan adalah
+		\[ x = x_0 + sh,\quad s \in R \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Penurunan Rumus Polinom Newton-Gregory Maju}
+	\begin{itemize}
+		\item maka, persamaan di atas dapat juga ditulis dalam parameter $ s $ sebagai
+		\begin{align*}
+			p_n(x) &= f_0 + \frac{sh}{1!h}\Delta f_0 + \frac{s(s-1)h^2}{2!h^2}\Delta^2 f_0 + \dots + \\
+			& \frac{s(s-1)(s-2) \dots (s-n+1)h^n}{n!h^n}\Delta^n f_0
+		\end{align*}
+		\item yang menghasilkan
+		\begin{align*}
+			p_n(x) &= f_0 + \frac{s}{1!}\Delta f_0 + \frac{s(s-1)}{2!}\Delta^2 f_0 + \dots + \\
+			& \frac{s(s-1)(s-2) \dots (s-n+1)}{n!}\Delta^n f_0
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Penurunan Rumus Polinom Newton-Gregory Maju}
+	\begin{itemize}
+		\item atau dalam bentuk relasi rekursif,
+		\begin{enumerate}
+			\item rekurens:
+			\[ p_n(x) = p_{n-1}(x) + \frac{s(s-1)(s-2) \dots (s-n+1)}{n!}\Delta^n f_0 \]
+			\item basis:
+			\[ p_0(x) = f(x_0) \]
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 8}
+	\begin{itemize}
+		\item \textbf{Persoalan:} Bentuklah tabel selisih untuk fungsi $ f(x) = 1/(x+1) $ di dalam selang $ [0.000, 0.625] $ dan $ h = 0.125 $. Hitung $ f(0.300) $ dengan polinom Newton-Gregory maju derajat 3.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 8}
+	\begin{itemize}
+		\item \textbf{Penyelesaian:} Tabel selisih maju:
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img20}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Contoh 8}
+	\begin{itemize}
+		\item Untuk memperkirakan f(0.300) dengan polinom Newton-Gregory maju derajat tiga, dibutuhkan 4 buah titik. Ingatlah kembali bahwa galat interpolasi akan minimum jika x terletak di sekitar pertengahan selang. Karena itu, titik-titik yang diambil adalah
+		\[ x_0 = 0.125,~ x_1 = 0.250,~ x_2 = 0.375,~ x_3 = 0.500 \]
+		\item karena $ x = 0.300 $ terletak di sekitar pertengahan selang $ [0.125, 0.500] $.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 8}
+	\begin{itemize}
+		\item Diketahui $ h = 0.125 $ dan
+		\[ x = x_0 + sh \rightarrow s = \frac{x - x_0}{h} = \frac{0.310 - 0.125}{0.125} = 1.4 \]
+		\item Nilai $ f(0.300) $ dihitung dengan polinom Newton-Gregory maju derajat tiga:
+		\begin{align*}
+			p_3(x) &\approx f_0 + \frac{s}{1!} \Delta f_0 + \frac{s(s-1)}{2!}\Delta^2 f_0 + \frac{s(s-1)(s-2)}{3!}\Delta^3 f_0 \\
+			& \approx 0.889 + (1.4)(-0.089) + \frac{(1.4)(0.4)}{2}(0.016) + \frac{(1.4)(0.4)(-0.6)}{6}(-0.003) \\
+			&\approx 0.889 - 0.1246 + 0.0045 \\
+			&\approx 0.769
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 8}
+	\begin{itemize}
+		\item Sebagai perbandingan, nilai sejati $ f(0.300) $ adalah $ f(0.300) = 1/(0.300+1) = 0.769 $
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Manfaat Tabel Selisih Maju}
+	\begin{itemize}
+		\item Misalkan kita membentuk tabel selisih untuk fungsi $ f(x) = x $, $ f(x) = x^2 $, dan $ f(x) = x^3 $ pada titik-titik x yang berjarak sama, yaitu $ x_i = x_0 + ih $, $ i = 0, 1, 2, 3, \dots $
+		\item Tabel 1
+		\begin{center}
+			\includegraphics[width=0.7\linewidth]{img/img21}
+		\end{center}
+		\item Tabel 2
+		\begin{center}
+			\includegraphics[width=0.7\linewidth]{img/img22}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Manfaat Tabel Selisih Maju}
+	\begin{itemize}
+		\item Tabel 3
+		\begin{center}
+			\includegraphics[width=0.7\linewidth]{img/img23}
+		\end{center}
+		\item Pada ketiga tabel itu dapat disimpulkan bahwa untuk $ f(x) = ax^n $, yang dalam hal ini $ a = 1 $ dan $ n = 1, 2, 3 $, diperoleh
+		\[ \Delta^n f(x) = a n! h^n \] dan \[ \Delta^{n+1} f(x) = 0 \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Manfaat Tabel Selisih Maju}
+	\begin{itemize}
+		\item Bila di dalam tabel selisih ditemukan $ \Delta^k $ bernilai (hampir) konstan ($\neq 0$) maka polinom yang tepat menginterpolasi titik- titik itu adalah polinom berderajat $ k $.
+		\item Pada contoh tabel 3 di atas: $ \Delta^3 $ konstan, jadi titik-titiknya tepat diinterpolasi dengan polinom derajat tiga (sama dengan fungsi aslinya, $ f(x) = x^3 $ )
+		\item Bagaimanakah jika tidak terdapat $\Delta$ yang bernilai tetap ? Misalnya diberikan tabel selisih di bawah ini:
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Manfaat Tabel Selisih Maju}
+	\begin{center}
+		\includegraphics[width=0.7\linewidth]{img/img24}
+	\end{center}
+	\begin{itemize}
+		\item Pada tabel selisih di atas, tidak ada $\Delta^k$ yang mendekati nilai tetap. Jadi $ f(x) = 1/x $ tidak tepat dihampiri dengan polinom derajat 1, 2, 3, atau 4 di dalam selang $ [0.10, 0.60] $.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Manfaat Tabel Selisih Maju}
+	\begin{itemize}
+		\item Tetapi jika selang datanya diperkecil dengan pengambilan $ h $ yang lebih kecil dan digunakan empat angka bena sebagai berikut:
+		\begin{center}
+			\includegraphics[width=0.7\linewidth]{img/img25}
+		\end{center}
+		\item maka dari tabel ini ditemukan $\Delta^2$ mendekati nilai tetap yaitu sekitar 0.010.
+		\item Karena itu $ f(x) = 1/x $ dapat dihampiri sebanyak empat angka bena dengan polinom kuadratik di dalam selang $ [0.25, 0.30] $.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Kesimpulan}
+	\begin{itemize}
+		\item Tabel selisih bermanfaat untuk menentukan
+		\begin{enumerate}
+			\item Derajat polinom interpolasi
+			\item Selang data
+			\item Ketelitian yang diinginkan.
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\subsection{Polinom Interpolasi Newton-Gregory Mundur}
+
+\begin{frame}
+	\frametitle{Polinom Interpolasi Newton-Gregory Mundur}
+	\begin{itemize}
+		\item Polinom Newton-Gregory mundur (\textit{Newton-Gregory backward}) dibentuk dari tabel selisih mundur.
+		\item Polinom ini sering digunakan pada perhitungan nilai turunan (\textit{derivative}) secara numerik. Titik-titik yang digunakan berjarak sama, yaitu
+		\[ x_0,~x_{-1},~\dots,~x_{-n} \]
+	\end{itemize}
+\end{frame}
 
 \end{document}
