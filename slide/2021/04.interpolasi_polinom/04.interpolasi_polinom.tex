@@ -436,6 +436,281 @@
 	\end{itemize}
 \end{frame}
 
+\section{Polinom Newton}
+
+\begin{frame}
+	\frametitle{Polinom Newton}
+	Polinom Lagrange kurang disukai dalam praktek karena alasan berikut:
+	\begin{enumerate}
+		\item Jumlah komputasi yang dibutuhkan untuk satu kali interpolasi adalah besar. Interpolasi untuk nilai $ x $ yang lain memerlukan jumlah komputasi yang sama karena tidak ada bagian komputasi sebelumnya yang dapat digunakan.
+		\item Bila jumlah titik data meningkat atau menurun, hasil komputasi sebelumnya tidak dapat digunakan. Hal ini disebakan oleh tidak adanya hubungan antara $ p_{n-1}(x) $ dan $ p_n(x) $ pada polinom Lagrange.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Alternatif: polinom Newton
+		\item Polinom Newton dinyatakan dalam hubungan rekursif sebagai berikut:
+		\begin{enumerate}
+			\item rekurens: $ p_n(x) = p_{n-1}(x) + a_n(x - x_0)(x - x_1) \dots (x - x_{n-1} ) $
+			\item basis: $ p_0(x) = a_0 $
+		\end{enumerate}
+		\item Jadi, tahapan pembentukan polinom Newton adalah sebagai berikut:
+		\begin{align*}
+			p_1(x) &= p_0(x) + a_1 (x - x_0) \\
+			&= a_0 + a_1 (x - x_0)\\
+			&\\
+			p_2(x) &= p_1(x) + a_2 (x - x_0)(x - x_1) \\
+			&= a_0 + a_1 (x - x_0) + a_2 (x - x_0)(x - x_1)
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item[]
+		\begin{align*}
+			p_3(x) &= p_0(x) + a_3 (x - x_0)(x - x_1)(x - x_2) \\
+			&= a_0 + a_1 (x - x_0) + a_2 (x - x_0)(x - x_1)\\
+			&+ a_3 (x - x_0)(x - x_1)(x - x_2)\\
+			&\\
+			p_n(x) &= p_{n-1}(x) + a_n (x - x_0)\dots(x - x_{n-1})\\
+			&= a_0 + a_1 (x - x_0) + a_2 (x - x_0)(x - x_1)\\
+			&+ a_3 (x - x_0)(x - x_1)(x - x_2) + \dots \\
+			&+  a_n (x - x_0)(x - x_1)\dots(x - x_{n-1})\\
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Nilai konstanta $ a_0 $, $ a_1 $, $ a_2 $, $\dots$, $ a_n $ merupakan nilai selisih-terbagi, (\textit{divided-diffrence}) dengan nilai masing-masing:
+		\begin{align*}
+		a_0 &= f(x_0) \\
+		a_1 &= f(x_1,x_0) \\
+		a_2 &= f(x_2,x_1,x_0) \\
+		&\vdots\\
+		a_n &= f(x_n, x_{n-1}, \dots, x_1, x_0) \\
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item yang dalam hal ini
+	\end{itemize}
+	\begin{align*}
+		f[x_i, x_j] &= \frac{f(x_i)-f(x_j)}{x_i - x_j} \\
+		f[x_i, x_j, x_k] &= \frac{f[x_i, x_j] - f[x_j, x_k]}{x_i - x_k} \\
+		\vdots&\\
+		f[x_n, x_{n-1}, \dots, x_1, x_0] &= \frac{f[x_n, x_{n-1}, \dots, x_1] - f[x_{n-1},x_{n-2},\dots, x_0]}{x_n - x_0}
+	\end{align*}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Dengan demikian polinom Newton dapat ditulis dalam hubungan rekursif sebagai
+		\begin{enumerate}
+			\item rekurens:
+			\[\Scale[0.9]{ p_n(x) = p_{n-1}(x) + (x-x_0 ) (x-x_1) \dots (x-x_{n-1}) f[x_n , x_{n-1} , \dots, x_1 , x_0] }\]
+			\item basis:
+			\[ p_0(x) = f (x_0) \]
+		\end{enumerate}
+		\item atau dalam bentuk polinom yang lengkap sebagai berikut:
+		\begin{align*}
+			p_n(x) &= f_(x_0) + (x-x_0)f[x_1, x_0] + (x-x_0)(x-x_1) f[x_2, x_1, x_0] \\
+			&+ (x - x_0) (x - x_1) \dots (x - x_{n-1}) f[x_n, x_{n-1} , \dots, x_1, x_0]
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Nilai selisih terbagi ini dapat dihitung dengan menggunakan tabel yang disebut tabel selisih-terbagi,
+		\item misalnya tabel selisih-terbagi untuk empat buah titik ($ n = 3 $) berikut:
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img11}
+	\end{center}
+	Keterangan: ST = Selisih-Terbagi
+\end{frame}
+
+\begin{frame}
+	\frametitle{Komputasi Polinom Newton}
+	\begin{itemize}
+		\item Mari membuat algoritma dari polinom Newton dan source code nya berbahasa Python
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 6}
+	\begin{itemize}
+		\item \textbf{Persoalan:} Hitunglah $ f(9.2) $ dari nilai-nilai $ (x, y) $ yang diberikan pada tabel di bawah ini dengan polinom Newton derajat 3.
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img12}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 6}
+	\begin{itemize}
+		\item \textbf{Penyelesaian:} Tabel selisih-terbagi:
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img13}
+		\end{center}
+		\item Contoh cara menghitung nilai selisih-terbagai pada tabel adalah:
+		\begin{align*}
+			f(x_2, x_1) &= \frac{f(x_2) - f(x_1)}{x_2 - x_1} = \frac{2.251292 - 2.197225}{9.5 - 9.0} = 0.108134 \\
+			f(x_2, x_1, x_0) &= \frac{f[x_2,x_1] - f[x_1,x_0]}{x_2 - x_0}\\
+			&= \frac{0.108134 - 0.117783}{9.5 - 8.0} = -0.006433 \\
+			&\text{dan seterusnya}
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 6}
+	\begin{itemize}
+		\item Polinom Newton-nya (dengan $ x_0 = 8.0 $ sebagai titik data pertama) adalah:
+		\begin{align*}
+			f(x) &\approx p_3(x) = 2.079442 + 0.117783(x - 8.0)\\
+			&- 0.006433(x - 8.0)x - 9.0) \\
+			&+ 0.000411(x - 8.0)(x - 9.0)(x - 9.5)
+		\end{align*}
+		\item Taksiran nilai fungsi pada $ x = 9.2 $ adalah
+		\begin{align*}
+			f(9.2) \approx p_3(9.2) &= 2.079442 + 0.141340 - 0.001544 - 0.000030 \\
+			&= 2.219208
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 7}
+	\begin{itemize}
+		\item \textbf{Persoalan:} Bentuklah polinom Newton derajat satu, dua, tiga, dan empat yang menghampiri fungsi $ f(x) = \cos(x) $ di dalam selang $ [0.0 , 4.0] $ dan jarak antar titik adalah $ 1.0 $. Lalu, taksirlah nilai fungsi di $ x = 2.5 $ dengan polinom Newton derajat tiga
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 7}
+	\begin{itemize}
+		\item \textbf{Penyelesaian:} Dengan jarak antar titik 1.0, maka titik yang digunakan adalah pada $ x_0 = 0.0 $, $ x_1 = 1.0 $, $ x_2 = 3.0 $, $ x_3 = 4.0 $. Tabel selisih terbaginya adalah:
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img14}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 7}
+	Maka, polinom Newton derajat 1, 2, dan 3 dengan $ x_0 = 0.0 $ sebagai titik data pertama adalah
+	\begin{align*}
+		\cos(x) \approx p_1(x) &= 1.0000 - 0.4597(x - 0.0) \\
+		\cos(x) \approx p_2(x) &= 1.0000 - 0.4597(x - 0.0) - 0.2484(x - 0.0)(x - 1.0) \\
+		\cos(x) \approx p_3(x) &= 1.0000 - 0.4597(x - 0.0) - 0.2484(x - 0.0)(x - 1.0) \\
+		&+ 0.1466(x - 0.0)(x - 1.0)(x - 2.0) \\
+		\cos(x) \approx p_4(x) &= 1.0000 - 0.4597(x - 0.0) - 0.2484(x - 0.0)(x - 1.0) \\
+		&+ 0.1466(x - 0.0)(x - 1.0)(x - 2.0) \\
+		&-0.0147(x - 0.0)(x - 1.0)(x - 2.0)(x - 3.0)
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Contoh 7}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{img/img15}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Contoh 7}
+	\begin{itemize}
+		\item Taksiran nilai fungsi di $ x = 2.5 $ dengan polinom derajat tiga adalah
+		\begin{align*}
+			\cos(2.5) \approx p_3(2.5) &= 1.0000 - 0.4597(2.5 - 0.0)\\
+			&- 0.2484(2.5 - 0.0)(2.5 - 1.0)\\
+			&+ 0.1466(2.5 - 0.0)(2.5 - 1.0)(2.5 - 2.0) \\
+			&\approx -0.8056
+		\end{align*}
+		\item Nilai sejati $ f(2.5) $ adalah
+		\[ f(2.5) = \cos(2.5) = -0.8011 \]
+		\item sehingga solusi hampiran mengandung galat sejati sebesar
+		\[ \varepsilon = -0.8011 - (-0.8056) = -0.0045 \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Kelebihan Polinom Newton}
+	\begin{itemize}
+		\item Karena polinom Newton dibentuk dengan menambahkan satu suku tunggal dengan polinom derajat yang lebih rendah, maka ini memudahkan perhitungan polinom derajat yang lebih tinggi dalam program yang sama. Karena alasan itu, polinom Newton sering digunakan khususnya pada kasus yang derajat polinomnya tidak diketahui terlebih dahulu.
+		\item Penambahan suku-suku polinom secara beruntun dapat dijadikan kriteria untuk menentukan tercapainya titik berhenti, yaitu apakah penambahan suku-suku yang lebih tinggi tidak lagi secara berarti memperbaiki nilai interpolasi, atau malahan menjadi lebih buruk.
+		\item Tabel selisih terbagi dapat dipakai berulang-ulang untuk memperkirakan nilai fungsi pada nilai $ x $ yang berlainan.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Galat Interpolasi Polinom}
+	\begin{align*}
+		E(x) &= f(x) - p_n(x)\\
+		&= (x - x_0) (x - x_1) ... (x - x_n) \frac{f^{(n+1)}(c)}{(n+1)!}
+	\end{align*}
+	\begin{itemize}
+		\item Dari rumus di atas, galat polinom interpolasi, selain bergantung pada nilai $ x $ yang diinterpolasi, juga bergantung pada turunan fungsi semula.
+		\item Tinjau $ Q_{n+1} $ pada rumus $ E(x) $
+		\[ Q_{n+1}(x) = (x - x_0)(x - x_1) \dots (x - x_n) \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Galat Interpolasi Polinom}
+	\begin{itemize}
+		\item Misalkan $ x_0, x_1 , \dots, x_n $ berjarak sama. Grafik fungsi $ Q $ untuk enam titik yang berjarak sama ditunjukkan pada Gambar:
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{img/img16}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Galat Interpolasi Polinom}
+	\begin{itemize}
+		\item Berdasarkan $ Q_6(x) $ yang berosilasi pada Gambar di atas terlihat bahwa:
+		\begin{enumerate}
+			\item di titik-titik data $ x_i $ , nilai $ Q_6(x_i) = 0 $, sehingga galat interpolasi $ E(x_i)=0 $
+			\item di titik tengah selang, nilai $ Q_6(x) $ minimum, sehingga $ E(x) $ juga minimum
+			\item di titik-titik sekitar ujung selang, $ Q_6(x) $ besar, sehingga $ E(x) $ juga besar
+			\item bila ukuran selang $ [x_0 , x_6] $ semakin besar, amplitudo osilasi meningkat dengan cepat.
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Galat Interpolasi Polinom}
+	\begin{itemize}
+		\item \textbf{Kesimpulan:} Galat interpolasi minimum terjadi untuk nilai $ x $ di pertengahan selang.
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{img/img17}
+		\end{center}
+		\item \textbf{Ingatlah kalimat ini:}
+		\item[] Untuk mendapatkan galat interpolasi yang minimum,
+		pilihlah selang $ [x_0, x_n] $ sedemikian sehingga $ x $ terletak di tengah selang tersebut.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Galat Interpolasi Polinom}
+	\begin{itemize}
+		\item Misalkan kepada kita diberikan titik-titik data seperti ini:
+		\begin{center}
+			\includegraphics[width=0.3\linewidth]{img/img18}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Galat Interpolasi Polinom}
+	\begin{itemize}
+		\item Bila anda diminta menghitung $ f(0.160) $, maka selang yang digunakan agar galat interpolasi $ f(0.160) $ kecil adalah
+		\begin{itemize}
+			\item[] $ [0.150, 0.175] \rightarrow $ untuk polinom derajat satu, atau
+			\item[] $ [0.125, 0.200] \rightarrow $ untuk polinom derajat tiga, atau
+			\item[] $ [0.100, 0.225] \rightarrow $ untuk polinom derajat lima
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Polinom Newton-Gregory}
 
 
 
