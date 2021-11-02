@@ -1035,5 +1035,112 @@
 
 \section{Interpolasi Dwimatra}
 
+\begin{frame}
+	\frametitle{Interpolasi Dwimatra}
+	\begin{itemize}
+		\item Adakalanya kita membutuhkan perkiraan nilai fungsi dengan dua peubah.
+		\item Fungsi dengan dua peubah, $ x $ dan $ y $, secara umum dinyatakan sebagai
+		\[ z = f(x, y) \]
+		\item Grafik fungsi $ z $ adalah berupa permukaan (\textit{surface}) atau selimut kurva dengan alasnya adalah bidang $ x-y $. Jadi, nilai - nilai $ z $ terletak pada permukaan tersebut.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolasi Dwimatra}
+	\begin{itemize}
+		\item Jika $ z $ dinterpolasi dengan polinom dua-peubah (interpolasi dwimatra atau dua-dimensi), kita harus menentukan berapa derajat dalam arah-$ x $ dan berapa derajat dalam arah-$ y $.
+		\item Misalnya $ z $ dihampiri dengan polinom dua-peubah, yang dalam hal ini derajat 2 dalam arah-$ x $ dan derajat 3 dalam arah-$ y $:
+		\begin{align*}
+			z = f(x,y) &\approx a_0 + a_1 x + a_2 y + a_3 x 2 + a_4 xy + a_5 y^2 \\
+			& + a_6 x^2 y + a_7 xy^2 + a_8 xy^3 + a_9 y^3 \\
+			&+ a_{10} x^2 y^2 + a_{11} x^2 y^3
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolasi Dwimatra}
+	\begin{itemize}
+		\item Interpolasi polinom dua-peubah dilakukan dalam dua arah: dalam arah-$ x $ dan dalam arah-$ y $.
+		\item Pada setiap arah, kita harus memilih peubah yang dipegang konstan. Dalam arah-$ y $, nilai $ x $ dipegang konstan, begitu juga dalam arah-$ x $, nilai $ y $ dipegang konstan.
+		\item Semua metode interpolasi yang telah dibahas sebelum ini dapat digunakan untuk menginterpolasi polinom dua-peubah.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 10}
+	\begin{itemize}
+		\item \textbf{Persoalan:} Diberikan tabel $ f(x,y) $ sebagai berikut:
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img29}
+		\end{center}
+		Perkirakan nilai $ f(1.6, 0.33) $ dengan polinom derajat 2 dalam arah-$ x $ dan derajat 3 dalam arah-$ y $.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 10}
+	\begin{itemize}
+		\item \textbf{Penyelesaian:} Kita menggunakan polinom Netwon-Gregory maju untuk interpolasi dalam arah-$ x $ dan dalam arah-$ y $, karena titik-titiknya berjarak sama.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 10}
+	\begin{itemize}
+		\item Dalam arah-$ y $ ($ x $ tetap):
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{img/img30}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 10}
+	\begin{itemize}
+		\item Jarak antar titik dalam arah-$ y $: $ h = 0.1 $ dan \[ y = y_0 + sh \rightarrow s = \frac{y-y_0}{h} = \frac{0.33-0.2}{0.1}=1.3 \]
+		\item Polinom Newton-Gregory maju derajat tiga (dalam arah-$ y $): \[ p_3(y) \approx f_0 + \frac{s}{1!} \Delta f_0 + \frac{s(s-1)}{2!} \Delta^2 f_0 + \frac{s(s-1)(s-2)}{3!} \Delta^3 f_0 \]
+		\item Untuk $ x = 1.0 $; $ f(x, 0.33) \approx p_3 (x, 0.33) $
+		\begin{align*}
+			p_3(x,0.33) &\approx 0.640 + \frac{1.3}{1}(0.363) + \frac{(1.3)(1.3-1)}{2}(-0.007)\\
+			&+ \frac{(1.3)(1.3-1)(1.3-2)}{6}(-0.005) \\
+			& \approx 1.1108
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 10}
+	\begin{itemize}
+		\item Untuk $ x = 1.5 $; $ f(x, 0.33) \approx p_3(x, 0.33) $
+		\begin{align*}
+			p_3(x,0.33) &\approx 0.990 + \frac{1.3}{1}(0.534) + \frac{(1.3)(1.3-1)}{2}(-0.013)\\
+			&+ \frac{(1.3)(1.3-1)(1.3-2)}{6}(-0.004) \\
+			& \approx 1.6818
+		\end{align*}
+		\item Untuk $ x = 2.0 $; $ f(x, 0.33) \approx p_3(x, 0.33) $
+		\begin{align*}
+			p_3(x,0.33) &\approx 1.568 + \frac{1.3}{1}(0.816) + \frac{(1.3)(1.3-1)}{2}(-0.023)\\
+			&+ \frac{(1.3)(1.3-1)(1.3-2)}{6}(-0.004) \\
+			& \approx 2.6245
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 10}
+	\begin{itemize}
+		\item Dalam arah-$ x $ ($ y $ tetap):
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{img/img31}
+		\end{center}
+		\item Jarak antar titik dalam arah-$ x $: $ h = 0.5 $ dan \[ x = x_0 + sh \rightarrow s = \frac{x-x_0}{h} = \frac{1.6 - 1.0}{0.5} = 1.2 \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 10}
+	\begin{itemize}
+		\item Polinom Newton-Gregory maju derajat dua (dalam arah-$ x $):
+		\[ p_3(x) \approx f_0 + \frac{s}{1!}\Delta f_0 + \frac{s(s-1)}{2!} \Delta^2 f_0 \]
+		\begin{align*}
+			f(1.6, 0.33) &\approx p_3(1.6, 0.33) \approx 1.1108 + \frac{1.2}{1}(0.5710)\\
+			&+ \frac{(1.2)(1.2-1)}{2}(0.3717) \\
+			&= 1.8406
+		\end{align*}
+	\end{itemize}
+\end{frame}
 
 \end{document}
