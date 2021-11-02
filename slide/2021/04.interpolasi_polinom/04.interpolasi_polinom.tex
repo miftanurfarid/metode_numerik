@@ -28,6 +28,21 @@
 \section{Pengantar}
 
 \begin{frame}
+	\frametitle{Sub-CPMK dan Bahan Kajian}
+	\begin{itemize}
+		\item \textbf{Sub-CPMK:} Mahasiswa mampu menggunakan metode - metode interpolasi numerik
+		\item \textbf{Bahan kajian:}
+		\begin{enumerate}
+			\item Interpolasi Polinom
+			\item Polinom Lagrange
+			\item Polinom Newton
+			\item Polinom Newton-Gregory
+			\item Interpolasi Dwimatra
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Pengantar}
 	\begin{itemize}
 		\item Sebuah pengukuran fisika telah dilakukan untuk menentukan hubungan antara tegangan yang diberikan kepada baja tahan-karat dan waktu yang diperlukan hingga baja tersebut patah.
@@ -919,8 +934,106 @@
 	\begin{itemize}
 		\item Polinom Newton-Gregory mundur (\textit{Newton-Gregory backward}) dibentuk dari tabel selisih mundur.
 		\item Polinom ini sering digunakan pada perhitungan nilai turunan (\textit{derivative}) secara numerik. Titik-titik yang digunakan berjarak sama, yaitu
-		\[ x_0,~x_{-1},~\dots,~x_{-n} \]
+		\[ x_0,~x_{-1},~\dots,~x_{-n} \] yang dalam hal ini \[ x_i = x_0 + ih,\quad i = 0, -1, -2,\dots,-n \] dan nilai $ x $ yang diinterpolasikan adalah \[ x = x_0 + sh,~ s \in R \]
 	\end{itemize}
 \end{frame}
+
+\begin{frame}{Polinom Interpolasi Newton-Gregory Mundur}
+	\begin{itemize}
+		\item Sebagai contoh, tabel selisih mundur untuk 4 titik diperlihatkan oleh tabel berikut
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img26}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Polinom Interpolasi Newton-Gregory Mundur}
+	\begin{itemize}
+		\item Polinom Newton-Gregory mundur yang menginterpolasi $ (n+1) $ titik data adalah
+		\begin{align*}
+			f(x) \approx p_n(x) &= \sum_{k=0}^{n} \left(\begin{matrix}
+			s+k-1 \\ s
+			\end{matrix}\right) \triangledown ^k f_0 \\
+			&= f_0 + \frac{s\triangledown f_0}{1!} + \frac{s(s+1)\triangledown^2 f_0}{2!} \\
+			&+ \dots + \frac{s(s+1)(s+2)\dots(s+n-1)\triangledown^n f_0}{n!}
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contoh 9}
+	\begin{itemize}
+		\item \textbf{Persoalan:} Diberikan 4 buah titik data dalam tabel berikut. Hitunglah $ f(1.72) $ dengan
+		\begin{enumerate}
+			\item polinom Newton-Gregory maju derajat 3
+			\item polinom Newton-Gregory mundur derajat 3
+		\end{enumerate}
+		Misalkan jumlah angka bena yang digunakan adalah 7 digit.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 9}
+	\begin{itemize}
+		\item \textbf{Penyelesaian:} 
+		\begin{enumerate}
+			\item Polinom Newton-Gregory maju derajat 3
+			\begin{center}
+				\includegraphics[width=\linewidth]{img/img27}
+			\end{center}
+			\[ s = (x - x_0)/h = (1.72 - 1.70)/0.1 = 0.2 \]
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 9}
+	\begin{itemize}
+		\item[]
+		\begin{enumerate}
+			\item[] Perkiraan nilai $ f(1.72) $ adalah
+			\begin{align*}
+			f(1.72) &\approx p_3(1.72) = 0.3979849 + 0.2(-0.0579985) \\
+			&+ \frac{0.2(-0.8)}{2}(-0.0001693) \\
+			&+ \frac{0.2(-0.8)(-0.8)}{6}(0.0004093) \\
+			&= 0.3979849 - 0.0115997 + 0.0000135 + 0.0000196 \\
+			&= 0.3864183
+			\end{align*}
+		\end{enumerate}
+		\item[] (nilai sejati $ f(1.72) = 0.3864185 $, jadi $ p_3(1.72) $ tepat sampai 6 angka bena)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 9}
+	\begin{itemize}
+		\item[]
+		\begin{enumerate}
+			\setcounter{enumi}{1}
+			\item Polinom Newton-Gregory mundur derajat 3
+			\begin{center}
+				\includegraphics[width=\linewidth]{img/img28}
+			\end{center}
+			Tabel di atas memperlihatkan bahwa tabel selisih mundur sama dengan tabel selisih maju, yang berbeda hanya notasi dan penempatan elemennya.
+			\[ s = (x - x_0)/h = (1.72 - 2.0)/0.1 = -2.8 \]
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Contoh 9}
+	\begin{itemize}
+		\item[]
+		\begin{enumerate}
+			\item[] Perkiraan nilai $ f(1.72) $ adalah
+			\begin{align*}
+			f(1.72) &\approx p_3(1.72) = 0.2238908 + 2.8(-0.0579278) \\
+			&+ \frac{(-2.8)(-1.8)}{2}(0.0002400) \\
+			&+ \frac{(-2.8)(-1.8)(-0.8)}{6}(0.0004093) \\
+			&= 0.2238908 + 0.1621978 + 0.0006048 - 0.0002750 \\
+			&= 0.3864183
+			\end{align*}
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\section{Interpolasi Dwimatra}
+
 
 \end{document}
