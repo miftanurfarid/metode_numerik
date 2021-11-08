@@ -73,7 +73,7 @@
 		\begin{itemize}
 			\item Data hasil pengukuran umumnya mengandung derau (\textit{noise}) atau galat yang cukup berarti.
 			\item Karena data ini tidak teliti, maka kurva yang mencocokkan titik data itu tidak perlu melalui semua titik.
-			Kurva tersebut cukup hanya mewakili kecenderungan (\textit{trend}) titik data, yakni kurva mengikuti pola titik sebagai suatu kelompok.
+			\item Kurva tersebut cukup hanya mewakili kecenderungan (\textit{trend}) titik data, yakni kurva mengikuti pola titik sebagai suatu kelompok.
 		\end{itemize}
 	\end{enumerate}
 \end{frame}
@@ -120,13 +120,13 @@
 		\item Diberikan $ n+1 $ buah titik berbeda, ($ x_0 $, $ y_0 $ ), ($ x_1 $, $ y_1 $ ), $\dots$, ($ x_n $ , $ y_n $ ).
 		\item Tentukan polinom $ p_n(x) $ yang menginterpolasi (melewati) semua titik-titik tersebut sedemikian rupa sehingga
 		\[ y_i = p_n(x_i)\qquad \text{ untuk } i = 0,1,2,\dots,n \]
-		\item Nilai $ y_i $ dapat berasal dari fungsi $ f(x) $ sedemikian sehingga \[ y_i = f(x_i), \] atau, $ y_i $ berasal dari nilai empiris yang diperoleh melalui percobaan atau pengamatan.
+		\item Nilai $ y_i $ dapat berasal dari fungsi $ f(x) $ sedemikian sehingga $ y_i = f(x_i) $, atau $ y_i $ berasal dari nilai empiris yang diperoleh melalui percobaan atau pengamatan.
+		\item $ p_n(x) $ disebut fungsi hampiran terhadap $ f(x) $.
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\begin{itemize}
-		\item $ p_n(x) $ disebut fungsi hampiran terhadap $ f(x) $.
 		\item Setelah polinom interpolasi $ p_n(x) $ ditemukan, $ p_n(x) $ dapat digunakan untuk menghitung perkiraan nilai $ y $ di $ x = a $, yaitu $ y = p_n(a) $.
 		\item Bergantung pada letaknya, nilai $ x = a $ mungkin terletak di dalam rentang titik-titik data ($ x_0 < a < x_n $ ) atau di luar rentang titik-titik data ($ a < x_0 $ atau $ a > x_n $ ):
 		\begin{enumerate}
@@ -141,7 +141,7 @@
 		\includegraphics[width=0.7\linewidth]{img/img03}
 	\end{center}
 	\begin{itemize}
-		\item Kita dapat menginterpolasi titik data dengan: polinom lanjar, polinom kuadratik, polinom kubik, atau polinom dari derajat yang lebih tinggi, bergantung pada jumlah titik data yang tersedia.
+		\item Kita dapat menginterpolasi titik data dengan: polinom lanjar, polinom kuadratik, polinom kubik, atau polinom dari derajat yang lebih tinggi. Bergantung pada jumlah titik data yang tersedia.
 	\end{itemize}
 \end{frame}
 
@@ -187,10 +187,10 @@
 \begin{frame}
 	\frametitle{Contoh 2}
 	\begin{itemize}
-		\item \textbf{Persoalan:} Dari data $ \ln(9.0) = 2.1972 $, $ \ln(9.5) = 2.2513 $, tentukan $ \ln(9.2) $ dengan interpolasi lanjar sampai 5 angka bena. Bandingkan dengan nilai sejati $ ln(9.2) = 2.2192 $.
+		\item \textbf{Persoalan:} Dari data $ \ln(9.0) = 2.1972 $, $ \ln(9.5) = 2.2513 $, tentukan $ \ln(9.2) $ dengan interpolasi lanjar sampai 5 angka bena. Bandingkan dengan nilai sejati $ \ln(9.2) = 2.2192 $.
 		\item \textbf{Penyelesaian:} Dengan menggunakan persamaan (\ref{int.lanj}), diperoleh
 		\[ p_1(9.2) = 2.1972 + \frac{(2.1513-2.197)(9.2-9.0)}{9.5-90} = 2.2188 \]
-		Galat = 2.2192 - 2.2188 = 0.0004. Di sini interpolasi lanjar tidak cukup untuk memperoleh ketelitian sampai 5 angka bena. Ia hanya benar sampai 3 angka bena
+		Galat = 2.2192 - 2.2188 = 0.0004. Di sini interpolasi lanjar tidak cukup untuk memperoleh ketelitian sampai 5 angka bena. \textbf{Ia hanya benar sampai 3 angka bena.}
 	\end{itemize}
 \end{frame}
 
@@ -317,7 +317,7 @@
 		\item Tinjau kembali polinom lanjar:
 		\[ p_1(x) = y_0 + \frac{(y_1 - y_0)}{(x_1 - x_0)}(x-x_0) \]
 		\item Persamaan ini dapat diatur kembali sedemikian rupa sehingga menjadi
-		\[ p_1(x) = y_0 + \frac{(x - x_1)}{(x_0 - x_1)} + y_1\frac{(x-x_0)}{(x_1-x_0)} \]
+		\[ p_1(x) = y_0\frac{(x - x_1)}{(x_0 - x_1)} + y_1\frac{(x-x_0)}{(x_1-x_0)} \]
 	\end{itemize}
 \end{frame}
 
@@ -340,10 +340,15 @@
 		\end{equation}
 		yang dalam hal ini
 		\[ a_i = y_i,\quad i=0,1,2,\dots,n \]
-		dan
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Polinom Lagrange}
+	\begin{itemize}
+		\item[] dan
 		\begin{align*}
-			L_i(x) &= \prod_{j=0;j\neq i}^{n} \frac{(x-x_j)}{(x_i-x_j)} \\
-			&= \frac{(x-x_0)(x-x_1) \dots (x-x_{i-1})(x-x_{i+1})\dots (x-x_n)}{(x_i -x_0)(x_i-x_1) \dots (x_i-x_{i-1})(x_i-x_{i+1})\dots (x_i-x_n)}
+		L_i(x) &= \prod_{j=0;j\neq i}^{n} \frac{(x-x_j)}{(x_i-x_j)} \\
+		&= \frac{(x-x_0)(x-x_1) \dots (x-x_{i-1})(x-x_{i+1})\dots (x-x_n)}{(x_i -x_0)(x_i-x_1) \dots (x_i-x_{i-1})(x_i-x_{i+1})\dots (x_i-x_n)}
 		\end{align*}
 	\end{itemize}
 \end{frame}
@@ -351,7 +356,7 @@
 \begin{frame}
 	\frametitle{Contoh 4}
 	\begin{itemize}
-		\item \textbf{Persoalan:} Hampiri fungsi $ f(x) = \cos x $ dengan polinom interpolasi derajat tiga di dalam selang $ [0.0, 1.2] $. Gunakan empat titik, $ x_0 = 0.0 $, $ x_1 = 0.4 $, $ x_2 = 0.8 $, dan $ x_3 = 1.2 $. Perkirakan nilai $ p_3(0.5) $, dan bandingkan dengan nilai sejatinya.
+		\item \textbf{Persoalan:} Hampiri fungsi $ f(x) = \cos (x) $ dengan polinom interpolasi derajat tiga di dalam selang $ [0.0, 1.2] $. Gunakan empat titik, $ x_0 = 0.0 $, $ x_1 = 0.4 $, $ x_2 = 0.8 $, dan $ x_3 = 1.2 $. Perkirakan nilai $ p_3(0.5) $, dan bandingkan dengan nilai sejatinya.
 		\item \textbf{Penyelesaian:}
 		\begin{center}
 			\includegraphics[width=0.7\linewidth]{img/img08}
@@ -365,9 +370,9 @@
 		\begin{align*}
 			p_3 (x) &= a_0 L_0 (x) + a_1 L_1 (x) + a_2 L_2 (x) + a_3 L_3 (x) \\
 			&= y_0 \frac{(x-x_1)(x-x_2)(x-x_3)}{(x_0-x_1)(x_0-x_2)(x_0-x_3)} \\
-			&+ y_1 \frac{(x-x_1)(x-x_2)(x-x_3)}{(x_1-x_0)(x_1-x_2)(x_1-x_3)} \\
-			&+ y_2 \frac{(x-x_1)(x-x_2)(x-x_3)}{(x_2-x_0)(x_2-x_1)(x_2-x_3)} \\
-			&+ y_3 \frac{(x-x_1)(x-x_2)(x-x_3)}{(x_3-x_0)(x_3-x_1)(x_3-x_2)} \\
+			&+ y_1 \frac{(x-x_0)(x-x_2)(x-x_3)}{(x_1-x_0)(x_1-x_2)(x_1-x_3)} \\
+			&+ y_2 \frac{(x-x_0)(x-x_1)(x-x_3)}{(x_2-x_0)(x_2-x_1)(x_2-x_3)} \\
+			&+ y_3 \frac{(x-x_0)(x-x_1)(x-x_2)}{(x_3-x_0)(x_3-x_1)(x_3-x_2)} \\
 		\end{align*}
 	\end{itemize}
 \end{frame}
@@ -388,7 +393,7 @@
 	\begin{itemize}
 		\item[]
 		\begin{align*}
-		p_3 (x) &= - 2.604167 ( x - 0.4 )( x - 0.8 )( x - 1.2 )
+		p_3 (x) &= - 2.604167 ( x - 0.4 )( x - 0.8 )( x - 1.2 ) \\
 		&+ 7.195789 ( x - 0.0 )( x - 0.8 )( x - 1.2 ) \\
 		&- 5.443021 ( x - 0.0 )( x - 0.4 )( x - 1.2 )\\
 		&+ 0.943640 ( x - 0.0 )( x - 0.4 )( x - 0.8 )
@@ -455,10 +460,10 @@
 
 \begin{frame}
 	\frametitle{Polinom Newton}
-	Polinom Lagrange kurang disukai dalam praktek karena alasan berikut:
+	Polinom Lagrange kurang disukai dalam praktik karena alasan berikut:
 	\begin{enumerate}
 		\item Jumlah komputasi yang dibutuhkan untuk satu kali interpolasi adalah besar. Interpolasi untuk nilai $ x $ yang lain memerlukan jumlah komputasi yang sama karena tidak ada bagian komputasi sebelumnya yang dapat digunakan.
-		\item Bila jumlah titik data meningkat atau menurun, hasil komputasi sebelumnya tidak dapat digunakan. Hal ini disebakan oleh tidak adanya hubungan antara $ p_{n-1}(x) $ dan $ p_n(x) $ pada polinom Lagrange.
+		\item Bila jumlah titik data meningkat atau menurun, hasil komputasi sebelumnya tidak dapat digunakan. Hal ini disebabkan oleh tidak adanya hubungan antara $ p_{n-1}(x) $ dan $ p_n(x) $ pada polinom Lagrange.
 	\end{enumerate}
 \end{frame}
 
@@ -499,7 +504,7 @@
 
 \begin{frame}
 	\begin{itemize}
-		\item Nilai konstanta $ a_0 $, $ a_1 $, $ a_2 $, $\dots$, $ a_n $ merupakan nilai selisih-terbagi, (\textit{divided-diffrence}) dengan nilai masing-masing:
+		\item Nilai konstanta $ a_0 $, $ a_1 $, $ a_2 $, $\dots$, $ a_n $ merupakan nilai selisih-terbagi, (\textit{divided-difference}) dengan nilai masing-masing:
 		\begin{align*}
 		a_0 &= f(x_0) \\
 		a_1 &= f(x_1,x_0) \\
@@ -533,7 +538,7 @@
 		\end{enumerate}
 		\item atau dalam bentuk polinom yang lengkap sebagai berikut:
 		\begin{align*}
-			p_n(x) &= f_(x_0) + (x-x_0)f[x_1, x_0] + (x-x_0)(x-x_1) f[x_2, x_1, x_0] \\
+			p_n(x) &= f(x_0) + (x-x_0)f[x_1, x_0] + (x-x_0)(x-x_1) f[x_2, x_1, x_0] \\
 			&+ (x - x_0) (x - x_1) \dots (x - x_{n-1}) f[x_n, x_{n-1} , \dots, x_1, x_0]
 		\end{align*}
 	\end{itemize}
