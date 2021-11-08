@@ -19,7 +19,7 @@ for k in range(n+1):
     
 # buat tabel selisih terbagi
 for k in range(1,n+1):
-    for i in range(n-k):
+    for i in range(0,n-k+1):
         ST[i,k] = (ST[i+1,k-1] - ST[i,k-1]) / (X[i+k]-X[i])
         
 # hitung p(x)
@@ -29,4 +29,4 @@ for i in range(1,n+1):
     for k in range(i):
         suku = suku*(x-X[k])
     jumlah = jumlah + suku
-    print(jumlah)
+    #print(jumlah)
