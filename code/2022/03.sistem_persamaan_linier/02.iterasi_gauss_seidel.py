@@ -1,12 +1,12 @@
 import numpy as np
 
-a = np.array([[4, 1, 2, -1],
-           [3, 6, -1, 2],
-           [2, -1, 5, -3],
-           [4, 1, -3, -8]],float)
-b = np.array([2, -1, 3, 2], float)
+a = np.array([[8, 1, 3, 2],
+           [2, 9, -1, -2],
+           [1, 3, 2, -1],
+           [1, 0, 6, 4]],float)
+b = np.array([0, 1, 2, 3], float)
 (n,) = np.shape(b)
-x = np.full(n, 1, float)
+x = np.full(n, 0, float)
 xdiff = np.empty(n, float) # selisih nilai x setiap dua iterasi
 iterlimit = 100
 toleransi = 1.0e-6
