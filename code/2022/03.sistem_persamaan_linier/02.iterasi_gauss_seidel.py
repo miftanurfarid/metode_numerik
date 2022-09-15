@@ -11,7 +11,7 @@ xdiff = np.empty(n, float) # selisih nilai x setiap dua iterasi
 iterlimit = 100
 tolerance = 1.0e-6
 
-# Iterations
+# iterations
 for iteration in range(iterlimit):
     for i in range(n):
         s = 0
