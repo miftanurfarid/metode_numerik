@@ -4,9 +4,7 @@ a = np.array([[4, 1, 2, -1],
            [3, 6, -1, 2],
            [2, -1, 5, -3],
            [4, 1, -3, -8]],float)
-
 b = np.array([2, -1, 3, 2], float)
-
 (n,) = np.shape(b)
 x = np.full(n, 1, float) # tebakan awal = 1.0
 xnew = np.empty(n,float)
