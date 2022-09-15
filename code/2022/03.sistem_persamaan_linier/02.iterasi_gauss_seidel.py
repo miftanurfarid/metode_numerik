@@ -9,10 +9,10 @@ b = np.array([2, -1, 3, 2], float)
 x = np.full(n, 1, float)
 xdiff = np.empty(n, float) # selisih nilai x setiap dua iterasi
 iterlimit = 100
-tolerance = 1.0e-6
+toleransi = 1.0e-6
 
 # iterations
-for iteration in range(iterlimit):
+for iterasi in range(iterlimit):
     for i in range(n):
         s = 0
         for j in range(n):
@@ -21,11 +21,11 @@ for iteration in range(iterlimit):
         xnew = -1/a[i,i] * (s - b[i]) # xnew is scalar
         xdiff[i] = abs(xnew - x[i]) # compute the absolute difference
         x[i] = xnew # assign the new value to x[i]
-    print(iteration, "\t", x)
-    if (xdiff < tolerance).all(): # check convergence of all equations
+    print(iterasi+1, "\t", x)
+    if (xdiff < toleransi).all(): # check convergence of all equations
         break
     
 
-print('\nJumlah iterasi: %d' % (iteration))
+print('\nJumlah iterasi: %d' % (iterasi+1))
 print('Solusi dari sistem:')
 print(x)
