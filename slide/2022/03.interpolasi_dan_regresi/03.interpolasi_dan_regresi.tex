@@ -128,7 +128,37 @@
 	\begin{itemize}
 		\item Metode interpolasi Lagrange didasari oleh pembuatan polinomial derajat $ n $.
 		\item Derajatnya bergantung pada banyaknya titik yang ada di dalam dataset, yaitu sebanyak $ n + 1 $ titik.
-		\item 
+		\item Contoh: untuk polinomial derajat 3 (kubik), $ n = 3 $, maka 4 titik yang dibutuhkan.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolasi Lagrange}
+	\begin{itemize}
+		\item Sehingga
+		\begin{equation*}
+			y(x) = y_1 l_1(x) + y_2 l_2(x) + y_3 l_3(x) + y_4 l_4(x)
+		\end{equation*}
+		yang mana
+		\begin{align*}
+			l_1(x) &= \frac{(x-x_2)(x-x_3)(x-x_4)}{(x_1-x_2)(x_1-x_3)(x_1-x_4)} \\
+			l_2(x) &= \frac{(x-x_1)(x-x_3)(x-x_4)}{(x_2-x_1)(x_2-x_3)(x_2-x_4)} \\
+			l_3(x) &= \frac{(x-x_1)(x-x_2)(x-x_4)}{(x_3-x_1)(x_3-x_2)(x_3-x_4)} \\
+			l_4(x) &= \frac{(x-x_1)(x-x_2)(x-x_3)}{(x_4-x_1)(x_4-x_2)(x_4-x_3)}
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolasi Lagrange}
+	\begin{itemize}
+		\item atau
+		\begin{equation*}
+			l_i(x) = \prod\limits_{j = 1;~j \neq i}^{n+1} \frac{(x - x_j)}{x_i - x_j}
+		\end{equation*}
+		sehingga persamaan dari metode interpolasi Lagrange
+		\begin{equation*}
+			y(x) = \sum\limits_{i=1}^{n+1}y_i \left( \prod\limits_{j = 1;~j \neq i}^{n+1} \frac{(x - x_j)}{x_i - x_j} \right)
+		\end{equation*}
+		\item Kita coba selesaikan contoh sebelumnya dengan metode interpolasi Lagrange kemudian bandingkan dengan hasil interpolasi linear.
 	\end{itemize}
 \end{frame}
 
