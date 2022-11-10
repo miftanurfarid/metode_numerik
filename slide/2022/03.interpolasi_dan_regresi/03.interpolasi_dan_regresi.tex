@@ -40,18 +40,108 @@
 
 \begin{frame}
 	\frametitle{Sub-CPMK}
-	Mahasiswa mampu menentukan akar-akar dari persamaan non linear secara numerik
+	\textbf{Sub Capaian Pembelajaran Mata Kuliah (Sub-CPMK):} Mahasiswa mampu melakukan interpolasi dan regresi
 \end{frame}
 
 \begin{frame}
 	\frametitle{Bahan Kajian}
 	\begin{enumerate}
-		\item Metode iterasi sederhana;
-		\item Metode Newton-Raphson;
-		\item Metode bagi dua/ biseksi;
-		\item Metode Regula-Falsi;
-		\item Metode Secant.
+		\item Interpolasi linear;
+		\item Interpolasi Lagrange
+		\item Interpolasi Newton
+		\item Regresi linier;
 	\end{enumerate}
+\end{frame}
+
+\section{Interpolasi Linear}
+
+\begin{frame}
+	\frametitle{Interpolasi Linear}
+	\begin{itemize}
+		\item Misalkan diketahui tabel hasil pembacaan suhu dari suatu reaksi kimia sebagai berikut
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{img/img01}
+		\end{center}
+		\item Kemudian linear plot dari data di atas adalah:
+		\begin{center}
+			\includegraphics[width=0.5\linewidth]{img/img02}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolasi Linear}
+	\begin{itemize}
+		\item Berdasarkan data tersebut, jika kita memerlukan suhu reaksi saat detik ke 50, bagaimana cara kita memperoleh data tersebut?
+		\item Metode yang paling mudah adalah dengan menggunakan metode \textbf{interpolasi linear}.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolasi Linear}
+	\begin{itemize}
+		\item Mengambil bagian dari kurva yang menghubungkan 2 titik yang telah diketahui, $ (x_1, y_1) $ dan $ (x_2, y_2) $
+		\begin{center}
+			\includegraphics[width=0.5\linewidth]{img/img03}
+		\end{center}
+		\item Dari kasus di atas maka $ (x_1, y_1) $ dan $ (x_2, y_2) $ adalah $ (40, 61.6) $ dan $ (60, 71.2) $
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolasi Linear}
+	\begin{itemize}
+		\item Karena gradient dari kurva tsb adalah sama
+		\begin{center}
+			\includegraphics[width=0.4\linewidth]{img/img03}
+		\end{center}
+		maka
+		\begin{equation*}
+			\frac{y - y_1}{x - x_1} = \frac{y_2 - y_1}{x_2 - x_1}
+		\end{equation*}
+		\item Kita dapatkan
+		\begin{equation*}
+			y= \frac{y_2 - y_1}{x_2 - x_1}(x - x_1) +  y_1
+		\end{equation*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolasi Linear}
+	\begin{itemize}
+		\item Sehingga dari kasus di atas, maka
+		\begin{align*}
+			y &= \frac{y_2 - y_1}{x_2 - x_1}(x - x_1) +  y_1 \\
+			&= \frac{71.2 - 61.6}{60 - 40}(50 - 40) +  61.6 \\
+			&= 66.4^\circ \text{C}
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolasi Linear}
+	\begin{itemize}
+		\item Kekurangan metode interpolasi linear adalah titik-titik lain selain dua titik yang berdekatan dibaikan.
+		\item Artinya, trend dari kurva keseluruhan dataset tidak dihitung sehingga titik interpolasi tidak secara akurat terletak pada kurva itu.
+	\end{itemize}
+\end{frame}
+
+\section{Interpolasi Lagrange}
+
+\begin{frame}
+	\frametitle{Interpolasi Lagrange}
+	\begin{itemize}
+		\item Metode interpolasi Lagrange didasari oleh pembuatan polinomial derajat $ n $.
+		\item Derajatnya bergantung pada banyaknya titik yang ada di dalam dataset, yaitu sebanyak $ n + 1 $ titik.
+		\item 
+	\end{itemize}
+\end{frame}
+
+\section{Interpolasi Newton}
+
+\begin{frame}
+	\frametitle{Interpolasi Newton}
+\end{frame}
+
+\section{Regresi Linear}
+
+\begin{frame}
+	\frametitle{Regresi Linear}
 \end{frame}
 
 \end{document}
