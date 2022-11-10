@@ -3,7 +3,19 @@
 %\usetheme[dark,framenumber,totalframenumber]{ElektroITK}
 \usetheme[darktitle,framenumber,totalframenumber]{ElektroITK}
 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[bahasai]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usefonttheme[onlymath]{serif}
+
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
 
 \title{METODE NUMERIK}
 \subtitle{Interpolasi dan Regresi}
@@ -166,12 +178,88 @@
 
 \begin{frame}
 	\frametitle{Interpolasi Newton}
+	\begin{itemize}
+		\item Menggunakan polinomial Newton
+		\begin{align*}
+			y(x) =& a_0 + (x - x_1)a_1 + (x - x_1)(x - x_2)a_2 \\
+			&+ \cdots + (x - x_1)(x - x_2) \dots (x - x_n)a_n
+		\end{align*}
+		\item Terdapat 2 langkah:
+		\begin{enumerate}
+			\item Membuat tabel beda terbagi (\textit{divided differences})
+			\item Substitusi nilai $ x $ yang diketahui ke dalam persamaan polinomial untuk mendapatkan nilai $ y $ yang diinterpolasi.
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolasi Newton}
+	\begin{itemize}
+		\item Tabel beda terbagi
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img04}
+		\end{center}
+		\item Untuk kolom ke (2)
+		\begin{align*}
+			y_i^{(2)} = \frac{y_i^{(1)} - y_1^{(1)}}{x_i - x_1},~i = 2,3,4
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolasi Newton}
+	\begin{itemize}
+		\item Untuk kolom ke (3)
+		\begin{align*}
+			y_i^{(3)} = \frac{y_i^{(2)} - y_2^{(2)}}{x_i - x_2},~i = 3,4
+		\end{align*}
+		\item Untuk kolom ke (4)
+		\begin{align*}
+			y_4^{(4)} = \frac{y_4^{(3)} - y_3^{(3)}}{x_4 - x_3}
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolasi Newton}
+	\begin{itemize}
+		\item sehingga persamaan umumnya
+		\begin{align*}
+			y_i^{(j+1)} = \frac{y_i^{(j)} - y_j^{(j)}}{x_i - x_j},~j=1,\dots,n\text{ dan } i = j+1,\dots,n+1
+		\end{align*}
+		yang mana $ y_1^{(1)} = y_1 $ dan $ y_2^{(1)} = y_2 $ dan seterusnya
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolasi Newton}
+	\begin{itemize}
+		\item koefisien polinomial adalah nilai diagonal utama dari tabel beda terbagi
+		\begin{equation*}
+			a_0 = y_1^{(1)},~a_1 = y_2^{(2)},~a_2 = y_3^{(3)},\dots,~a_n = y_n+1^{(n+1)}
+		\end{equation*}
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img04}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolasi Newton}
+	\begin{itemize}
+		\item sehingga persamaan dari metode interpolasi Newton adalah
+		\begin{equation*}
+			y(x) = a_0 + \sum\limits_{i = 1}^{n} \left[ \prod\limits_{j = 1}^{i} (x - x_j) \right] a_i
+		\end{equation*}
+		atau
+		\begin{equation*}
+			y(x) = y_1^{(1)} + \sum\limits_{i = 1}^{n} \left[ \prod\limits_{j = 1}^{i} (x - x_j) \right] y_{i+1}^{(i+1)}
+		\end{equation*}
+		\item Kita coba selesaikan contoh sebelumnya dengan metode interpolasi Newton kemudian bandingkan dengan hasil interpolasi Lagrange dan interpolasi linear.
+	\end{itemize}
 \end{frame}
 
 \section{Regresi Linear}
 
 \begin{frame}
 	\frametitle{Regresi Linear}
+	\centering
+	\textbf{Pertemuan Berikutnya}
 \end{frame}
 
 \end{document}
