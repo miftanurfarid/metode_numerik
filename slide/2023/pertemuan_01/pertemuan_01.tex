@@ -26,6 +26,8 @@
 
 \begin{document}
 
+\maketitle
+
 \section{Pengantar}
 
 \begin{frame}
@@ -42,7 +44,7 @@
 
 \begin{frame}
 	\frametitle{Sub-CPMK}
-	Mahasiswa mampu menentukan akar-akar dari persamaan non linear secara numerik
+	\textbf{Sub Capaian Pembelajaran Mata Kuliah (Sub CPMK):}\\Mahasiswa mampu menentukan akar-akar dari persamaan non linear secara numerik (C3, P2, A2)
 \end{frame}
 
 \begin{frame}
@@ -83,6 +85,22 @@
 \begin{frame}
 	\frametitle{Contoh 1}
 	Tentukan akar-akar dari persamaan $$ 2x^2 - 5x + 3 = 0 $$ dengan menggunakan metode iterasi sederhana.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Solusi Contoh 1}
+	\begin{enumerate}
+		\item Ubah bentuk persamaannya: $$ x = \frac{2x^2+3}{5} $$ atau $$ x = \sqrt{\frac{5x-3}{2}} $$
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Solusi Contoh 1}
+	\begin{enumerate}\setcounter{enumi}{1}
+		\item Asumsikan nilai awalan, misalkan $x = 0$
+		\item Hitung nilai $x_{\text{baru}}$ dengan menggunakan persamaan $ x = \frac{2x^2+3}{5} $ yang mana $x$ di sisi kiri adalah $x_{\text{baru}}$ dan $x$ di sisi kanan adalah $x$ nilai awalan. $$ x_{\text{baru}} = \frac{2x^2+3}{5} $$
+		\item Kita coba langkah-langkah selanjutnya dengan bantuan excel/ spreadsheet
+	\end{enumerate}
 \end{frame}
 
 \section{Metode Newton-Raphson}
