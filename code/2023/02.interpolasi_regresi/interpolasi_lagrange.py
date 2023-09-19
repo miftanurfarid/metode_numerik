@@ -6,8 +6,8 @@ Created on Tue Sep 19 08:26:19 2023
 @author: fafa
 """
 
-x = [0, 20, 40, 60, 80, 100]
-y = [26.0, 48.6, 61.6, 71.2, 74.8, 75.2]
+x = [-1.2, 0.3, 1.1]
+y = [-5.76, -5.61, -3.69]
 m = len(x)
 n = m-1
 xp = float(input('Masukkan nilai x: '))

@@ -7,8 +7,8 @@ Created on Tue Sep 19 08:23:09 2023
 """
 import numpy as np
 
-x = [0, 20, 40, 60, 80, 100]
-y = [26.0, 48.6, 61.6, 71.2, 74.8, 75.2]
+x = [-1.2, 0.3, 1.1]
+y = [-5.76, -5.61, -3.69]
 n = len(x) - 1
 xp = float(input('Masukkan nilai x: '))
 Dy = np.zeros((n+1, n+1))
