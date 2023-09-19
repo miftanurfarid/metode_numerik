@@ -8,4 +8,5 @@
 *.toc
 *.kate-swp
 .spyproject
+*_minted*
 
