@@ -8,8 +8,8 @@ Created on Tue Sep 26 09:31:18 2023
 
 import numpy as np
 
-x = np.array([0, 1, 2, 3])
-y = np.array([2, 8, 14, 28])
+x = np.array([1, 2.5, 3.5])
+y = np.array([6.008, 15.722, 27.13])
 
 m = len(x) # jumlah data
 n = 2 # derajat polinomial
