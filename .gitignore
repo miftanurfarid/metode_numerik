@@ -9,7 +9,7 @@
 *.kate-swp
 .spyproject
 *_minted*
-*/*.vrb
+*.vrb
 .idea
-*/*.fdb_latexmk
-*/*.fls
+*.fdb_latexmk
+*.fls
